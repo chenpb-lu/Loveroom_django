@@ -1,0 +1,2 @@
+# Loveroom_django
+基于python开发民宿网站，民宿数据用爬虫爬取各大民宿网站获得
