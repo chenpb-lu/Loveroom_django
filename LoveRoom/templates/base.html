@@ -1,0 +1,362 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="description" content="陈杰柱牛逼">
+<meta class="pctitle" content="求求你了">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>主页</title>
+<link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="/static/css/animate.css" rel="stylesheet" type="text/css">
+<link href="/static/css/font-awesome.css" rel="stylesheet" type="text/css">
+<link href="/static/css/style.css" rel="stylesheet" type="text/css">
+<link href="/static/css/photobox.css" rel="stylesheet" type="text/css">
+<link href="/static/css/revolution-slider.css" rel="stylesheet" type="text/css">
+<link href="/static/css/owl.carousel.css" rel="stylesheet" type="text/css">
+<link href="/static/css/responsive.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/static/css/index.css">
+</head>
+
+<body>
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" id="exampleModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">注册</h4>
+      </div>
+      <div class="modal-body">
+        <div class="content container">
+            <div class="row">
+                <form id="#mainForm1_register" class="mainForm mainForm1 col-md-9">
+                <div class="normalInput">
+                    <input type="text" class="phone" maxlength="11" placeholder="手机号码">
+                </div>
+                <span class="error error1"></span>
+                <div class="normalInput">
+                    <input type="text" class="kapkey" maxlength="6" placeholder="验证码">
+                    <span class="formLine"></span>
+                    <a href="##" id="getKey_login" class="linkABlue">获取验证码</a>
+                </div>
+                <span class="error error2"></span>
+                <div class="normalInput">
+                    <input type="text" class="password1" maxlength="16" autocomplete="off" placeholder="密码">
+                    <input type="password" class="password" maxlength="16" autocomplete="off" placeholder="密码">
+                    <a id="pwdBtn" href="##" class="pwdBtnShow" isshow="false">
+                        <i class="i_icon"></i>
+                    </a>
+                </div>
+                <span class="error error3"></span>
+                <div class="rememberField">
+                    <span id="register_checkboxPic" class="checkboxPic check_chk" tabindex="-1" isshow="false">
+                        <i class="i_icon"></i>
+                    </span>
+                    <label class="pointer">我已阅读并接受</label>
+                    <a href="#" target="_blank" class="linkABlue" >《Flyme服务协议条款》</a>
+                </div>
+                <span id="register_otherError" class="otherError">请确认已阅读并同意XXX服务协议条款</span>
+                <a href="#" class="fullBtnBlue" id="register_flag">注册</a>
+				<div class="other_login">
+                <span>第三方登录：</span>
+                <ul class="ul_other_login">
+                    <li ><a href="javascript:void(0)" ><i class="fa fa-qq"></i></a></li>
+				    <li ><a href="javascript:void(0)" ><i class="fa fa-weibo"></i></a></li>
+				    <li ><a href="javascript:void(0)"><i class="fa fa-wechat"></i></a></li>
+                </ul>
+            	</div>
+                </form>
+                <div id="mz_Float" class="col-md-3">
+                    <div class="mz_FloatBox">
+                        <div class="mz3AngleL">
+                            <i class="i_icon"></i>
+                        </div>
+                        <div class="mzFloatTip bRadius2"></div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">取消</button>
+        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!--登录模态框-->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" id="exampleModal_login">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel_login">登录</h4>
+      </div>
+      <div class="modal-body">
+        <div class="content container">
+            <div class="row">
+				<form id="#mainForm1" class="mainForm mainForm1 col-md-9">
+					<div class="number">
+						<a href="##" class="linkABlue">手机号码登录</a>
+						<span></span>
+						<a href="##" class="linkAGray number1">密码登录</a>
+					</div>
+					<div class="normalInput">
+						<input type="text" class="phone" maxlength="11" placeholder="手机号码">
+					</div>
+					<span class="error error1"></span>
+					<div class="normalInput">
+						<input type="text" class="kapkey" maxlength="6" placeholder="验证码">
+						<span class="formLine"></span>
+						<a href="##" id="getKey" class="linkABlue">获取验证码</a>
+					</div>
+					<span class="error error2"></span>
+					<div class="rememberField">
+						<span id = "phone_login_checkboxPic" class="checkboxPic check_chk" tabindex="-1" isshow="false">
+							<i class="i_icon"></i>
+						</span>
+						<label class="pointer">我已阅读并接受</label>
+						<a href="#" target="_blank" class="linkABlue">《CPB服务协议条款》</a>
+					</div>
+					<span class="otherError" id="phone_login_otherError">请确认已阅读并同意CPB服务协议条款</span>
+					<a href="##" class="fullBtnBlue" id="phone_login_flag">登录</a>
+					<div class="other_login">
+						<span>第三方登录：</span>
+						<ul class="ul_other_login">
+							<li ><a href="javascript:void(0)" ><i class="fa fa-qq"></i></a></li>
+							<li ><a href="javascript:void(0)" ><i class="fa fa-weibo"></i></a></li>
+							<li ><a href="javascript:void(0)"><i class="fa fa-wechat"></i></a></li>
+						</ul>
+
+					</div>
+				</form>
+				<form id="#mainForm2" class="mainForm mainForm2 col-md-9">
+					<div class="number">
+						<a href="##" class="linkABlue2 number2">手机号码登录</a>
+						<span></span>
+						<a href="##" class="linkAGray2">密码登录</a>
+					</div>
+					<div class="normalInput">
+						<input type="text" class="username" maxlength="32" placeholder="手机号码" autocomplete="off">
+					</div>
+					<span class="error error1"></span>
+					<div class="normalInput">
+						<input type="text" class="password1N" maxlength="16" autocomplete="off" placeholder="密码">
+						<input type="password" class="passwordN" maxlength="16" autocomplete="off" placeholder="密码">
+						<a id="pwdBtnN" href="##" class="pwdBtnShowN" isshow="false">
+							<i class="i_icon"></i>
+						</a>
+					</div>
+					<span class="error error3"></span>
+					<div class="rememberField">
+						<span id="pd_login_checkboxPic" class="checkboxPic check_chk" tabindex="-1" isshow="false">
+							<i class="i_icon"></i>
+						</span>
+						<label class="pointer">我已阅读并接受</label>
+						<a href="https://www.htmlsucai.com/" target="_blank" class="linkABlue">《CPB服务协议条款》</a>
+					</div>
+					<span class="otherError" id="pd_login_otherError">请确认已阅读并同意CPB服务协议条款</span>
+					<a href="##" class="fullBtnBlue" id="pw_login_flag">登录</a>
+					<div class="other_login">
+						<span>第三方登录：</span>
+						<ul class="ul_other_login">
+							<li ><a href="javascript:void(0)" ><i class="fa fa-qq"></i></a></li>
+							<li ><a href="javascript:void(0)" ><i class="fa fa-weibo"></i></a></li>
+							<li ><a href="javascript:void(0)"><i class="fa fa-wechat"></i></a></li>
+						</ul>
+
+					</div>
+				</form>
+        <div id="mz_Float_login" class="col-md-3">
+            <div class="mz_FloatBox_login">
+                <div class="mz3AngleL_login">
+                    <i class="i_icon"></i>
+                </div>
+                <div class="mzFloatTip_login bRadius2_login"></div>
+            </div>
+        </div>
+    </div>
+
+
+        </div>
+      </div>
+
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">取消</button>
+        <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="top-bar">
+	<div class="container">
+		<div class="left-bar">
+			<ul class="social-media">
+				<li ><a href="javascript:void(0)" class="qzone"><i class="fa fa-star-half-full"></i></a></li>
+				<li ><a href="javascript:void(0)" class="qq"><i class="fa fa-qq"></i></a></li>
+				<li ><a href="javascript:void(0)" class="weibo"><i class="fa fa-weibo"></i></a></li>
+				<li ><a href="javascript:void(0)" class="wechat"><i class="fa fa-wechat"></i></a></li>
+			</ul>
+		</div>
+		<div class="right-bar">
+			<ul class="mail">
+				<li><i class="icon-email4"></i></li>
+				<li><span>发送邮件</span></li>
+                <li class="contact-info"><a>1347438923@qq.com</a></li>
+			</ul>
+
+			<ul class="contact">
+				<li><i class="fa fa-phone"></i></li>
+				<li><span>联系我们</span></li>
+				<li class="contact-info"><a>183 9080 0805</a></li>
+			</ul>
+
+			<ul class="login">
+				<li><i class="icon-login"></i></li>
+				<li><a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="register"><span>注册</span></a></li>
+			</ul>
+			<ul class="login">
+				<li><i class="icon-login"></i></li>
+				<li><a href="#" data-toggle="modal" data-target="#exampleModal_login" data-whatever="@mdo"><span>登录</span></a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<header>
+	<div class="container">
+		<div class="navigation clearfix">
+			<div class="logo"><a href="index.html"><img src="/static/images/logo-img.jpg" alt="#" /> </a></div>
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar first"></span> <span class="icon-bar middle"></span> <span class="icon-bar last"></span> </button>
+			</div>
+			<div class="menu">
+				<nav class="navbar navbar-default">
+					<div id="navbar" class="navbar-collapse collapse pull-right">
+						<ul class="nav navbar-nav">
+							<li class="active"><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">HOME</a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="index.html">首页一</a></li>
+									<li><a href="home-2.html">首页二</a></li>
+								</ul>
+							</li>
+							<li><a href="#">FEATURES</a></li>
+							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">PROPERTIES</a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="properties-list.html">PROPERTIES LIST</a></li>
+									<li><a href="properties-list-2.html">PROPERTIES LIST 2</a></li>
+									<li><a href="properties-right-bar.html">PROPERTIES RIGHT SIDEBAR</a></li>
+									<li><a href="properties-right-bar-2.html">PROPERTIES RIGHT SIDEBAR 2</a></li>
+									<li><a href="property-single.html">PROPERTY SINGLE</a></li>
+									<li><a href="property-single-2.html">PROPERTY SINGLE 2</a></li>
+									<li><a href="property-single-side-bar.html">PROPERTY SINGLE SIDEBAR</a></li>
+								</ul>
+							</li>
+							<li><a href="agents.html">AGENTS</a></li>
+							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">BLOG</a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="blog-single-post.html">Blog Single Post</a></li>
+									<li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
+								</ul>
+							</li>
+							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">PAGES</a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="service-page.html">SERVICE PAGE</a></li>
+									<li><a href="service-list.html">SERVICE LIST</a></li>
+									<li><a href="pricing.html">PRICING</a></li>
+									<li><a href="booking-page.html">BOOKING</a></li>
+									<li><a href="faq.html">FAQ</a></li>
+									<li><a href="shortcodes.html">SHORTCODES</a></li>
+								</ul>
+							</li>
+							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">CONTACT US</a>
+								<ul class="dropdown-menu" role="menu">
+									<li><a href="contact.html">CONTACT 1</a></li>
+									<li><a href="contact-2.html">CONTACT 2</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>
+{% block content %}
+这里是要改变的部分
+{% endblock %}
+<footer class="bg-color">
+	<div class="container">
+		<div class="upper-footer clearfix">
+			<div class="widgets">
+				<div class="col-md-3">
+					<div class="about-widget"> <img src="/static/images/footer-logo.png" class="img-responsive" alt="#" />
+						<p>Alternatively if you have a specific service or question in mind please don’t hesitate to contact us to discuss this using the contact details on the Contact Us page of the site.</p>
+					</div>
+				</div>
+				<div class="col-md-3">
+					<div class="widget-heading mrgb4x">
+						<h4>OUR SERVICELIST</h4>
+					</div>
+					<ul class="widget-area service-list">
+						<li><a href="#"><i class="fa fa-play-circle"></i><span>Hotel Stars Checking / Validation</span></a></li>
+						<li><a href="#"><i class="fa fa-play-circle"></i><span>Vacation for wedding or holiday</span></a></li>
+						<li><a href="#"><i class="fa fa-play-circle"></i><span>Rent a living room or a house</span></a></li>
+						<li><a href="#"><i class="fa fa-play-circle"></i><span>Appartements for sale</span></a></li>
+						<li><a href="#"><i class="fa fa-play-circle"></i><span>Buy your dream house and more</span></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3">
+					<div class="widget-heading mrgb4x ">
+						<h4>TWITTER FEED</h4>
+					</div>
+					<ul class="widget-area tweet">
+						<li><a href="#"><i class="fa fa-twitter"></i><span>@envato  Creating a new theme for the real estate section</span> <span class="active-time"># 2 hours ago</span></a></li>
+						<li><a href="#"><i class="fa fa-twitter"></i><span>@envato  We create awesome PSD templates for multi-pupose</span> <span class="active-time"># 8 hours ago</span></a></li>
+					</ul>
+				</div>
+				<div class="col-md-3">
+					<div class="widget-heading mrgb4x ">
+						<h4>GET IN TOUCH WITH US</h4>
+					</div>
+					<ul class="widget-area contact clearfix">
+						<li> <a href="#"><i class="icon-location10"></i><span>147 Sixth Avenue San Francisco, CA</span></a></li>
+						<li> <a href="#"><i class="icon-earth"></i><span class="link-style">http://www.qvrenti-real-estate.com</span></a></li>
+						<li> <a href="#"><i class="fa fa-phone"></i><span>+49 123 456 798</span></a></li>
+						<li> <a href="#"><i class="icon-email4"></i><span>qvrenti-support@email.com</span></a></li>
+					</ul>
+					<ul class="footer-social-media">
+						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+						<li><a href="#"><i class="fa fa-google"></i></a></li>
+						<li><a href="#"><i class="icon-pinterest-p"></i></a></li>
+						<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="lower-footer">
+		<p>Made with<span><i class="fa fa-heart-o"></i></span>by <a href="http://themeforest.net/user/Template-Geek">Template-Geek</a> | Copyright 2015</p>
+	</div>
+</footer>
+
+<script src="/static/js/jquery.js" type="text/javascript"></script>
+<script src="/static/js/jquery-ui.js" type="text/javascript"></script>
+<script src="/static/js/bootstrap.js" type="text/javascript"></script>
+<script type="text/javascript" src="/static/js/jquery.appear.js"></script>
+<script type="text/javascript" src="/static/js/jquery.mixitup.min.js"></script>
+<script type="text/javascript" src="/static/js/owl.carousel.min.js"></script>
+<script type="text/javascript" src="/static/js/jquery.photobox.js"></script>
+<script src="/static/js/jquery.themepunch.revolution.js" type="text/javascript"></script>
+<script src="/static/js/jquery.themepunch.tools.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="/static/js/scripts.js"></script>
+<script type="text/javascript" src="/static/js/index.js"></script>
+<script type="text/javascript" src="/static/js/share.js"></script>
+</body>
+</html>
