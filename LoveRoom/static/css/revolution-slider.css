@@ -629,6 +629,9 @@ a.button {
 .tpclear {
 	clear: both;
 }
+.tp-bullets.simplebullets.round{
+	margin-left: -62px !important;
+}
 .tp-bullets {
 	z-index: 99;
 	position: absolute;

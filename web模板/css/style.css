@@ -1141,7 +1141,7 @@ span{
 }
 /*.......................................parallex-section................................*/
 .parallex {
-	background:url(../images/parallex.PNG) no-repeat;
+	background:url(../images/parallex.png) no-repeat;
 	 background-attachment: fixed;
     background-color: transparent;
 	 background-size: cover;
