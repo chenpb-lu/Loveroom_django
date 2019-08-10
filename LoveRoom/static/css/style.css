@@ -301,7 +301,7 @@ span{
 }
 /*................................header..........................*/
 .navigation {
-	margin:44px 0;
+	margin:20px 0;
 }
 .logo{
 	float:left;
@@ -345,7 +345,7 @@ span{
     padding:8px 20px;
 }
 .nav.navbar-nav > li:last-child {
-    padding: 8px 0;
+    padding: 8px 20px;
 }
 .navbar {
 	margin-bottom:0;

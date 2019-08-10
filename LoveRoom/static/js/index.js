@@ -6,7 +6,7 @@
 	phone_login_kapkey_flag = false;
 	pd_login_passwd_flag = false;
 	pd_login_phone_flag = false;
-	checkboxPic_flag = true;
+	register_checkboxPic_flag = true;
 	phone_login_checkboxPic_flag = true;
 	pd_login_checkboxPic_flag = true;
 
@@ -37,6 +37,15 @@
 		$(".mainForm input").val("");
 		$("#mz_Float").css("top","-10000px");
     });
+	$(".login_cpb").click(function(){
+		$(".mainForm1").show();
+		$(".mainForm2").hide();
+		// $(".number1").css("")
+		$(".error").hide();
+		$(".normalInput").removeClass("errorC");
+		$(".normalInput").removeClass("checkedN");
+		$(".mainForm input").val("");
+	});
 	// 注册
 	//文本框失去焦点
 	$(".mainForm input").blur(function(){
@@ -91,83 +100,113 @@
 
 	});
 
-	//手机号栏失去焦点
-	$(".phone").blur(function(){
-		reg=/^1[3|4|5|8][0-9]\d{4,8}$/i;//验证手机正则(输入前7位至11位)
+	function phonecheck(name,type_num) {
+		reg=/^1[3|4|5|8|7][0-9]\d{4,8}$/i;//验证手机正则(输入前7位至11位)
 
-		if( $(".phone").val()=="")
+		if( $(name).val()=="")
 		{
-			$(".phone").parent().addClass("errorC");
+			$(name).parent().addClass("errorC");
 			$(".error1").html("请输入手机号");
 			$(".error1").css("display","block");
 
 		}
-		else if($(".phone").val().length<11)
+		else if($(name).val().length<11)
         {
-        	$(".phone").parent().addClass("errorC");
+        	$(name).parent().addClass("errorC");
             $(".error1").html("手机号长度有误！");
             $(".error1").css("display","block");
 
         }
-        else if(!reg.test($(".phone").val()))
+        else if(!reg.test($(name).val()))
         {
-        	$(".phone").parent().addClass("errorC");
+        	$(name).parent().addClass("errorC");
             $(".error1").html("逗我呢吧，你确定这是你的手机号!!");
             $(".error1").css("display","block");
 
         }
         else
         {
-        	$(".phone").parent().addClass("checkedN");
-        	register_phone_flag = true;
-        	phone_login_phone_flag = true;
+        	$(name).parent().addClass("checkedN");
+        	switch(type_num){
+				case 1:
+					register_phone_flag = true;
+					break
+				case 2:
+					phone_login_phone_flag = true;
+					break
+
+				case 3:
+					pd_login_phone_flag = true;
+					break
+			}
+
+
         }
+    }
+
+	//手机号栏失去焦点
+	$(".phone").blur(function(){
+		phonecheck(".phone",1)
 	});
 
-	//验证码栏失去焦点
-	$(".kapkey").blur(function(){
+	// 验证码检测
+	function check_kapkey(name,type_num) {
 		reg=/^.*[\u4e00-\u9fa5]+.*$/;
-		if( $(".kapkey").val()=="")
+		if( $(name).val()=="")
 		{
-			$(".kapkey").parent().addClass("errorC");
+			$(name).parent().addClass("errorC");
 			$(".error2").html("请填写验证码");
 			$(".error2").css("display","block");
 
 		}
-        else if($(".kapkey").val().length<6)
+        else if($(name).val().length<6)
         {
-        	$(".kapkey").parent().addClass("errorC");
+        	$(name).parent().addClass("errorC");
             $(".error2").html("验证码长度有误！");
             $(".error2").css("display","block");
 
         }
-        else if(reg.test($(".kapkey").val()))
+        else if(reg.test($(name).val()))
         {
-        	$(".kapkey").parent().addClass("errorC");
+        	$(name).parent().addClass("errorC");
             $(".error2").html("验证码里无中文！");
             $(".error2").css("display","block");
 
         }
         else
         {
-        	$(".kapkey").parent().addClass("checkedN");
-        	register_kapkey_flag = true;
-        	phone_login_kapkey_flag = true
-        }
+        	$(name).parent().addClass("checkedN");
+        	switch(type_num) {
+                case 1:
+                    register_kapkey_flag = true;
+                    break;
+                case 2:
+                    phone_login_kapkey_flag = true;
+                    break;
+            }
+		}
+    }
+	//验证码栏失去焦点
+	$(".kapkey").blur(function(){
+
+        check_kapkey(".kapkey",1)
 	});
 
-	//密码栏失去焦点(mainform1)
-	$(".password,.password1").blur(function(){
+
+	//注册密码验证
+	function check_password_register() {
 		reg1=/^.*[\d]+.*$/;
 		reg2=/^.*[A-Za-z]+.*$/;
 		reg3=/^.*[_@#%&^+-/*\/\\]+.*$/;//验证密码
 		if($(".pwdBtnShow").attr("isshow")=="false")
 		{
 			var Pval = $(".password").val();
+			$(".password1").val($(".password").val())
 		}
 		else
 		{
 			var Pval = $(".password1").val();
+			$(".password").val($(".password1").val())
 		}
 
 		if( Pval =="")
@@ -195,8 +234,12 @@
         {
         	$(".password").parent().addClass("checkedN");
         	register_passwd_flag = true;
-        	pd_login_passwd_flag = true
         }
+    }
+
+	//密码栏失去焦点(mainform1)
+	$(".password,.password1").blur(function(){
+		check_password_register()
 	});
 
 	//手机号栏获得焦点
@@ -244,6 +287,11 @@
 		$("#mz_Float").find(".bRadius2").html("长度为8-16个字符，区分大小写，至少包含两种类型");
 	});
 
+
+
+
+
+
 // 登录
 	$(".mainForm input").blur(function(){
 		$("#mz_Float_login").css("top","-10000px");
@@ -254,6 +302,10 @@
 	});
 
 	//mainform1
+	//手机号栏失去焦点
+	$(".phone_login").blur(function(){
+		phonecheck(".phone_login",2)
+	});
 
     $("#phone_login_checkboxPic").click(function(){
 		if($(this).attr("isshow")=="false")
@@ -280,6 +332,8 @@
 		if($(".pwdBtnShowN").attr("isshow")=="false")
 		{
 			$(".pwdBtnShowN i").css("background-position","-30px -93px");
+			console.log(1);
+			console.log($(".passwordN").val());
 			$(".passwordN").hide();
 			$(".password1N").val($(".passwordN").val());
 			$(".password1N").show();
@@ -287,7 +341,9 @@
 		}
 		else
 		{
-			$(".pwdBtnShowN i").css("background-position","-0px -93px");
+			$(".pwdBtnShowN i").css("background-position","-60px -93px");
+			console.log(2);
+			console.log($(".password1N").val());
 			$(".password1N").hide();
 			$(".passwordN").val($(".password1N").val());
 			$(".passwordN").show();
@@ -296,9 +352,9 @@
 
 	});
 	//手机号栏获得焦点
-	$(".phone").focus(function(){
-		$(".phone").parent().removeClass("errorC");
-		$(".phone").parent().removeClass("checkedN");
+	$(".phone_login").focus(function(){
+		$(".phone_login").parent().removeClass("errorC");
+		$(".phone_login").parent().removeClass("checkedN");
 		$(".error1").hide();
 		$("#mz_Float_login").css("top","75px");
 		$("#mz_Float_login").find(".bRadius2_login").html("输入11位手机号码，可用于登录和找回密码");
@@ -347,10 +403,12 @@
 		if($(".pwdBtnShowN").attr("isshow")=="false")
 		{
 			var Pval = $(".passwordN").val();
+			$(".password1N").val($(".passwordN").val())
 		}
 		else
 		{
 			var Pval = $(".password1N").val();
+			$(".passwordN").val($(".password1N").val())
 		}
 
 		if( Pval =="")
@@ -380,6 +438,53 @@
         	register_passwd_flag = true;
         	pd_login_passwd_flag = true
         }
+	});
+
+	$(".kapkey_login").blur(function(){
+		console.log(1111)
+		reg=/^.*[\u4e00-\u9fa5]+.*$/;
+		if( $(".kapkey_login").val()=="")
+		{
+			$(".kapkey_login").parent().addClass("errorC");
+			$(".error2").html("请填写验证码");
+			$(".error2").css("display","block");
+
+		}
+        else if($(".kapkey_login").val().length<6)
+        {
+        	$(".kapkey_login").parent().addClass("errorC");
+            $(".error2").html("验证码长度有误！");
+            $(".error2").css("display","block");
+
+        }
+        else if(reg.test($(".kapkey_login").val()))
+        {
+        	$(".kapkey_login").parent().addClass("errorC");
+            $(".error2").html("验证码里无中文！");
+            $(".error2").css("display","block");
+
+        }
+        else
+        {
+        	$(".kapkey_login").parent().addClass("checkedN");
+        	phone_login_kapkey_flag = true
+        }
+	});
+	//验证码栏获得焦点
+	$(".kapkey_login").focus(function(){
+		$(".kapkey_login").parent().removeClass("errorC");
+		$(".kapkey_login").parent().removeClass("checkedN");
+		$(".error2").hide();
+		if($(".error1").css("display")=="block")
+		{
+			$("#mz_Float_login").css("top","175px");
+		}
+		else
+		{
+			$("#mz_Float_login").css("top","145px");
+		}
+
+		$("#mz_Float_login").find(".bRadius2_login").html("请输入手机收到的验证码");
 	});
 
 
@@ -439,75 +544,71 @@
 
 	//手机号栏失去焦点
 	$(".username").blur(function(){
-		reg=/^1[3|4|5|8][0-9]\d{4,8}$/i;//验证手机正则(输入前7位至11位)
-
-		if( $(".username").val()=="")
-		{
-			$(".username").parent().addClass("errorC");
-			$(".error1").html("请输入手机号");
-			$(".error1").css("display","block");
-
-		}
-		else if($(".username").val().length<11)
-        {
-        	$(".username").parent().addClass("errorC");
-            $(".error1").html("手机号长度有误！");
-            $(".error1").css("display","block");
-
-        }
-        else if(!reg.test($(".username").val()))
-        {
-        	$(".username").parent().addClass("errorC");
-            $(".error1").html("逗我呢吧，你确定这是你的手机号!!");
-            $(".error1").css("display","block");
-
-        }
-        else
-        {
-        	$(".username").parent().addClass("checkedN");
-        	pd_login_phone_flag = true;
-        }
+		phonecheck(".username",3);
 	});
+	   // 发送短信验证码
 
 
 
-	 // 注册  判断是否可以提交数据
-	 $("#register_flag").click(function () {
+     // $("#register_flag").click(function () {
+	  //    console.log(1111)
+     //     console.log($("#mainForm1_register").serialize());
+     //     if(register_kapkey_flag && register_passwd_flag && register_phone_flag && register_checkboxPic_flag)
+		// {
+		// 	$.ajax({
+     //        url: "{% url 'uc:register' %}",
+     //        type: "POST",
+     //        dataType: "json",
+     //        data: $("#mainForm1_register").serialize(),
+     //        success: function (data) {
+     //
+     //            if(data.status == 200 ){
+     //                window.location.href="{% url 'house:index' %}";
+     //            }else{
+     //                msg = "新错误类型"
+     //                if(data.status == 400 || data.status == 401){
+     //                    msg = data.msg;
+     //                }else{
+     //                    for(var i in data.msg){
+     //                        msg = i+data.msg[i];
+     //                        break;
+     //                    }
+     //                }
+     //                console.log(msg)
+     //             }
+     //        },
+     //        // 解决csrftoken
+     //        beforeSend: function(xhr, settings) {
+     //            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+     //        }
+     //    });
+     //
+		// 	alert("检查ok，提交表单");
+		// }else{
+		//  	phonecheck(".phone",1);
+		//  	check_kapkey(".kapkey",1);
+		//  	check_password_register();
+     //
+		// }
+     // });
 
-		if(register_kapkey_flag && register_passwd_flag && register_phone_flag && register_checkboxPic_flag)
-		{
-			alert("检查ok，提交表单");
-    		$("#mainform1").submit()
-		}else{
-			alert("检查fail，提交表单");
-		}
-     });
+
+
 
 	 	  // 密码  判断是否可以提交数据
-	 $("#pw_login_flag").click(function () {
-	 	console.log(111111);
 
-		if(pd_login_passwd_flag && pd_login_phone_flag && pd_login_checkboxPic_flag)
-		{
-			alert("检查ok，提交表单");
-    		$("#mainform2").submit()
-		}else{
-			alert("检查fail，提交表单");
-		}
-     });
 
 	  // 手机验证码  判断是否可以提交数据
-	 $("#phone_login_flag").click(function () {
-
-		if(phone_login_phone_flag && phone_login_kapkey_flag && phone_login_checkboxPic_flag)
-		{
-			alert("检查ok，提交表单");
-    		$("#mainform1").submit()
-		}else{
-			alert("检查fail，提交表单");
-		}
-     });
-
+     // $("#phone_login_flag").click(function () {
+     //
+		// if(phone_login_phone_flag && phone_login_kapkey_flag && phone_login_checkboxPic_flag)
+		// {
+		// 	alert("检查ok，提交表单");
+    	// 	$("#mainform1").submit()
+		// }else{
+		// 	alert("检查fail，提交表单");
+		// }
+     // });
 
 
 

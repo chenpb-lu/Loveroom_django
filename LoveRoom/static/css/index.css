@@ -26,7 +26,7 @@ body input, body textarea {font-family: "微软雅黑","Microsoft Yahei",Arial,H
 .error{display: none;margin-left: 0px;margin-bottom: 20px;color: red;float: left;}
 /*#mainForm1 .normalInput input,#mainForm2 .normalInput input{line-height: 22px;padding: 14px 0;height: 22px;}*/
 /*#mainForm1_register .normalInput input,#mainForm2 .normalInput input{line-height: 22px;padding: 14px 0;height: 22px;}*/
-.normalInput input{font-size: 16px;width: 100%;padding: 14px 0;height: 22px;}
+.normalInput input{font-size: 16px;width: 100%;padding: 22px 0;height: 22px;}
 .errorC{ margin-bottom: 10px;border-color: red;color: red;}
 .checkedN{border: 1px solid #1ece6d;}
 
@@ -57,7 +57,7 @@ body input, body textarea {font-family: "微软雅黑","Microsoft Yahei",Arial,H
 /*mainForm2*/
 .linkAGray2:visited {color: #00a7ea;}
 .linkABlue2:hover{color: #2b2b2b;}
-.normalInput .username{width: 220px;border: none;outline: none;font-size: 16px;height: 22px;line-height: 22px;padding: 14px 0;}
+.normalInput .username{width: 220px;border: none;outline: none;font-size: 16px;height: 22px;line-height: 22px;padding: 22px 0;}
 .grayTip {height: 50px;line-height: 50px;vertical-align: top;display: inline-block;color: #7f7f7f;}
 /*mainForm2end*/
 
@@ -96,7 +96,7 @@ body input, body textarea {font-family: "微软雅黑","Microsoft Yahei",Arial,H
 .footerLanguagMenu a{display: block;height: 40px;line-height: 40px;width: 118px;margin: 0px auto;border-bottom: solid 1px #E4E7E9;font-size: 14px;color: #000000;text-align: left;padding-left: 10px;}
 .footerLanguagMenu .checked, .footerLanguagMenu .checked:hover {color: #1daeed;}
 .footerLanguagMenu .ClobalItem:hover{color: #515151;}
-#globalContainer a:nth-child(5):{border-width: 0px;}
+#globalContainer a:nth-child(5){border-width: 0px;}
 .footerLanguagMenuBox:hover  #globalContainer{display: block;}
 
 

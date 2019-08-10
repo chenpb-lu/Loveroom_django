@@ -20,5 +20,16 @@ from apps.house import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^house/',include('apps.house.urls',namespace='house')),
+    url(r'^uc/',include('apps.Uc.urls', namespace='uc')),
+    url(r'^apis/', include('apps.apis.urls', namespace="apis")),
     url(r'^$',views.index)
 ]
+
+
+# meida 处理
+from . import settings
+if settings.DEBUG:
+    from django.views.static import serve
+    urlpatterns += [
+        url(r'^media/(?P<path>.*)$',  serve, {"document_root": settings.MEDIA_ROOT}),
+    ]

@@ -71,6 +71,11 @@
 		</div>
 	</div>
 </div>
+<div class="top-tabs">
+    <div class="container">
+	{% include 'house/search_box.html' %}
+    </div>
+</div>
 <section>
 	<div class="container">
 		<div class="visit-place">
@@ -555,4 +560,69 @@
 		</div>
 	</div>
 </section>
+{% endblock %}
+
+
+{% block load_js %}
+<script type="text/javascript" src="/static/js/City_data.js"></script>
+<script type="text/javascript" src="/static/js/areadata.js"></script>
+<script type="text/javascript" src="/static/js/auto_area.js"></script>
+<script src="/static/js/moment.js"></script>
+<script src="/static/js/daterangepicker.js"></script>
+<script type="text/javascript">
+   var t = new Date();
+   var year = t.getFullYear();
+   var mon = t.getMonth()+1;
+   var day = t.getDate();
+   function AddDate(count) {
+       var dd = new Date();
+       dd.setDate(dd.getDate() + count);
+       var year = dd.getFullYear();
+       var mon = dd.getMonth()+1;
+       var day = dd.getDate();
+       return mon+'/'+day+'/'+year;
+   }
+   $('#demo').daterangepicker({
+    "locale": {
+        "direction": "ltr",
+        "format": "MM/DD/YYYY",
+        "separator": " - ",
+        "applyLabel": "确定",
+        "cancelLabel": "取消",
+        "fromLabel": "From",
+        "toLabel": "To",
+        "customRangeLabel": "Custom",
+        "daysOfWeek": [
+            "日",
+            "一",
+            "二",
+            "三",
+            "四",
+            "五",
+            "六"
+        ],
+        "monthNames": [
+            "一月",
+            "二月",
+            "三月",
+            "四月",
+            "五月",
+            "六月",
+            "七月",
+            "八月",
+            "九月",
+            "十月",
+            "十一月",
+            "十二月"
+        ],
+        "firstDay": 1
+    },
+    "startDate": mon+'/'+day+'/'+year,
+    "endDate": AddDate(1),
+    "minDate": mon+'/'+day+'/'+year,
+    "maxDate": AddDate(180),
+}, function(start, end, label) {
+  console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+});
+</script>
 {% endblock %}

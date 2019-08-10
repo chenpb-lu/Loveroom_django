@@ -4,5 +4,3 @@ from django.shortcuts import render
 def index(request):
     return render(request, 'house/index.html')
 
-def a(request):
-    return render(request,'house/mycale.html')

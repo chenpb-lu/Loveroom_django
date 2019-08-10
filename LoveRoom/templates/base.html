@@ -28,21 +28,22 @@
       <div class="modal-body">
         <div class="content container">
             <div class="row">
-                <form id="#mainForm1_register" class="mainForm mainForm1 col-md-9">
+                <form id="mainForm1_register" class="mainForm mainForm1 col-md-9">
+                    {% csrf_token %}
                 <div class="normalInput">
-                    <input type="text" class="phone" maxlength="11" placeholder="手机号码">
+                    {{ form.mobile }}
                 </div>
                 <span class="error error1"></span>
                 <div class="normalInput">
-                    <input type="text" class="kapkey" maxlength="6" placeholder="验证码">
+                    {{ form.mobile_captcha }}
                     <span class="formLine"></span>
-                    <a href="##" id="getKey_login" class="linkABlue">获取验证码</a>
+                    <a onclick="sendmessage(this,60);" id="getKey_login" class="linkABlue" name="register">验证码</a>
                 </div>
                 <span class="error error2"></span>
                 <div class="normalInput">
-                    <input type="text" class="password1" maxlength="16" autocomplete="off" placeholder="密码">
-                    <input type="password" class="password" maxlength="16" autocomplete="off" placeholder="密码">
-                    <a id="pwdBtn" href="##" class="pwdBtnShow" isshow="false">
+                    {{ form.password1 }}
+                    {{ form.password }}
+                    <a id="pwdBtn"  class="pwdBtnShow" isshow="false">
                         <i class="i_icon"></i>
                     </a>
                 </div>
@@ -52,10 +53,10 @@
                         <i class="i_icon"></i>
                     </span>
                     <label class="pointer">我已阅读并接受</label>
-                    <a href="#" target="_blank" class="linkABlue" >《Flyme服务协议条款》</a>
+                    <a href="#" target="_blank" class="linkABlue" >《Cpb服务协议条款》</a>
                 </div>
                 <span id="register_otherError" class="otherError">请确认已阅读并同意XXX服务协议条款</span>
-                <a href="#" class="fullBtnBlue" id="register_flag">注册</a>
+                    <a  class="fullBtnBlue" id="register_flag" >注册</a>
 				<div class="other_login">
                 <span>第三方登录：</span>
                 <ul class="ul_other_login">
@@ -97,20 +98,20 @@
       <div class="modal-body">
         <div class="content container">
             <div class="row">
-				<form id="#mainForm1" class="mainForm mainForm1 col-md-9">
+				<form id="mainForm1" class="mainForm mainForm1 col-md-9">
 					<div class="number">
-						<a href="##" class="linkABlue">手机号码登录</a>
+						<a  class="linkABlue" style="color: #00A8FF">手机号码登录</a>
 						<span></span>
-						<a href="##" class="linkAGray number1">密码登录</a>
+						<a  class="linkAGray number1">密码登录</a>
 					</div>
 					<div class="normalInput">
-						<input type="text" class="phone" maxlength="11" placeholder="手机号码">
+						{{ phone_login_form.mobile_login }}
 					</div>
 					<span class="error error1"></span>
 					<div class="normalInput">
-						<input type="text" class="kapkey" maxlength="6" placeholder="验证码">
+						{{ phone_login_form.mobile_captcha_login }}
 						<span class="formLine"></span>
-						<a href="##" id="getKey" class="linkABlue">获取验证码</a>
+						<a  id="getKey_login" class="linkABlue" onclick="sendmessage(this,60);" name="login">验证码</a>
 					</div>
 					<span class="error error2"></span>
 					<div class="rememberField">
@@ -121,7 +122,7 @@
 						<a href="#" target="_blank" class="linkABlue">《CPB服务协议条款》</a>
 					</div>
 					<span class="otherError" id="phone_login_otherError">请确认已阅读并同意CPB服务协议条款</span>
-					<a href="##" class="fullBtnBlue" id="phone_login_flag">登录</a>
+					<a  class="fullBtnBlue" id="phone_login_flag">登录</a>
 					<div class="other_login">
 						<span>第三方登录：</span>
 						<ul class="ul_other_login">
@@ -132,20 +133,20 @@
 
 					</div>
 				</form>
-				<form id="#mainForm2" class="mainForm mainForm2 col-md-9">
+				<form id="mainForm2" class="mainForm mainForm2 col-md-9">
 					<div class="number">
-						<a href="##" class="linkABlue2 number2">手机号码登录</a>
+						<a  class="linkABlue2 number2">手机号码登录</a>
 						<span></span>
-						<a href="##" class="linkAGray2">密码登录</a>
+						<a  class="linkAGray2" style="color: #00A8FF">密码登录</a>
 					</div>
 					<div class="normalInput">
-						<input type="text" class="username" maxlength="32" placeholder="手机号码" autocomplete="off">
+						{{ pw_login_form.mobile_pwlogin }}
 					</div>
 					<span class="error error1"></span>
 					<div class="normalInput">
-						<input type="text" class="password1N" maxlength="16" autocomplete="off" placeholder="密码">
-						<input type="password" class="passwordN" maxlength="16" autocomplete="off" placeholder="密码">
-						<a id="pwdBtnN" href="##" class="pwdBtnShowN" isshow="false">
+						{{ pw_login_form.password1_login }}
+						{{ pw_login_form.password_login }}
+						<a id="pwdBtnN"  class="pwdBtnShowN" isshow="false">
 							<i class="i_icon"></i>
 						</a>
 					</div>
@@ -158,7 +159,7 @@
 						<a href="https://www.htmlsucai.com/" target="_blank" class="linkABlue">《CPB服务协议条款》</a>
 					</div>
 					<span class="otherError" id="pd_login_otherError">请确认已阅读并同意CPB服务协议条款</span>
-					<a href="##" class="fullBtnBlue" id="pw_login_flag">登录</a>
+					<a  class="fullBtnBlue" id="pw_login_flag">登录</a>
 					<div class="other_login">
 						<span>第三方登录：</span>
 						<ul class="ul_other_login">
@@ -216,13 +217,22 @@
 				<li class="contact-info"><a>183 9080 0805</a></li>
 			</ul>
 
-			<ul class="login">
+            <ul class="login">
 				<li><i class="icon-login"></i></li>
-				<li><a href="#" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="register"><span>注册</span></a></li>
+                {% if request.user.is_authenticated %}
+                <li><a id="usercenter"><span>个人中心{{ request.user }}</span></a></li>
+                {% else %}
+                <li><a data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="register" id="register_modeal_btn"><span>注册</span></a></li>
+                {% endif %}
 			</ul>
 			<ul class="login">
 				<li><i class="icon-login"></i></li>
-				<li><a href="#" data-toggle="modal" data-target="#exampleModal_login" data-whatever="@mdo"><span>登录</span></a></li>
+
+                {% if request.user.is_authenticated %}
+                <li><a href="http://127.0.0.1:8000/uc/logout/"  id="logout"><span>注销</span></a></li>
+                {% else %}
+                <li><a  data-toggle="modal" data-target="#exampleModal_login" data-whatever="@mdo" class="login_cpb" id="login_modeal_btn"><span>登录</span></a></li>
+                {% endif %}
 			</ul>
 		</div>
 	</div>
@@ -230,7 +240,7 @@
 <header>
 	<div class="container">
 		<div class="navigation clearfix">
-			<div class="logo"><a href="index.html"><img src="/static/images/logo-img.jpg" alt="#" /> </a></div>
+			<div class="logo"><a href='{% url "house:index" %}'><img src="/static/images/logo-img.jpg" alt="#" /> </a></div>
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar first"></span> <span class="icon-bar middle"></span> <span class="icon-bar last"></span> </button>
 			</div>
@@ -238,32 +248,32 @@
 				<nav class="navbar navbar-default">
 					<div id="navbar" class="navbar-collapse collapse pull-right">
 						<ul class="nav navbar-nav">
-							<li class="active"><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">HOME</a>
+							<li class="active"><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">首页</a>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="index.html">首页一</a></li>
 									<li><a href="home-2.html">首页二</a></li>
 								</ul>
 							</li>
-							<li><a href="#">FEATURES</a></li>
-							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">PROPERTIES</a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="properties-list.html">PROPERTIES LIST</a></li>
-									<li><a href="properties-list-2.html">PROPERTIES LIST 2</a></li>
-									<li><a href="properties-right-bar.html">PROPERTIES RIGHT SIDEBAR</a></li>
-									<li><a href="properties-right-bar-2.html">PROPERTIES RIGHT SIDEBAR 2</a></li>
-									<li><a href="property-single.html">PROPERTY SINGLE</a></li>
-									<li><a href="property-single-2.html">PROPERTY SINGLE 2</a></li>
-									<li><a href="property-single-side-bar.html">PROPERTY SINGLE SIDEBAR</a></li>
-								</ul>
-							</li>
-							<li><a href="agents.html">AGENTS</a></li>
-							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">BLOG</a>
+							<li><a href="http://127.0.0.1:8000/uc/logout/">发布房源</a></li>
+{#							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">PROPERTIES</a>#}
+{#								<ul class="dropdown-menu" role="menu">#}
+{#									<li><a href="properties-list.html">PROPERTIES LIST</a></li>#}
+{#									<li><a href="properties-list-2.html">PROPERTIES LIST 2</a></li>#}
+{#									<li><a href="properties-right-bar.html">PROPERTIES RIGHT SIDEBAR</a></li>#}
+{#									<li><a href="properties-right-bar-2.html">PROPERTIES RIGHT SIDEBAR 2</a></li>#}
+{#									<li><a href="property-single.html">PROPERTY SINGLE</a></li>#}
+{#									<li><a href="property-single-2.html">PROPERTY SINGLE 2</a></li>#}
+{#									<li><a href="property-single-side-bar.html">PROPERTY SINGLE SIDEBAR</a></li>#}
+{#								</ul>#}
+{#							</li>#}
+							<li><a href="agents.html">手机端</a></li>
+							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">故事/攻略</a>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="blog-single-post.html">Blog Single Post</a></li>
 									<li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>
 								</ul>
 							</li>
-							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">PAGES</a>
+							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">帮助</a>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="service-page.html">SERVICE PAGE</a></li>
 									<li><a href="service-list.html">SERVICE LIST</a></li>
@@ -273,7 +283,7 @@
 									<li><a href="shortcodes.html">SHORTCODES</a></li>
 								</ul>
 							</li>
-							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">CONTACT US</a>
+							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">联系我们</a>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="contact.html">CONTACT 1</a></li>
 									<li><a href="contact-2.html">CONTACT 2</a></li>
@@ -358,5 +368,277 @@
 <script type="text/javascript" src="/static/js/scripts.js"></script>
 <script type="text/javascript" src="/static/js/index.js"></script>
 <script type="text/javascript" src="/static/js/share.js"></script>
+{% block load_js %}
+
+{% endblock %}
+<script>
+$('#usercenter').click(function () {
+    {% if request.user.is_authenticated %}
+    alert(
+        {{ request.user.mobile }});
+    {% endif %}
+});
+function countDown(obj,second,name){
+// 如果秒数还是大于0，则表示倒计时还没结束
+ console.log("老子到这了");
+ if(second>0){
+      // 获取默认按钮上的文字
+      if(typeof buttonDefaultValue === 'undefined' ){
+        buttonDefaultValue =  obj.innerHTML;
+    }
+    console.log(obj.name);
+    obj.name='';
+    console.log(buttonDefaultValue);
+    // 按钮置为不可点击状态
+    // 按钮里的内容呈现倒计时状态
+    obj.innerHTML = buttonDefaultValue+'('+second+')';
+    // 时间减一
+    second--;
+    // 一秒后重复执行
+    setTimeout(function(){countDown(obj,second,name);},1000);
+    // 否则，按钮重置为初始状态
+    }else{
+    // 按钮置未可点击状态
+    console.log("最后一次");
+    console.log(name);
+    obj.name=name;
+    console.log(obj.name);
+    // 按钮里的内容恢复初始状态
+    obj.innerHTML = buttonDefaultValue;
+   }
+}
+function sendmessage(obj,second){
+        if(obj.name == "register"){
+            var telRegex = /(13|14|15|17|18)\d{9}/;
+            if(telRegex.test($.trim($("#id_mobile").val()))){
+                $.ajax({
+                    url: "{% url 'apis:cpb' %}",
+                    type: "GET",
+                    dataType: "json",
+                    data: {"mobile": $("#id_mobile").val()},
+                    success: function (data) {
+                        console.log("成功");
+                    }
+                });
+                countDown(obj,second,'register');
+            } else{
+              console.log("失败");
+              $(".phone").parent().addClass("errorC");
+              $(".error1").html("请输入正确的手机号");
+              $(".error1").css("display","block");
+            }
+        }
+        if(obj.name=="login"){
+            var telRegex = /(13|14|15|17|18)\d{9}/;
+            if(telRegex.test($.trim($("#id_mobile_login").val()))){
+                $.ajax({
+                    url: "{% url 'apis:cpb' %}",
+                    type: "GET",
+                    dataType: "json",
+                    data: {"mobile": $("#id_mobile_login").val()},
+                    success: function (data) {
+                        console.log("成功");
+                    }
+                });
+                countDown(obj,second,'login');
+            } else{
+              console.log("失败");
+              $(".phone_login").parent().addClass("errorC");
+              $(".error1").html("请输入正确的手机号");
+              $(".error1").css("display","block");
+            }
+        }
+    }
+
+
+// 重新发送倒计时
+
+
+$("#register_flag").click(function () {
+	     console.log(1111);
+         console.log($("#mainForm1_register").serialize());
+         if(register_kapkey_flag && register_passwd_flag && register_phone_flag && register_checkboxPic_flag)
+		{
+			$.ajax({
+            url: "{% url 'uc:register' %}",
+            type: "POST",
+            dataType: "json",
+            data: $("#mainForm1_register").serialize(),
+            success: function (data) {
+                switch(data.status){
+                    case 200:
+                        window.location.href='{% url 'house:index' %}';
+                        break;
+                    case 400:
+                        msg = data.msg;
+                        break;
+                    case 401:
+                        msg = data.msg;
+                        $(".kapkey").parent().addClass("errorC");
+                        $(".error2").html(msg);
+                        $(".error2").css("display","block");
+                        break;
+                    case 402:
+                        msg = data.msg;
+                        $(".phone").parent().addClass("errorC");
+                        $(".error1").html(msg);
+                        $(".error1").css("display","block");
+                        break;
+                    default:
+                        msg = "新错误类型"
+
+                }
+
+
+
+            },
+            // 解决csrftoken
+            beforeSend: function(xhr, settings) {
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+            }
+        });
+
+		}else{
+                if( $(".phone").val()=="")
+            {
+                $(".phone").parent().addClass("errorC");
+                $(".error1").html("请输入手机号");
+                $(".error1").css("display","block");
+
+            }
+                if( $(".kapkey").val()=="")
+            {
+                $(".kapkey").parent().addClass("errorC");
+                $(".error2").html("请填写验证码");
+                $(".error2").css("display","block");
+
+            }
+		 	var Pval = $(".password").val();
+                if( Pval =="")
+		{
+			$(".password").parent().addClass("errorC");
+			$(".error3").html("请填写密码");
+			$(".error3").css("display","block");
+
+		}
+
+		}
+     });
+$("#phone_login_flag").click(function () {
+         console.log($("#mainForm1").serialize());
+         if(phone_login_phone_flag && phone_login_kapkey_flag && phone_login_checkboxPic_flag)
+		{
+			$.ajax({
+            url: "{% url 'uc:phonelogin' %}",
+            type: "POST",
+            dataType: "json",
+            data: $("#mainForm1").serialize(),
+            success: function (data) {
+                switch(data.status){
+                    case 200:
+                        window.location.href='{% url 'house:index' %}';
+                        break;
+                    case 400:
+                        msg = data.msg;
+                        break;
+                    case 401:
+                        msg = data.msg;
+                        $(".phone_login").parent().addClass("errorC");
+                        $(".error1").html(msg);
+                        $(".error1").css("display","block");
+                        break;
+                    case 402:
+                        msg = data.msg;
+                        $(".kapkey_login").parent().addClass("errorC");
+                        $(".error2").html(msg);
+                        $(".error2").css("display","block");
+                        break;
+                    default:
+                        msg = "新错误类型"
+
+                }
+
+
+
+            },
+            // 解决csrftoken
+            beforeSend: function(xhr, settings) {
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+            }
+        });
+		}else{
+                if( $(".phone_login").val()=="")
+            {
+                $(".phone_login").parent().addClass("errorC");
+                $(".error1").html("请输入手机号");
+                $(".error1").css("display","block");
+
+            }
+                if( $(".kapkey_login").val()=="")
+            {
+                $(".kapkey_login").parent().addClass("errorC");
+                $(".error2").html("请填写验证码");
+                $(".error2").css("display","block");
+
+            }
+
+		}
+     });
+
+$("#pw_login_flag").click(function () {
+        console.log($("#mainForm2").serialize());
+		if(pd_login_passwd_flag && pd_login_phone_flag && pd_login_checkboxPic_flag)
+		{
+			$.ajax({
+            url: "{% url 'uc:pwlogin' %}",
+            type: "POST",
+            dataType: "json",
+            data: $("#mainForm2").serialize(),
+            success: function (data) {
+                switch(data.status){
+                    case 200:
+                        window.location.href='{% url 'house:index' %}';
+                        break;
+                    case 400:
+                        msg = data.msg;
+                        break;
+                    case 401:
+                        msg = data.msg;
+                        $(".passwordN").parent().addClass("errorC");
+			            $(".error3").html(msg);
+			            $(".error3").css("display","block");
+                        break;
+                    default:
+                        msg = "新错误类型"
+
+                }
+
+
+
+            },
+            // 解决csrftoken
+            beforeSend: function(xhr, settings) {
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+            }
+        });
+		}else{
+                if( $(".username").val()=="")
+            {
+                $(".username").parent().addClass("errorC");
+                $(".error1").html("请输入手机号");
+                $(".error1").css("display","block");
+
+            }
+                if( $(".passwordN").val()=="")
+            {
+                $(".passwordN").parent().addClass("errorC");
+                $(".error2").html("请填写验证码");
+                $(".error2").css("display","block");
+
+            }
+		}
+     });
+
+</script>
 </body>
 </html>
