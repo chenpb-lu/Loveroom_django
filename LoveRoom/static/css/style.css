@@ -87,7 +87,7 @@ span{
 	margin-bottom: 40px;
 }
 .mrgb5x {
-	margin-bottom: 50px;
+	margin-bottom: 5px;
 }
 .mrgt6x {
 	margin-top: 60px;
@@ -301,7 +301,7 @@ span{
 }
 /*................................header..........................*/
 .navigation {
-	margin:44px 0;
+	margin:20px 0;
 }
 .logo{
 	float:left;
@@ -345,7 +345,7 @@ span{
     padding:8px 20px;
 }
 .nav.navbar-nav > li:last-child {
-    padding: 8px 0;
+    padding: 8px 20px;
 }
 .navbar {
 	margin-bottom:0;
@@ -825,7 +825,7 @@ span{
     z-index: 2;
 }	
 .property-text {
-    border: 1px solid #e6e6e6;
+    /*border: 1px solid #e6e6e6;*/
 	border-top:0px;
 	 padding: 25px 27px 30px;
 	 border-bottom-left-radius: 3px;
@@ -1683,7 +1683,7 @@ footer .contact li {
 	padding:12px 11px;
 }
 .filter-list .property-text {
-	 padding: 30px 18px;
+	 padding-bottom: 5px;padding-top: 5px;padding-left: 0px;padding-right: 8px;
 }
 .filter-list .property-box .appartment-img::after {
 	border-bottom: 4px solid #09b9e5;
@@ -1718,7 +1718,7 @@ footer .contact li {
 }
 .property-box .detail-btn .rent {
 	background-color:#43d6d1;
-	padding:10px 20px;
+	padding:10px 5px;
 	transition:all 0.8s ease 0s;
 }
 .property-box .detail-btn .rent:hover,

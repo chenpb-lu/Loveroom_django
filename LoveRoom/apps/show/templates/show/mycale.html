@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>输入内容检验</title>
+    <link href="/static/css/style1.css" type="text/css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/daterangepicker.css" />
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/static/js/City_data.js"></script>
+    <script type="text/javascript" src="/static/js/areadata2.js"></script>
+    <script type="text/javascript" src="/static/js/auto_area.js"></script>
+    <script src="/static/js/moment.js"></script>
+    <script src="/static/js/daterangepicker.js"></script>
+    <style type="text/css">
+        .btn-primary {
+            color: #0e0910;
+            background-color: #ffffff;
+            border-color: rgba(204, 204, 204, 0.96);
+        }
+        .dropdown-submenu {
+            position: relative;
+        }
+        .dropdown-submenu > .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: -6px;
+            margin-left: -1px;
+            -webkit-border-radius: 0 6px 6px 6px;
+            -moz-border-radius: 0 6px 6px;
+            border-radius: 0 6px 6px 6px;
+        }
+        .dropdown-submenu:hover > .dropdown-menu {
+            display: block;
+        }
+        .dropdown-submenu > a:after {
+            display: block;
+            content: " ";
+            float: right;
+            width: 0;
+            height: 0;
+            border-color: transparent;
+            border-style: solid;
+            border-width: 5px 0 5px 5px;
+            border-left-color: #ccc;
+            margin-top: 5px;
+            margin-right: -10px;
+        }
+        .dropdown-submenu:hover > a:after {
+            border-left-color: #fff;
+        }
+        .dropdown-submenu.pull-left {
+            float: none;
+        }
+        .dropdown-submenu.pull-left > .dropdown-menu {
+            left: -100%;
+            margin-left: 10px;
+            -webkit-border-radius: 6px 0 6px 6px;
+            -moz-border-radius: 6px 0 6px 6px;
+            border-radius: 6px 0 6px 6px;
+        }
+    </style>
+    </head>
+<body>
+<div style="border: 2px;border-color: #0f9ae0;height: auto;width: auto;padding-top: 5px ;">
+    <form class="navbar-form navbar"  role="search" style="margin-left: auto;margin-right: auto;width: 600px;">
+      <div class="form-group">
+{#          {{ searchform.city }}#}
+          <input type="text" class="area-danxuan form-control" placeholder="选择地点" style="width: 100px;"   data-value="" id="city_choose" value={{ city }}>
+      </div>
+      <div class="form-group">
+          <div class="dropdown">
+            <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#"
+               href="javascript:;">{% if district %}{{ district }}{% else %}位置 <span class="caret"></span>{% endif %}
+            </a>
+            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" style="color: #9faab6">
+{#                <li class="divider"></li>#}
+                <li class="dropdown-submenu">
+                    <a tabindex="-1" href="javascript:;">行政区</a>
+
+                    <ul class="dropdown-menu">
+                        {% for item in districtlist %}
+                            <li><a tabindex="-1" href="?city={{ city }}&district={{ item.name}}&st={{ st }}&et={{ et }}">{{ item.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li class="dropdown-submenu">
+                    <a tabindex="-1" href="javascript:;">商圈</a>
+                    <ul class="dropdown-menu" style="overflow: scroll;height: 500px">
+                        {% for item in arealist %}
+                            <li><a tabindex="-1" href="?city={{ city }}&district={{ item.name }}&st={{ st }}&et={{ et }}">{{ item.name }}</a></li>
+                        {% endfor %}
+
+                    </ul>
+                </li>
+                <li><a href="?city={{ city }}&st={{ st }}&et={{ et }}">全城</a></li>
+            </ul>
+        </div>
+
+      </div>
+      <div class="form-group">
+{#          {{ searchform.time }}#}
+          <a type="text" class="form-control" placeholder="选择日期" id="demo" readonly="readonly" style="width: 200px;background-color: white !important;">{{ st  }} - {{ et }}</a>
+      </div>
+      <div class="form-group">
+          <div class="dropdown">
+            <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#"
+               href="javascript:;">房源详情<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" >
+                    <li><a tabindex="-1" href="?city={{ city }}{% if  district %}&district={{ district }}{% endif %}&st={{ st }}&et={{ et }}&type=0" >整套房源</a></li>
+                    <li><a tabindex="-1" href="?city={{ city }}{% if  district %}&district={{ district }}{% endif %}&st={{ st }}&et={{ et }}&type=1" >独立房间</a></li>
+                    <li><a tabindex="-1" href="?city={{ city }}{% if  district %}&district={{ district }}{% endif %}&st={{ st }}&et={{ et }}&type=2" >合住房间</a></li>
+                    <li><a tabindex="-1" href="?city={{ city }}{% if  district %}&district={{ district }}{% endif %}&st={{ st }}&et={{ et }}">不限</a></li>
+
+            </ul>
+        </div>
+
+      </div>
+
+
+    </form>
+</div>
+</body>
+<script type="text/javascript">
+   var t = new Date();
+   var year = t.getFullYear();
+   var mon = t.getMonth()+1;
+   var day = t.getDate();
+   function AddDate(count) {
+       var dd = new Date();
+       dd.setDate(dd.getDate() + count);
+       var year = dd.getFullYear();
+       var mon = dd.getMonth()+1;
+       var day = dd.getDate();
+       return mon+'/'+day+'/'+year;
+   }
+   $('#demo').daterangepicker({
+    "locale": {
+        "direction": "ltr",
+        "format": "MM/DD/YYYY",
+        "separator": " - ",
+        "applyLabel": "确定",
+        "cancelLabel": "取消",
+        "fromLabel": "From",
+        "toLabel": "To",
+        "customRangeLabel": "Custom",
+        "daysOfWeek": [
+            "日",
+            "一",
+            "二",
+            "三",
+            "四",
+            "五",
+            "六"
+        ],
+        "monthNames": [
+            "一月",
+            "二月",
+            "三月",
+            "四月",
+            "五月",
+            "六月",
+            "七月",
+            "八月",
+            "九月",
+            "十月",
+            "十一月",
+            "十二月"
+        ],
+        "firstDay": 1
+    },
+    "startDate": mon+'/'+day+'/'+year,
+    "endDate": AddDate(1),
+    "minDate": mon+'/'+day+'/'+year,
+    "maxDate": AddDate(180),
+}, function(start, end, label) {
+
+});
+   
+   $('.applyBtn').click(function () {
+
+       var url = '//127.0.0.1:8000/show/test/?city={{ city }}';
+       if( "{{ district }}" != "None") {
+           url = url+'&district={{ district }}'
+       }
+       url = url + '&st='+$("[name = 'daterangepicker_start']").val() + '&et=' + $("[name = 'daterangepicker_end']").val();
+       $(window).attr('location',url);
+
+
+   })
+
+
+
+
+
+</script>
+</html>

@@ -40,7 +40,7 @@ strVarCity += '                  </tr>';
 strVarCity += '                  <tr>';
 strVarCity += '                    <td class="aui_footer" colspan="2">';
 strVarCity += '                      <div class="aui_buttons">';
-strVarCity += '                      <button class="aui-btn aui-btn-primary" onclick="svae_City()" type="button">确定</button>';
+strVarCity += '                      <button class="aui-btn aui-btn-primary" onclick="svae_City()" type="button" id="ensure_city">确定</button>';
 strVarCity += '                        <button class="aui-btn aui-btn-light" onclick="Close()" type="button">取消</button>';
 strVarCity += '                      </div>';
 strVarCity += '                    </td>';
@@ -353,8 +353,10 @@ function svae_City() {
 
     $(dataCityinput).data("value", val);
     $(dataCityinput).val(Cityname);
-
+    console.log(Cityname);
     Close();
+
+
 }
 
 function Close() {

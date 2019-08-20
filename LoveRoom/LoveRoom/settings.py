@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'apps.owner',
     'apps.Uc',
     'apps.help',
+    'apps.apis',
+    'apps.show'
 ]
 
 MIDDLEWARE = [
@@ -67,6 +69,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.Uc.context_processors.regform',
+                'apps.Uc.context_processors.phform',
+                'apps.Uc.context_processors.pwform',
+
             ],
         },
     },
@@ -126,3 +132,140 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+# 配置日志
+LOG_ROOT = os.path.join(BASE_DIR,'logs')
+if not os.path.exists(LOG_ROOT):
+    os.mkdir(LOG_ROOT)
+
+FontPath = os.path.join(BASE_DIR,'/static/fonts/')
+
+LOGGING =  {
+    'version' : 1,
+    'disable_existing_loggers' : True,
+    'formatters' : {
+        'standard' : {
+            'format' : '%(asctime)s [%(threadName)s:%(thread)d] [%(name)s:%(lineno)d] [%(module)s:%(funcName)s] [%(levelname)s]- %(message)s'
+        }
+    },
+    'filter' : {
+
+    },
+    'handlers' : {
+        'mail_admins' : {
+            'level' : 'ERROR',
+            'class' : 'django.utils.log.AdminEmailHandler',
+            'include_html' : True,
+        },
+        'default' : {
+            'level' : 'DEBUG',
+            'class' : 'logging.handlers.RotatingFileHandler',
+            'filename' : os.path.join(LOG_ROOT,'all.log'),
+            'maxBytes' : 1024*1024*5,
+            'backupCount' : 5,
+            'formatter' : 'standard',
+            'encoding' : 'utf-8',
+        },
+        'error': {
+            'level':'ERROR',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(LOG_ROOT, 'error.log'),
+            'maxBytes':1024*1024*5,
+            'backupCount': 5,
+            'formatter':'standard',
+            'encoding' : 'utf-8',
+            },
+        'console':{
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'standard'
+        },
+        'request_handler': {
+            'level':'DEBUG',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(LOG_ROOT, 'request.log'),
+            'maxBytes': 1024*1024*5,
+            'backupCount': 5,
+            'formatter':'standard',
+            'encoding' : 'utf-8',
+            },
+        'scprits_handler': {
+            'level':'DEBUG',
+            'class':'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(LOG_ROOT, 'script.log'),
+            'maxBytes': 1024*1024*5,
+            'backupCount': 5,
+            'formatter':'standard',
+            'encoding' : 'utf-8',
+            },
+        'account_handler': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(LOG_ROOT, 'Uc.log'),
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 5,
+            'formatter': 'standard',
+            'encoding' : 'utf-8',
+        },
+        'apis_handler': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(LOG_ROOT, 'apis.log'),
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 5,
+            'formatter': 'standard',
+            'encoding' : 'utf-8',
+        },
+        'house_handler': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(LOG_ROOT, 'house.log'),
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 5,
+            'formatter': 'standard',
+            'encoding' : 'utf-8',
+
+        }
+    },
+    'loggers': {
+        # 'django': {
+        #     'handlers1': ['console'],
+        #     'level': 'DEBUG',
+        #     'propagate': False
+        # },
+        'account':{
+            'handlers': ['account_handler', 'console'],
+            'level': 'DEBUG',
+            'propagate': False
+        },
+        'apis': {
+            'handlers': ['apis_handler', 'console'],
+            'level': 'DEBUG',
+            'propagate': False
+        },
+        'house': {
+            'handlers': ['house_handler', 'console'],
+            'level': 'DEBUG',
+            'propagate': False
+        },
+    }
+}
+
+# 配置媒体文件路径
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+MEDIA_URL = '/media/'
+
+AUTH_USER_MODEL = 'Uc.User'
+
+CACHES = {
+    'default': {
+        # BACKEND配置缓存后端为RedisCache
+        'BACKEND': 'django_redis.cache.RedisCache',
+        # LOCATION配置redis服务器地址
+        'LOCATION': 'redis://192.168.0.20:6379',
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+             "PASSWORD": "",
+        },
+    },
+}

@@ -1,0 +1,25 @@
+
+<link href="/static/css/style1.css" type="text/css" rel="stylesheet">
+<link href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/daterangepicker.css" />
+<div style="border: 2px;border-color: #0f9ae0;height: auto;width: auto;padding-top: 25px ;">
+    <form class="navbar-form navbar"  role="search" style="margin-left: auto;margin-right: auto;width: 600px;">
+      <span class="glyphicon glyphicon-plane fa fa-plane" aria-hidden="true" style="padding: 5px"></span>
+      <div class="form-group">
+          {{ searchform.city }}
+{#        <input type="text" class="area-danxuan form-control" placeholder="选择地点" style="width: 120px"  value="长沙" data-value="">#}
+      </div>
+      <span class="glyphicon glyphicon-calendar fa fa-calendar"aria-hidden="true" style="padding: 5px"></span>
+      <div class="form-group">
+          {{ searchform.time }}
+{#        <input type="text" class="form-control" placeholder="选择日期" id="demo" readonly="readonly" style="width: 200px;background-color: white !important;">#}
+      </div>
+      <input  onclick="cpb()" class="btn btn-info" style="width: 150px;height: 44px;color: white" value="搜索" readonly="readonly">
+    </form>
+</div>
+<script>
+    function cpb() {
+        console.log($(".area-danxuan").val());
+        console.log($("#demo").val())
+    }
+</script>

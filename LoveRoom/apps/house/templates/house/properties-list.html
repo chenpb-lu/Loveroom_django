@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% block content %}
+{% load myfilter %}
+<section class="border-top">
+	<div class="container">
+		<div class="page-title mrgb5x mrgt6x clearfix">
+			<h4 class="page-name">properties list</h4>
+			<div class="tag-bar"> <a href="#"><span>searching properties</span></a> </div>
+			<ul class="breadcrumb">
+				<li><a href="#">Pages</a></li>
+				<li class="active"><a href="#">Properties list</a></li>
+			</ul>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="container">
+		<div class="property-filter clearfix">
+			<div class="filter-type mrgb6x clearfix">
+				<div class="row">
+					<ul class="filter-bar col-md-3 col-sm-4">
+						<li class="filter" data-filter="all"><a href="javascript:;">ALL</a></li>
+						<li class="filter" data-filter="sale"><a href="javascript:;">FOR SALE</a></li>
+						<li class="filter" data-filter="rent"><a href="javascript:;">FOR RENT</a></li>
+					</ul>
+					<ul class="filter-form col-md-6 col-sm-5">
+						<li>
+							<div class="select-box col-md-6">
+								<select class="form-control" name="dropdown">
+									<option value="location">LOCATION</option>
+									<option value="type">Los Angeles</option>
+									<option value="type">New York</option>
+									<option value="type">San Diego</option>
+								</select>
+							</div>
+						</li>
+						<li>
+							<div class="select-box col-md-6">
+								<select class="form-control" name="dropdown">
+									<option value="type">PROPERTY TYPE</option>
+									<option value="type">Property Type 1</option>
+									<option value="type">Property Type 2</option>
+								</select>
+							</div>
+						</li>
+					</ul>
+					<ul class="filter-values col-md-3 col-sm-3">
+						<li>
+							<div class="form-section col-md-4 col-sm-8">
+								<input class="form-control" name="min-price" placeholder="MIN $">
+							</div>
+						</li>
+						<li>
+							<div class="form-section col-md-4 col-sm-8">
+								<input class="form-control" name="max-price" placeholder="MAX $">
+							</div>
+						</li>
+						<li>
+							<div class="filter-btn col-md-4"> <a href="#" class="filter-property">FILTER</a> </div>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<ul class="filter-list clearfix">
+                    {% for item in houselist %}
+                        <li class="mix rent test col-md-3 col-sm-4 mrgb5x" data-price="5">
+						<div class="property-box rent animated out" data-delay="0" data-animation="fadeInUp">
+							<div class="appartment-img"><img src={{ item.photo|get_img_url }} class="img-responsive" alt="#" style="width: 265px;height: 175px" />
+								<div class="detail-btn"> <a href="#" class="rent" style="color:white;font-size: 12px">￥{{ item.price|price }}</a> </div>
+							</div>
+							<div class="property-text" style="height: 100px">
+								<div class="appartment-name" >
+									<h5 style="margin-bottom: 0px !important;font-size: 16px">{{ item.title|limit_title }}</h5>
+                                    <p style="margin-bottom: 0px !important;height: 24px"><strong>{{ item.title|limit_title }}</strong></p>
+                                    <p style="color: #9faab6;height: 15px"><span style="font-size: 5px">{{ item|housetype }}  |</span><span style="font-size: 5px">可住{{ item.info|jsonvalue:"maxGuestNumber" }}人   |</span><span style="font-size: 5px">{{ item.location|jsonvalue:"districtName" }}</span><p>
+									<div class="post-meta"> <a href="#"><i class="fa fa-heart"></i>141</a> </div>
+								</div>
+							</div>
+						</div>
+					</li>
+                    {% endfor %}
+				</ul>
+{#				<div class="numbering">#}
+{#					<ul class="pagination">#}
+{#						<li class="active"><a href="#">01</a></li>#}
+{#						<li><a href="#">02</a></li>#}
+{#						<li><a href="#">03</a></li>#}
+{#						<li><a href="#">04</a></li>#}
+{#						<li><a href="#">05</a></li>#}
+{#						<li><a href="#">下一页</a></li>#}
+{#					</ul>#}
+{#				</div>#}
+
+                    <div class="numbering">
+                        <ul class="pagination" id="pagination_cpb">
+
+                            {% if houselist.has_previous %}
+                            <li><a href="?page={{ houselist.previous_page_number }}">上一页</a></li>
+                            {% endif %}
+                            {% if page|contrast:'6'  %}
+                                {% for i in fivenum %}
+                                <li {% ifequal page i %}class="active"{% endifequal %}><a href="?page={{ i }}">{{ forloop.counter }}</a></li>
+                                {% endfor %}
+                            {% else %}
+                                <li ><a href="?page=1">1</a></li>
+                                <li ><a >···</a></li>
+
+                                {% if page|add:'2' < pagenum %}
+                                    <li ><a href="?page={{ page|add:'-2' }}">{{ page|add:'-2' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-1' }}">{{ page|add:'-1' }}</a></li>
+                                    <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                                    <li ><a href="?page={{ page|add:'1' }}">{{ page|add:'1' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'2' }}">{{ page|add:'2' }}</a></li>
+                                    <li><a>···</a></li>
+                                    <li ><a href="?page={{ pagenum}}">{{ pagenum }}</a></li>
+                                {% endif %}
+
+                                {% ifequal page|add:'2'  pagenum  %}
+                                    <li ><a href="?page={{ page|add:'-2' }}">{{ page|add:'-2' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-1' }}">{{ page|add:'-1' }}</a></li>
+                                    <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                                    <li ><a href="?page={{ page|add:'1' }}">{{ page|add:'1' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'2' }}">{{ page|add:'2' }}</a></li>
+                                {% endifequal %}
+                                {% ifequal page|add:'1'  pagenum  %}
+                                    <li ><a href="?page={{ page|add:'-3' }}">{{ page|add:'-3' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-2' }}">{{ page|add:'-2' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-1' }}">{{ page|add:'-1' }}</a></li>
+                                    <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                                    <li ><a href="?page={{ page|add:'1' }}">{{ page|add:'1' }}</a></li>
+                                {% endifequal %}
+                                {% ifequal page|add:'0'  pagenum  %}
+                                    <li ><a href="?page={{ page|add:'-4' }}">{{ page|add:'-4' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-3' }}">{{ page|add:'-3' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-2' }}">{{ page|add:'-2' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-1' }}">{{ page|add:'-1' }}</a></li>
+                                    <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                                {% endifequal %}
+
+                            {% endif %}
+
+
+                            {% if houselist.has_next %}
+                            <li><a href="?page={{ houselist.next_page_number }}">下一页</a></li>
+                            {% endif %}
+
+
+					    </ul>
+				    </div>
+
+
+
+
+                    </span>
+                </div>
+			</div>
+		</div>
+	</div>
+
+</section>
+{% endblock %}

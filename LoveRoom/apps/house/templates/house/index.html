@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <div id="mainslider">
 	<div class="slider">
 		<div class="fullscreen-container">
 			<div class="fullscreenbanner">
 				<ul>
-					<li data-transition="slide" data-slotamount="10"> <img class="img-responsive" alt="" src="/static/images/sliderimg-1.png"/>
+					<li data-transition="slide" data-slotamount="10"> <img class="img-responsive" alt="" src="/static/images/bg1.jpg"/>
 						<div class="caption sfb" 
 								data-x="center"
 								data-y="center"
@@ -15,9 +16,9 @@
 								data-easing="easeOutExpo">
 							<div class="slider-text clearfix">
 								<div class="text-box">
-									<h2>Luxurious Hotel Suite</h2>
-									<p>Whether you’re looking to sell or let your home or want to buy or rent a</p>
-									<p> home, we really are the people for you to come to.</p>
+									<h2 style=" text-align: left;color: #ffffff">寻 觅 最 好 的</h2>
+                                    <p style="font-size: 15px"><strong style="font-size: 25px">归</strong>鸿声断残云碧</p>
+									<p style="font-size: 15px"><strong style="font-size: 25px">宿</strong>斋吟绕凤池行</p>
 								</div>
 								<div class="slider-button">
 									<div class="view-btn"> <a href="">寻找民宿</a> </div>
@@ -26,7 +27,7 @@
 							</div>
 						</div>
 					</li>
-					<li data-transition="slide" data-slotamount="10"> <img class="img-responsive" alt="" src="/static/images/sliderimg-2.png"/>
+					<li data-transition="slide" data-slotamount="10"> <img class="img-responsive" alt="" src="/static/images/bg2.jpg"/>
 						<div class="caption sfb" 
 								data-x="center" 
 								data-y="center" 
@@ -35,9 +36,9 @@
 								data-easing="easeOutExpo">
 							<div class="slider-text clearfix">
 								<div class="text-box">
-									<h2>Luxurious Hotel Suite</h2>
-									<p>Whether you’re looking to sell or let your home or want to buy or rent a</p>
-									<p> home, we really are the people for you to come to.</p>
+									<h2 style=" text-align: left;color: #ffffff">寻 觅 最 好 的</h2>
+                                    <p style="font-size: 15px"><strong style="font-size: 25px">归</strong>鸿声断残云碧</p>
+									<p style="font-size: 15px"><strong style="font-size: 25px">宿</strong>斋吟绕凤池行</p>
 								</div>
 								<div class="slider-button">
 									<div class="view-btn"> <a href="">寻找民宿</a> </div>
@@ -46,7 +47,7 @@
 							</div>
 						</div>
 					</li>
-					<li data-transition="slide" data-slotamount="10"> <img class="img-responsive" alt="" src="/static/images/sliderimg-3.png"/>
+					<li data-transition="slide" data-slotamount="10"> <img class="img-responsive" alt="" src="/static/images/bg3.jpg"/>
 						<div class="caption sfb" 
 								data-x="center" 
 								data-y="center" 
@@ -55,9 +56,9 @@
 								data-easing="easeOutExpo">
 							<div class="slider-text clearfix">
 								<div class="text-box">
-									<h2>Luxurious Hotel Suite</h2>
-									<p>Whether you’re looking to sell or let your home or want to buy or rent a</p>
-									<p> home, we really are the people for you to come to.</p>
+									<h2 style=" text-align: left;color: #ffffff">寻 觅 最 好 的</h2>
+                                    <p style="font-size: 15px"><strong style="font-size: 25px">归</strong>鸿声断残云碧</p>
+									<p style="font-size: 15px"><strong style="font-size: 25px">宿</strong>斋吟绕凤池行</p>
 								</div>
 								<div class="slider-button">
 									<div class="view-btn"> <a href="">寻找民宿</a> </div>
@@ -70,6 +71,11 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div class="top-tabs">
+    <div class="container">
+	{% include 'house/search_box.html' %}
+    </div>
 </div>
 <section>
 	<div class="container">
@@ -555,4 +561,69 @@
 		</div>
 	</div>
 </section>
+{% endblock %}
+
+
+{% block load_js %}
+<script type="text/javascript" src="/static/js/City_data.js"></script>
+<script type="text/javascript" src="/static/js/areadata.js"></script>
+<script type="text/javascript" src="/static/js/auto_area.js"></script>
+<script src="/static/js/moment.js"></script>
+<script src="/static/js/daterangepicker.js"></script>
+<script type="text/javascript">
+   var t = new Date();
+   var year = t.getFullYear();
+   var mon = t.getMonth()+1;
+   var day = t.getDate();
+   function AddDate(count) {
+       var dd = new Date();
+       dd.setDate(dd.getDate() + count);
+       var year = dd.getFullYear();
+       var mon = dd.getMonth()+1;
+       var day = dd.getDate();
+       return mon+'/'+day+'/'+year;
+   }
+   $('#demo').daterangepicker({
+    "locale": {
+        "direction": "ltr",
+        "format": "MM/DD/YYYY",
+        "separator": " - ",
+        "applyLabel": "确定",
+        "cancelLabel": "取消",
+        "fromLabel": "From",
+        "toLabel": "To",
+        "customRangeLabel": "Custom",
+        "daysOfWeek": [
+            "日",
+            "一",
+            "二",
+            "三",
+            "四",
+            "五",
+            "六"
+        ],
+        "monthNames": [
+            "一月",
+            "二月",
+            "三月",
+            "四月",
+            "五月",
+            "六月",
+            "七月",
+            "八月",
+            "九月",
+            "十月",
+            "十一月",
+            "十二月"
+        ],
+        "firstDay": 1
+    },
+    "startDate": mon+'/'+day+'/'+year,
+    "endDate": AddDate(1),
+    "minDate": mon+'/'+day+'/'+year,
+    "maxDate": AddDate(180),
+}, function(start, end, label) {
+  console.log("New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')");
+});
+</script>
 {% endblock %}

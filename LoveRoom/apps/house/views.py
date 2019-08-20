@@ -1,8 +1,8 @@
 from django.shortcuts import render
+from .forms import SearchForm
 
 # Create your views here.
 def index(request):
-    return render(request, 'house/index.html')
+    search = SearchForm()
+    return render(request, 'house/index.html',{"searchform":search})
 
-def a(request):
-    return render(request,'house/mycale.html')
