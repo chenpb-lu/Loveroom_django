@@ -335,30 +335,32 @@ function removespan_area(spanthis) {
 }
 
 //确定选择
-function svae_City() {
-    var val = '';
-    var Cityname = '';
-    if ($('.svae_box').length > 0) {
-        $('.svae_box').each(function () {
-            val += $(this).data("code") + '-';
-            Cityname += $(this).data("name") + '-';
-        });
-    }
-    if (val != '') {
-        val = val.substring(0, val.lastIndexOf('-'));
-    }
-    if (Cityname != '') {
-        Cityname = Cityname.substring(0, Cityname.lastIndexOf('-'));
-    }
+// function svae_City() {
+//     var val = '';
+//     var Cityname = '';
+//     if ($('.svae_box').length > 0) {
+//         $('.svae_box').each(function () {
+//             val += $(this).data("code") + '-';
+//             Cityname += $(this).data("name") + '-';
+//         });
+//     }
+//     if (val != '') {
+//         val = val.substring(0, val.lastIndexOf('-'));
+//     }
+//     if (Cityname != '') {
+//         Cityname = Cityname.substring(0, Cityname.lastIndexOf('-'));
+//     }
+//
+//     $(dataCityinput).data("value", val);
+//     $(dataCityinput).val(Cityname);
+//     var time = $("#demo").val();
+//     console.log(time)
+//     // $(window).attr('location','//127.0.0.1:8000/show/?city='+Cityname);
+//     Close();
+//
+//
+// }
 
-    $(dataCityinput).data("value", val);
-    $(dataCityinput).val(Cityname);
-
-    $(window).attr('location','//127.0.0.1:8000/show/test/?city='+Cityname);
-    Close();
-
-
-}
 
 function Close() {
     $('.aui_state_box').remove();

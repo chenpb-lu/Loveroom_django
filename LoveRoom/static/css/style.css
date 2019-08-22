@@ -93,7 +93,7 @@ span{
 	margin-top: 60px;
 }
 .mrgb6x {
-	margin-bottom: 60px;
+	margin-bottom: 20px;
 }
 .mrgt7x {
 	margin-top:75px;
@@ -547,7 +547,7 @@ span{
 .form-control{
     border-radius: 0;
 	border:1px solid #cfcece;
-	min-height:44px;
+	min-height:34px;
 }
 .search-form .form-section label{
 	font-family: 'Droid Sans', sans-serif;

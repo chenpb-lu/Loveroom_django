@@ -16,10 +16,11 @@
       </div>
       <input  onclick="cpb()" class="btn btn-info" style="width: 150px;height: 44px;color: white" value="搜索" readonly="readonly">
     </form>
+
 </div>
 <script>
     function cpb() {
-        console.log($(".area-danxuan").val());
-        console.log($("#demo").val())
+        var time = $("#demo").val().split('-');
+        $(window).attr('location','//127.0.0.1:8000/show/?city='+$(".area-danxuan").val()+'&st='+time[0].trim()+'&et='+time[1].trim());
     }
 </script>

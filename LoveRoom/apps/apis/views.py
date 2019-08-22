@@ -43,5 +43,5 @@ def search(request):
         'district': district,
         'city' : city
     }
-    return render(request, "show/mycale.html", kwag)
+    return render(request, "show/submit.html", kwag)
 

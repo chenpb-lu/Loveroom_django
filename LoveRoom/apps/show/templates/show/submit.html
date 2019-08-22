@@ -1,0 +1,152 @@
+<style type="text/css">
+            .btn-primary {
+                color: #0e0910;
+                background-color: #ffffff;
+                border-color: rgba(204, 204, 204, 0.96);
+            }
+            .dropdown-submenu {
+                position: relative;
+            }
+            .dropdown-submenu > .dropdown-menu {
+                top: 0;
+                left: 100%;
+                margin-top: -6px;
+                margin-left: -1px;
+                -webkit-border-radius: 0 6px 6px 6px;
+                -moz-border-radius: 0 6px 6px;
+                border-radius: 0 6px 6px 6px;
+            }
+            .dropdown-submenu:hover > .dropdown-menu {
+                display: block;
+            }
+            .dropdown-submenu > a:after {
+                display: block;
+                content: " ";
+                float: right;
+                width: 0;
+                height: 0;
+                border-color: transparent;
+                border-style: solid;
+                border-width: 5px 0 5px 5px;
+                border-left-color: #ccc;
+                margin-top: 5px;
+                margin-right: -10px;
+            }
+            .dropdown-submenu:hover > a:after {
+                border-left-color: #fff;
+            }
+            .dropdown-submenu.pull-left {
+                float: none;
+            }
+            .dropdown-submenu.pull-left > .dropdown-menu {
+                left: -100%;
+                margin-left: 10px;
+                -webkit-border-radius: 6px 0 6px 6px;
+                -moz-border-radius: 6px 0 6px 6px;
+                border-radius: 6px 0 6px 6px;
+            }
+        </style>
+<div style="border: 2px;border-color: #0f9ae0;height: auto;width: auto;padding-top: 5px ;margin-left: 250px;margin-top: 20px">
+    <form class="navbar-form navbar"  role="search" style="margin-left: auto;margin-right: auto;width: 1000px;">
+      <div class="form-group">
+{#          {{ searchform.city }}#}
+          <input type="text" class="area-danxuan form-control" placeholder="选择地点" style="width: 100px;"   data-value="" id="city_choose"  value={{ city }} >
+      </div>
+      <div class="form-group">
+          <div class="dropdown">
+            <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#"
+               href="javascript:;"{% if district %}style="color: #00a7ea" {% endif %}>{% if district %}{{ district }}{% else %}位置&nbsp;<span class="caret"></span>{% endif %}
+            </a>
+            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" style="color: #9faab6">
+{#                <li class="divider"></li>#}
+                <li class="dropdown-submenu">
+                    <a tabindex="-1" href="javascript:;">行政区</a>
+                    <ul class="dropdown-menu">
+                        {% for item in districtlist %}
+                            <li><a tabindex="-1" href="?city={{ city }}&district={{ item.name}}&st={{ st }}&et={{ et }}{% if type %}&type={{ type }}{% endif %}{% if minprice %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ item.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li class="dropdown-submenu">
+                    <a tabindex="-1" href="javascript:;">商圈</a>
+                    <ul class="dropdown-menu" style="overflow: scroll;height: 500px">
+                        {% for item in arealist %}
+                            <li><a tabindex="-1" href="?city={{ city }}&district={{ item.name }}&st={{ st }}&et={{ et }}{% if type %}&type={{ type }}{% endif %}{% if minprice %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ item.name }}</a></li>
+                        {% endfor %}
+
+                    </ul>
+                </li>
+                <li><a href="?city={{ city }}&st={{ st }}&et={{ et }}">全城</a></li>
+            </ul>
+        </div>
+
+      </div>
+      <div class="form-group">
+{#          {{ searchform.time }}#}
+          <a type="text" class="form-control" placeholder="选择日期" id="demo1" readonly="readonly" style="width: 200px;height: 34px;background-color: white !important;">{{ st  }} - {{ et }}</a>
+      </div>
+      <div class="form-group">
+          <div class="dropdown">
+            <a id="dLabel" role="button" data-toggle="dropdown" class="btn btn-primary" data-target="#" href="javascript:;" {% if type %}style="color: #00a7ea" {% endif %}>
+                {% if type %}{% ifequal type '0'%}整套房源{% endifequal %}{% ifequal type '1'%}独立房间{% endifequal %}{% ifequal type '2'%}合住房间{% endifequal %}{% else %}房源详情&nbsp;<span class="caret"></span>{% endif %}
+            </a>
+            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" >
+                    <li><a tabindex="-1" href="?city={{ city }}{% if  district %}&district={{ district }}{% endif %}&st={{ st }}&et={{ et }}&type=0" >整套房源</a></li>
+                    <li><a tabindex="-1" href="?city={{ city }}{% if  district %}&district={{ district }}{% endif %}&st={{ st }}&et={{ et }}&type=1" >独立房间</a></li>
+                    <li><a tabindex="-1" href="?city={{ city }}{% if  district %}&district={{ district }}{% endif %}&st={{ st }}&et={{ et }}&type=2" >合住房间</a></li>
+                    <li><a tabindex="-1" href="?city={{ city }}{% if  district %}&district={{ district }}{% endif %}&st={{ st }}&et={{ et }}">不限</a></li>
+
+            </ul>
+        </div>
+
+      </div>
+      <div class="form-group">
+
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" {% if minprice or maxprice %}style="color: #00a7ea" {% endif %}>{% if minprice or maxprice%}￥{% if minprice %}{{ minprice }}{% else %}不限{% endif %}-{% if maxprice %}{{ maxprice }}{% else %}不限{% endif %}{% else %}价格范围&nbsp;<span class="caret"></span>{% endif %}</button>
+
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <input type="number" id="min_price" placeholder="请输入最低价格" style="margin-bottom: 10px;margin-left: 30px;border: 1px;border-style: solid">
+                    <input  type="number" id="max_price" placeholder="请输入最高价格" style="margin-right: auto;margin-left: 30px;border: 1px;border-style: solid ">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="noprice">取消</button>
+                    <button type="button" class="btn btn-success" id="push_price">保存</button>
+                </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </form>
+</div>
+<script>
+    function svae_City() {
+    var val = '';
+    var Cityname = '';
+    if ($('.svae_box').length > 0) {
+        $('.svae_box').each(function () {
+            val += $(this).data("code") + '-';
+            Cityname += $(this).data("name") + '-';
+        });
+    }
+    if (val != '') {
+        val = val.substring(0, val.lastIndexOf('-'));
+    }
+    if (Cityname != '') {
+        Cityname = Cityname.substring(0, Cityname.lastIndexOf('-'));
+    }
+
+    $(dataCityinput).data("value", val);
+    $(dataCityinput).val(Cityname);
+    var time = $("#demo").val();
+    $(window).attr('location','//127.0.0.1:8000/show/?city='+Cityname +"&st={{ st }}&et={{ et }}");
+    Close();
+
+
+}
+</script>

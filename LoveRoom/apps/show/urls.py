@@ -19,6 +19,5 @@ from . import views
 urlpatterns = [
     url(r'^$',views.showDetail.as_view(),name='detail'),
     url(r"^test/$",views.test,name='test'),
-
-
+    url(r'^(?P<id>\d+)/$',views.house_detail)
 ]
