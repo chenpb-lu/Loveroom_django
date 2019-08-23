@@ -143,3 +143,13 @@ def limit(value):
         return jsonobj
     except:
         return value
+
+@register.filter
+def maxguest(value):
+    try:
+        jsonobj = json.loads(value)
+        a = jsonobj['maxCheckinGuests']
+        b = jsonobj['maxAdditionalGuests']
+        return a+b
+    except:
+        return value

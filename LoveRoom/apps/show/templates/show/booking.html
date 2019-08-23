@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+{% block content %}
+{% load myfilter %}
+<section>
+<div class="container">
+<div class="booking-section mrgb7x">
+<div class="row">
+	<div class="col-md-4 col-sm-6 animated out" data-delay="0" data-animation="fadeInUp">
+		<div class="booking-title"> <span>1</span>
+			<h4>填写信息</h4>
+		</div>
+		<div class="booking-form mrgt6x">
+			<form id="booking-form" method="post" name="booknow">
+				<div class="form-group">
+					<label>时间</label>
+					<input class="form-control" style="border-color: #cfcece;border: solid;border-width: 1px" placeholder="enter your name" value="{{ st }}入住 - {{ et }}退房">
+				</div>
+				<div class="form-group">
+					<label>入住人数</label><br>
+                    <input step="1" data-step-max="10" type="number" id="inputLoop" value="1" data-decimals="1" min="1" max="{{ house.book|maxguest }}" style="border-color: #cfcece;border: solid;border-width: 1px"/>
+
+				</div>
+				<div class="form-group">
+					<label>入住人</label>
+					<ul style="margin-top: 15px;margin-bottom: 15px">
+                        <li  style="border-color: #cfcece;border: solid;border-width: 1px;background-color: #e6e6e6;width: 100px">
+                            <span style="width: 85px;display: inline-block">入住人</span><a style="border: none;background: none">×</a>
+                        </li>
+
+                    </ul>
+                    <a style="color: black;border-color: #cfcece;border: solid;border-width: 1px;" id="addguest" data-toggle="modal" data-target=".bs-example-modal-sm">添加入住人</a>
+				</div>
+				<div class="form-group">
+					<label>留言</label>
+					<input class="form-control" placeholder="" style="border-color: #cfcece;border: solid;border-width: 1px">
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-6 animated out" data-delay="0" data-animation="fadeInUp">
+		<div class="booking-title"> <span>2</span>
+			<h4>房源信息</h4>
+		</div>
+		<div class="property-info mrgt6x">
+			<div class="property-box border-hover">
+				<div class="appartment-img"><img src="{{ house.photo|get_img_url }}" class="img-responsive" alt="#" />
+					<div class="room-price"><span>{{ house.price|price }}<sup>/天</sup></span></div>
+					<div class="like-btn"><a href="#"><i class="fa fa-heart"></i></a></div>
+				</div>
+				<div class="property-text" style="border: solid;border-width: 1px;border-color: #e6e6e6">
+					<div class="resort-name">
+						<h4>民宿评价</h4>
+						<div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+						<p>{{ house.title|safe}}</p>
+					</div>
+				</div>
+				<ul class="home2 appartment-detail">
+					<li>{{ house.info|house_detail_show:'layoutRoom' }} 室</li>
+					<li>{{ house.info|house_detail_show:'bedCount' }} 床</li>
+					<li>{{ house.info|house_detail_show:'layoutWc' }} 卫</li>
+					<li>{{ house.info|house_detail_show:'usableArea' }} 平米</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-4 col-sm-6 animated out" data-delay="0" data-animation="fadeInUp">
+		<div class="booking-title"> <span>3</span>
+			<h4>支付房费</h4>
+		</div>
+		<div class="payment-method mrgt6x">
+			<form id="payment-form" method="post" name="payment">
+			<h4 class="mrgb3x">选择支付方式</h4>
+				<div class="radio col-md-4 col-sm-4">
+					<div class="form-group">
+						<label>
+							<input type="radio" value="visa" name="payment">
+							<span class="bg-radio"></span> </label>
+						<img src="/static/images/payment-visa.jpg" class="img-responsive" alt="#" /> </div>
+				</div>
+				<div class="radio col-md-4 col-sm-4">
+					<div class="form-group">
+						<label>
+							<input type="radio" value="visa" name="payment">
+							<span class="bg-radio"></span> </label>
+						<img src="/static/images/payment-paypal.jpg" class="img-responsive" alt="#" /> </div>
+				</div>
+				<div class="radio col-md-4 col-sm-4">
+					<div class="form-group">
+						<label>
+							<input type="radio" value="visa" name="payment">
+							<span class="bg-radio"></span>
+						</label>
+						<img src="/static/images/payment-mastercard.jpg" class="img-responsive" alt="#" />
+					</div>
+				</div>
+				<div class="form-group">
+					<label>CARD NUMBER</label>
+					<input class="form-control" placeholder="000">
+				</div>
+				<div class="form-group">
+					<label>EXPIRY DATE (MM / YY)</label>
+					<input class="form-control" placeholder="MM / YY">
+				</div>
+				<div class="col-md-6 no-padding">
+				<div class="form-group padding-right">
+					<label>CCV</label>
+					<input class="form-control" placeholder="213">
+				</div>
+				</div>
+				<div class="col-md-6 padding-rit0">
+				<div class="booking"> <a class="book-it" href="#">BOOK NOW<i class="fa fa-angle-right"></i></a> </div>
+				</div>
+			</form>
+		</div>
+	</div>
+	</div>
+	</div>
+</div>
+</section>
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">添加联系人</h4>
+                 </div>
+                <div class="modal-body">
+                    <input type="number" id="guestname" placeholder="请输入入住人姓名" style="margin-bottom: 10px;margin-left: 30px;border: 1px;border-style: solid">
+                    <input  type="number" id="guestid" placeholder="请输入入住人身份证号" style="margin-right: auto;margin-left: 30px;border: 1px;border-style: solid ">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" id="noprice">取消</button>
+                    <button type="button" class="btn btn-success" id="push_price">保存</button>
+                </div>
+            </div>
+          </div>
+        </div>
+<script>
+ $("#addguest").click(function () {
+
+ })
+</script>
+{% endblock %}

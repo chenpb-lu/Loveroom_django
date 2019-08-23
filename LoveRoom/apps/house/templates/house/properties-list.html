@@ -15,15 +15,15 @@
                     {% if houselist %}
                         {% for item in houselist %}
                         <li class="mix rent test col-md-3 col-sm-4 mrgb5x" data-price="5">
-                            <a href="/show/{{ item.id }}">
+                            <a href="/show/{{ item.id }}/?st={{ st }}&et={{ et }}">
                                 <div class="property-box rent animated out" data-delay="0" data-animation="fadeInUp">
 							<div class="appartment-img"><img src={{ item.photo|get_img_url }} class="img-responsive" alt="#" style="width: 265px;height: 175px" />
 								<div class="detail-btn"> <a href="#" class="rent" style="color:white;font-size: 12px">￥{{ item.price|price }}</a> </div>
 							</div>
 							<div class="property-text" style="height: 100px">
 								<div class="appartment-name" >
-                                    <a href="/show/{{ item.id }}"><h5 style="margin-bottom: 0px !important;font-size: 16px">{{ item.title|limit_title }}</h5></a>
-                                    <a href="/show/{{ item.id }}"><p style="margin-bottom: 0px !important;height: 24px"><strong>{{ item.title|limit_title }}</strong></p></a>
+                                    <a href="/show/{{ item.id }}/?st={{ st }}&et={{ et }}"><h5 style="margin-bottom: 0px !important;font-size: 16px">{{ item.title|limit_title }}</h5></a>
+                                    <a href="/show/{{ item.id }}/?st={{ st }}&et={{ et }}"><p style="margin-bottom: 0px !important;height: 24px"><strong>{{ item.title|limit_title }}</strong></p></a>
                                     <p style="color: #9faab6;height: 15px"><span style="font-size: 5px">{{ item|housetype }}  |</span><span style="font-size: 5px">可住{{ item.info|jsonvalue:"maxGuestNumber" }}人   |</span><span style="font-size: 5px">{{ item.location|jsonvalue:"districtName" }}</span><p>
 									<div class="post-meta"> <a href="www.baidu.com"><i class="fa fa-heart"></i>141</a> </div>
                                     </div>

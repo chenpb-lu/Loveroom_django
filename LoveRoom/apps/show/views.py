@@ -4,6 +4,7 @@ from apps.house.models import HouseInfo,SiteInfo,City
 from django.core.paginator import Paginator,EmptyPage, PageNotAnInteger
 import json
 import datetime
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 class showDetail(View):
     def get(self,request):
@@ -126,7 +127,24 @@ def test(request):
 
 def house_detail(request,id):
     house = HouseInfo.objects.filter(id=id)[0]
+    st = request.GET.get('st')
+    et = request.GET.get('et')
     kwag = {
-        'house': house
+        'house': house,
+        'st' : st,
+        'et' : et,
     }
     return render(request,'show/housedetail.html',kwag)
+
+
+class Booking(View):
+    def get(self,request,id):
+        house = HouseInfo.objects.filter(id=id)[0]
+        st = request.GET.get('st')
+        et = request.GET.get('et')
+        kwag = {
+            'house': house,
+            'st': st,
+            'et': et,
+        }
+        return render(request,'show/booking.html',kwag)

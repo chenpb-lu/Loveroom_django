@@ -288,18 +288,23 @@
 
 </div>
 
-<div class="col-md-3" style="right: 100px;position: fixed;background-color: black" >
-		<div class="right-side-bar">
-			<div class="search-for animated out" data-delay="0" data-animation="fadeInUp">
-				<div class="rightbar-heading mrgb3x">
-					<h4>SEARCH</h4>
+    <div class="col-md-2" style="right: 200px;position: fixed;border-color: black;border:solid;border-width: 0.5px;opacity: 100;background-color: white" >
+		<div class="right-side-bar" style="opacity: 100;background-color: white">
+			<div class="search-for animated out" data-delay="0" data-animation="fadeInUp" style="opacity: 100;background-color: white">
+				<div class="rightbar-heading mrgb3x" style="margin-top: 15px">
+					<h4>预订</h4>
 				</div>
-				<div class="widget search">
-					<form method="post" action="#">
-						<input type="text" class="form-control" placeholder="search for something">
-						<input type="submit" value="submit">
-					</form>
-				</div>
+                <form method="post" action="#">
+                        <div  style="padding-left: 5px;padding-right: 5px;margin-bottom: 20px">
+                            入住日期:<input type="text"  style="border: solid;border-color: #9faab6;border-width: 1px;" value="{{ st }}"><br/>
+                            <br/>
+                            退房日期:<input type="text"  style="border: solid;border-color: #9faab6;border-width: 1px" value="{{ et }}">
+                        </div>
+                        入住人数：<input step="1" data-step-max="10" type="number" id="inputLoop" value="1" data-decimals="1" min="1" max="{{ house.book|maxguest }}"/>
+                        <p style="font-size: 10px;color: #9faab6">可住{{ house.book|house_description_show:"maxCheckinGuests" }}人，{% if house.book|house_description_show:"maxAdditionalGuests" %}可加客{{ house.book|house_description_show:"maxAdditionalGuests" }}人{% else %}不可加客{% endif %}</p>
+                        <p>房费：<span style="color: #ffa20b;font-size: 25px">{{ house.price|price }}</span>/晚</p>
+                        <a  class="fullBtnBlue" style="width: 200px" href="/show/booking/{{ house.id }}/?st={{ st }}&et={{ et }}">立即预订</a>
+                </form>
 			</div>
 		</div>
 	</div>
