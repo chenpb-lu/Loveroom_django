@@ -148,3 +148,5 @@ def logout(request):
     auth.logout(request)
     return redirect(reverse("house:index"))
 
+def change_passwd(request):
+    return render(request,'Uc/uc_change_passwd.html')

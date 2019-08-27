@@ -1,11 +1,26 @@
 from django.shortcuts import render
+from django.http import JsonResponse
 from django.views.generic import View
 from apps.house.models import HouseInfo,SiteInfo,City
+from apps.show.models import HouseCollection
 from django.core.paginator import Paginator,EmptyPage, PageNotAnInteger
+from django.contrib.auth.mixins import LoginRequiredMixin
 import json
 import datetime
 from django.contrib.auth.decorators import login_required
 # Create your views here.
+
+class LoginRequiredMixin(object):
+    """
+    登陆限定，并指定登陆url
+    """
+    @classmethod
+    def as_view(cls, **initkwargs):
+        view = super(LoginRequiredMixin, cls).as_view(**initkwargs)
+        return login_required(view, login_url='/')
+
+
+
 class showDetail(View):
     def get(self,request):
         city = request.GET.get('city')
@@ -15,6 +30,10 @@ class showDetail(View):
         type = request.GET.get('type')
         minprice = request.GET.get('minprice')
         maxprice = request.GET.get('maxprice')
+        collection = []
+        if request.user.id:
+            user_id = request.user.id
+            collection = HouseCollection.objects.filter(user_id=user_id,status=True).values('house_id')
 
         if not city:
             city = "长沙"
@@ -55,7 +74,6 @@ class showDetail(View):
             et = n_days.strftime('%m/%d/%Y')
         districtlist = SiteInfo.objects.filter(cityname=city, type=0).values('name', 'id')
         arealist = SiteInfo.objects.filter(cityname=city, type=7).values('name', 'id')
-
         paginator = Paginator(houselist, 12)
         page = request.GET.get('page')
         numlist = []
@@ -88,6 +106,7 @@ class showDetail(View):
             'type': type,
             'minprice': minprice,
             'maxprice': maxprice,
+            'collection' :collection
         }
         return render(request,"house/properties-list.html",kwag)
 
@@ -136,8 +155,7 @@ def house_detail(request,id):
     }
     return render(request,'show/housedetail.html',kwag)
 
-
-class Booking(View):
+class Booking(LoginRequiredMixin,View):
     def get(self,request,id):
         house = HouseInfo.objects.filter(id=id)[0]
         st = request.GET.get('st')
@@ -148,3 +166,4 @@ class Booking(View):
             'et': et,
         }
         return render(request,'show/booking.html',kwag)
+

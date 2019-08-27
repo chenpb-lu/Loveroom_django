@@ -54,3 +54,4 @@ class HouseInfo(models.Model):
 
 
 
+

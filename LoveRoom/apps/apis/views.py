@@ -2,11 +2,15 @@ from django.shortcuts import render, HttpResponse,redirect,reverse
 from django.http import JsonResponse
 from io import BytesIO
 import base64
+from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from libs import sms
 import logging
 from django.contrib import  auth
-from apps.house.models import SiteInfo
+from django.contrib.auth.decorators import login_required
+from apps.house.models import SiteInfo,HouseInfo
+from apps.show.models import HouseCollection
+from django.forms.models import model_to_dict
 
 logger = logging.getLogger('apis')
 import random
@@ -45,3 +49,26 @@ def search(request):
     }
     return render(request, "show/submit.html", kwag)
 
+class LoginRequiredMixin(object):
+    """
+    登陆限定，并指定登陆url
+    """
+    @classmethod
+    def as_view(cls, **initkwargs):
+        view = super(LoginRequiredMixin, cls).as_view(**initkwargs)
+        return login_required(view, login_url='/')
+
+class HouseCollections(LoginRequiredMixin,View):
+    def get(self,request,id):
+        house = HouseInfo.objects.get(id=id)
+        result = HouseCollection.objects.get_or_create(user=request.user,house=house)
+        house_collection = result[0]
+        if not result[1]:
+            if house_collection.status :
+                house_collection.status = False
+            else:
+                house_collection = True
+        house_collection.save()
+        msg = model_to_dict(house_collection)
+        ret_info = {"code": 200, "msg": msg}
+        return JsonResponse(ret_info)

@@ -473,7 +473,8 @@ $("#register_flag").click(function () {
             success: function (data) {
                 switch(data.status){
                     case 200:
-                        window.location.href='{% url 'house:index' %}';
+{#                        window.location.href='{% url 'house:index' %}';#}
+                        location.reload();
                         break;
                     case 400:
                         msg = data.msg;
@@ -542,7 +543,8 @@ $("#phone_login_flag").click(function () {
             success: function (data) {
                 switch(data.status){
                     case 200:
-                        window.location.href='{% url 'house:index' %}';
+{#                        window.location.href='{% url 'house:index' %}';#}
+                        location.reload();
                         break;
                     case 400:
                         msg = data.msg;
@@ -603,7 +605,8 @@ $("#pw_login_flag").click(function () {
             success: function (data) {
                 switch(data.status){
                     case 200:
-                        window.location.href='{% url 'house:index' %}';
+{#                        window.location.href='{% url 'house:index' %}';#}
+                        location.reload();
                         break;
                     case 400:
                         msg = data.msg;

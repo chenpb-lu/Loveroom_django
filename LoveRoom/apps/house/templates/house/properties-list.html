@@ -25,7 +25,14 @@
                                     <a href="/show/{{ item.id }}/?st={{ st }}&et={{ et }}"><h5 style="margin-bottom: 0px !important;font-size: 16px">{{ item.title|limit_title }}</h5></a>
                                     <a href="/show/{{ item.id }}/?st={{ st }}&et={{ et }}"><p style="margin-bottom: 0px !important;height: 24px"><strong>{{ item.title|limit_title }}</strong></p></a>
                                     <p style="color: #9faab6;height: 15px"><span style="font-size: 5px">{{ item|housetype }}  |</span><span style="font-size: 5px">可住{{ item.info|jsonvalue:"maxGuestNumber" }}人   |</span><span style="font-size: 5px">{{ item.location|jsonvalue:"districtName" }}</span><p>
-									<div class="post-meta"> <a href="www.baidu.com"><i class="fa fa-heart"></i>141</a> </div>
+									<div class="post-meta">
+                                    {% if request.user.is_authenticated %}
+                                        <a style="color: #cfcece;" id="house_collect-{{ item.id }}" class="like" ><i class="fa fa-heart"></i></a>
+                                    {% else %}
+                                        <a style="color: #cfcece;" id="house_collect-{{ item.id }}" class="like" ><i class="fa fa-heart"></i></a>
+                                    {% endif %}
+
+                                     </div>
                                     </div>
                                 </div>
                             </div>
@@ -192,7 +199,7 @@
        $(window).attr('location',url);
 
 
-   })
+   });
 
     $('#push_price').click(function () {
         var url = '//127.0.0.1:8000/show/?city={{ city }}';
@@ -234,7 +241,39 @@
         }
 
        $(window).attr('location',url);
-    })
+    });
+    
+    
+    $(".like").click(function () {
+        {% if request.user.is_authenticated %}
+            var a = this.id;
+            var id = a.split('-')[1];
+             $.ajax({
+                url: '/apis/collection/'+ id +'/',
+                type: 'GET',
+                // dataType: 'json',
+                success: function (data) {
+                    if(data.code == 200){
+                        obj_a = $("#house_collect-"+id);
+                        // 根据状态显示爱心
+                        if(data.msg.status){
+                            obj_a.attr("style", "color:red; ")
+                        }else{
+                            obj_a.attr("style", "color:#cfcece; ")
+                        }
+                    }
+                }
+            });
+        {% else %}
+            alert("请先登录！");
+        {% endif %}
+
+    });
+
+   {% for i in collection %}
+        $("#house_collect-"+'{{ i.house_id }}').attr("style", "color:red; ");
+   {% endfor %}
+
 
 
 </script>

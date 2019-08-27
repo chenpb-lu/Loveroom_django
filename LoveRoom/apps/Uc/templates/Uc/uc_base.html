@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+<link href="/static/css/style_uc.css" rel="stylesheet" type="text/css">
+<link href="/static/css/style-responsive.css" rel="stylesheet" type="text/css">
+<div class="container">
+    <div class="row">
+  <aside class="profile-info col-lg-3">
+    <div class="panel">
+      <div class="panel-body">
+        <ul class="nav nav-pills nav-stacked">
+        {% url 'uc:profile' as uc_profile %}
+        {% url 'uc:change_passwd' as uc_change_passwd %}
+        {% url 'uc:answer' as uc_answer %}
+        {% url 'uc:collect' as uc_collect %}
+        {% url 'uc:contribut' as uc_contribut %}
+        <li role="presentation" class="{% if current_url == uc_profile %}active{% endif %}"><a href="{{ uc_profile }}">个人资料</a></li>
+        <li role="presentation" class="{% if current_url == uc_change_passwd %}active{% endif %}"><a href="{{ uc_change_passwd }}">修改密码</a></li>
+        <li role="presentation" class="{% if current_url == uc_answer %}active{% endif %}"><a href="{{ uc_answer }}">我的回答</a></li>
+        <li role="presentation" class="{% if current_url == uc_collect %}active{% endif %}"><a href="{{ uc_collect }}">我的收藏</a></li>
+        <li role="presentation" class="{% if current_url == uc_contribut %}active{% endif %}"><a href="{{ uc_contribut }}">我的贡献</a></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+  <aside class="profile-info col-lg-9">
+      <section>
+          <div class="row">
+            {% block uc_content %}
+              <div class="col-lg-12">
+                  <div class="panel">
+                      <div class="panel-body">
+                          <div class="bio-chart">
+                              <input class="knob" data-width="100" data-height="100" data-displayPrevious=true  data-thickness=".2" value="35" data-fgColor="#e06b7d" data-bgColor="#e8e8e8">
+                          </div>
+                          <div class="bio-desk">
+                              <h4 class="red">Envato Website</h4>
+                              <p>Started : 15 July</p>
+                              <p>Deadline : 15 August</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            {% endblock %}
+          </div>
+      </section>
+
+  </aside>
+</div>
+</div>
+
+{% endblock %}
+{% block load_js %}
+  <script src="{% static 'assets/jquery-knob/js/jquery.knob.js' %}"></script>
+  <script>
+      //knob
+      $(".knob").knob();
+  </script>
+{% endblock %}

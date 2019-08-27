@@ -70,28 +70,19 @@
 		<div class="payment-method mrgt6x">
 			<form id="payment-form" method="post" name="payment">
 			<h4 class="mrgb3x">选择支付方式</h4>
-				<div class="radio col-md-4 col-sm-4">
+				<div class="radio col-md-6 col-sm-6">
 					<div class="form-group">
 						<label>
 							<input type="radio" value="visa" name="payment">
 							<span class="bg-radio"></span> </label>
-						<img src="/static/images/payment-visa.jpg" class="img-responsive" alt="#" /> </div>
+						<img src="/static/images/pc_wxqrpay.png" class="img-responsive" alt="#" /></div>
 				</div>
-				<div class="radio col-md-4 col-sm-4">
+				<div class="radio col-md-6 col-sm-6">
 					<div class="form-group">
 						<label>
 							<input type="radio" value="visa" name="payment">
 							<span class="bg-radio"></span> </label>
-						<img src="/static/images/payment-paypal.jpg" class="img-responsive" alt="#" /> </div>
-				</div>
-				<div class="radio col-md-4 col-sm-4">
-					<div class="form-group">
-						<label>
-							<input type="radio" value="visa" name="payment">
-							<span class="bg-radio"></span>
-						</label>
-						<img src="/static/images/payment-mastercard.jpg" class="img-responsive" alt="#" />
-					</div>
+						<img src="/static/images/alipaypcnew.png" class="img-responsive" alt="#" style="height: 35px;width: 142px"/></div>
 				</div>
 				<div class="form-group">
 					<label>CARD NUMBER</label>
@@ -103,12 +94,12 @@
 				</div>
 				<div class="col-md-6 no-padding">
 				<div class="form-group padding-right">
-					<label>CCV</label>
-					<input class="form-control" placeholder="213">
+					<label>支付</label>
+					<input class="form-control" placeholder="213" readonly="readonly">
 				</div>
 				</div>
 				<div class="col-md-6 padding-rit0">
-				<div class="booking"> <a class="book-it" href="#">BOOK NOW<i class="fa fa-angle-right"></i></a> </div>
+				<div class="booking"> <a class="book-it" href="#">立即预订<i class="fa fa-angle-right"></i></a> </div>
 				</div>
 			</form>
 		</div>
@@ -135,9 +126,4 @@
             </div>
           </div>
         </div>
-<script>
- $("#addguest").click(function () {
-
- })
-</script>
 {% endblock %}

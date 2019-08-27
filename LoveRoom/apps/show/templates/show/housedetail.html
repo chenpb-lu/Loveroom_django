@@ -303,7 +303,7 @@
                         入住人数：<input step="1" data-step-max="10" type="number" id="inputLoop" value="1" data-decimals="1" min="1" max="{{ house.book|maxguest }}"/>
                         <p style="font-size: 10px;color: #9faab6">可住{{ house.book|house_description_show:"maxCheckinGuests" }}人，{% if house.book|house_description_show:"maxAdditionalGuests" %}可加客{{ house.book|house_description_show:"maxAdditionalGuests" }}人{% else %}不可加客{% endif %}</p>
                         <p>房费：<span style="color: #ffa20b;font-size: 25px">{{ house.price|price }}</span>/晚</p>
-                        <a  class="fullBtnBlue" style="width: 200px" href="/show/booking/{{ house.id }}/?st={{ st }}&et={{ et }}">立即预订</a>
+                        <a  class="fullBtnBlue" style="width: 200px"  id="bookNow">立即预订</a>
                 </form>
 			</div>
 		</div>
@@ -342,6 +342,20 @@
                 }
             }]
         });
+
+</script>
+
+{% endblock %}
+{% block load_js %}
+    <script>
+ $("#bookNow").click(function () {
+        {% if request.user.is_authenticated %}
+             window.location.href="/show/booking/{{ house.id }}/?st={{ st }}&et={{ et }}";
+        {% else %}
+        alert("请先登录！");
+
+        {% endif %}
+    });
 
 </script>
 {% endblock %}

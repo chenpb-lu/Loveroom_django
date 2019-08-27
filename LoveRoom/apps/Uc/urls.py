@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^register/$',views.Register.as_view(), name='register'),
     url(r'^phonelogin/$',views.PhoneLogin.as_view(),name='phonelogin'),
     url(r'^pwlogin/$',views.PwLogin.as_view(),name='pwlogin'),
-    url(r'^logout/$',views.logout,name='logout')
+    url(r'^logout/$',views.logout,name='logout'),
+    url(r'change_passwd',views.change_passwd)
 
 ]

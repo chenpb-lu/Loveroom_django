@@ -26,3 +26,8 @@ class User(AbstractUser):
         return self.nickname
 
 
+class Owner(models.Model):
+    user = models.ForeignKey(User,verbose_name="用户")
+
+
+
