@@ -10,7 +10,7 @@
 
 ### 网站主页面
 
-![登录](https://github.com/chenpb-lu/Loveroom_django/blob/master/img/%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83.png)
+![登录](https://github.com/chenpb-lu/Loveroom_django/blob/master/img/%E4%B8%BB%E9%A1%B5.png)
 
 
 
@@ -19,6 +19,8 @@
 注册用户  与密码登录和手机验证码登录
 
 ![注册](https://github.com/chenpb-lu/Loveroom_django/blob/master/img/%E6%B3%A8%E5%86%8C.png)
+
+![登录](https://github.com/chenpb-lu/Loveroom_django/blob/master/img/%E7%99%BB%E5%BD%95.png)
 
 
 
