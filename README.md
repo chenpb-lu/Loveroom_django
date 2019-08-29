@@ -10,7 +10,7 @@
 
 ### 网站主页面
 
-![登录](.\img\登录-1567066790088.png)
+![登录](https://github.com/chenpb-lu/Loveroom_django/blob/master/img/%E4%B8%AA%E4%BA%BA%E4%B8%AD%E5%BF%83.png)
 
 
 
