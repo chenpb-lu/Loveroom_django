@@ -1,0 +1,51 @@
+{% extends 'Uc/uc_base.html' %}
+{% block uc_content %}
+{% load myfilter %}
+  <div class="col-lg-12">
+      <div class="panel">
+          <div class="panel-body">
+              <h4>我的收藏</h4>
+              <hr/>
+                <div class="row">
+				    <ul class="filter-list clearfix" style="width: 100%">
+                    {% if houselist %}
+                        {% for item in houselist %}
+                        <li class="mix rent test col-md-4 col-sm-4 mrgb5x" data-price="5">
+                            <a href="/show/{{ item.0 }}/?st={{ st }}&et={{ et }}">
+                                <div class="property-box rent animated out" data-delay="0" data-animation="fadeInUp">
+							<div class="appartment-img"><img src={{ item.4|get_img_url }} class="img-responsive" alt="#" style="width: 265px;height: 175px" />
+								<div class="detail-btn"> <a href="#" class="rent" style="color:white;font-size: 12px">￥{{ item.5|price }}</a> </div>
+							</div>
+							<div class="property-text" style="height: 100px">
+								<div class="appartment-name" >
+                                    <a href="/show/{{ item.0 }}/?st={{ st }}&et={{ et }}"><h5 style="margin-bottom: 0px !important;font-size: 16px">{{ item.6|limit_title }}</h5></a>
+                                    <a href="/show/{{ item.0 }}/?st={{ st }}&et={{ et }}"><p style="margin-bottom: 0px !important;height: 24px"><strong>{{ item.6|limit_title }}</strong></p></a>
+                                    <p style="color: #9faab6;height: 15px"><span style="font-size: 5px">{{ item|housetype_sql }}  |</span><span style="font-size: 5px">可住{{ item.2|jsonvalue:"maxGuestNumber" }}人   |</span><span style="font-size: 5px">{{ item.3|jsonvalue:"districtName" }}</span><p>
+									<div class="post-meta">
+                                    {% if request.user.is_authenticated %}
+                                        <a style="color: #cfcece;" id="house_collect-{{ item.0 }}" class="like" ><i class="fa fa-heart"></i></a>
+                                    {% else %}
+                                        <a style="color: #cfcece;" id="house_collect-{{ item.0 }}" class="like" ><i class="fa fa-heart"></i></a>
+                                    {% endif %}
+
+                                     </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    {% else %}
+                        <h4>未收藏任何房源</h4>
+                    {% endif %}
+
+				</ul>
+                </div>
+
+          </div>
+      </div>
+  </div>
+
+
+
+{% endblock %}

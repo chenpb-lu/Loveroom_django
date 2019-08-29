@@ -21,6 +21,8 @@ urlpatterns = [
     url(r'^phonelogin/$',views.PhoneLogin.as_view(),name='phonelogin'),
     url(r'^pwlogin/$',views.PwLogin.as_view(),name='pwlogin'),
     url(r'^logout/$',views.logout,name='logout'),
-    url(r'change_passwd',views.change_passwd)
+    url(r'^change_passwd/$',views.change_passwd,name="change_passwd"),
+    url(r'^profile/$',views.ProfileView.as_view(),name="profile"),
+    url(r'^collect/$',views.Collect.as_view(),name="collect")
 
 ]

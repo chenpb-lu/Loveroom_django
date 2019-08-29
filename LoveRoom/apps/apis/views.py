@@ -1,6 +1,11 @@
 from django.shortcuts import render, HttpResponse,redirect,reverse
 from django.http import JsonResponse
 from io import BytesIO
+import os
+import time
+import datetime
+from LoveRoom.settings import MEDIA_ROOT, MEDIA_URL
+
 import base64
 from django.views.generic import View
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -72,3 +77,41 @@ class HouseCollections(LoginRequiredMixin,View):
         msg = model_to_dict(house_collection)
         ret_info = {"code": 200, "msg": msg}
         return JsonResponse(ret_info)
+
+class ChangeAvator(LoginRequiredMixin, View):
+    def post(self, request):
+        today = datetime.date.today().strftime("%Y%m%d")
+        # 图片的data-img格式=>data:image/jpg;base64,xxxx
+        img_src_str = request.POST.get("image")
+        img_str = img_src_str.split(',')[1]
+        # 取出格式:jpg/png...
+        img_type = img_src_str.split(';')[0].split('/')[1]
+        # 取出数据:转化为bytes格式
+        img_data = base64.b64decode(img_str)
+        # 相对上传路径: 头像上传的相对路径
+        avator_path = os.path.join("avator",today)
+        # 绝对上传路径：头像上传的绝对路径
+        avator_path_full = os.path.join(MEDIA_ROOT, avator_path)
+        if not os.path.exists(avator_path_full):
+            os.mkdir(avator_path_full)
+        filename = str(time.time())+"."+img_type
+        # 绝对文件路径，用于保存图片
+        filename_full = os.path.join(avator_path_full, filename)
+        # 相对MEDIA_URL路径，用于展示数据
+        img_url = f"{MEDIA_URL}{avator_path}/{filename}"
+        try:
+            with open(filename_full, 'wb') as fp:
+                fp.write(img_data)
+            ret = {
+                "result": "ok",
+                "file": img_url
+            }
+        except Exception as ex:
+            ret = {
+                "result": "error",
+                "file": "upload fail"
+            }
+
+        request.user.avator_sor = os.path.join(avator_path,filename)
+        request.user.save()
+        return JsonResponse(ret)

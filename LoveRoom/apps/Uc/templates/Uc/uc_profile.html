@@ -1,4 +1,4 @@
-{% extends 'usercenter/uc_base.html' %}
+{% extends 'Uc/uc_base.html' %}
 {% block load_css %}
 {#    <link rel="stylesheet" type="text/css" href="http://cdn.bootcss.com/font-awesome/4.6.0/css/font-awesome.min.css">#}
     <link rel="stylesheet" href="/static/avator/css/amazeui.min.css">
@@ -26,7 +26,7 @@
               <div class="row">
                   <div class="col-md-3">
                     <div class="up-img-cover"  id="up-img-touch" >
-                        <img class="am-circle" alt="点击图片上传" src="{{ user.avator_sor.url }}" data-am-popover="{content: '点击上传', trigger: 'hover focus'}" >
+                        <img class="am-circle" alt="点击图片上传" src="{{ user.avator_sor.url }}" data-am-popover="{content: '点击上传', trigger: 'hover focus'}" data-target="#doc-modal-1">
                     </div>
                     <div><a style="text-align: center; display: block;"  id="pic"></a></div>
                   </div>

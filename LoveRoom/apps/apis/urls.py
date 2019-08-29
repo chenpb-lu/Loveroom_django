@@ -20,6 +20,7 @@ urlpatterns = [
     url(r'^get_mobile_captcha/$', views.get_mobile_captcha, name='get_mobile_captcha'),
     url(r'^cpb/$', views.cpb, name='cpb'),
     url(r"^search/$",views.search,name='search'),
-    url(r'^collection/(?P<id>\d+)/$',views.HouseCollections.as_view(),name='house_collection')
+    url(r'^collection/(?P<id>\d+)/$',views.HouseCollections.as_view(),name='house_collection'),
+    url(r'^change_avator/$', views.ChangeAvator.as_view(), name='change_avator'),
 
 ]

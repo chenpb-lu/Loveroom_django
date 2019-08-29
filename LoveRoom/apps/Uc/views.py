@@ -6,7 +6,9 @@ from django.contrib import auth
 from django.contrib.auth.hashers import make_password
 from .models import User
 from .forms import RegisterForm,PhoneLoginForm,PwLoginForm
-
+from django.core.paginator import Paginator,EmptyPage, PageNotAnInteger
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 logger = logging.getLogger('account')
 
 # Create your views here.
@@ -148,5 +150,42 @@ def logout(request):
     auth.logout(request)
     return redirect(reverse("house:index"))
 
+@login_required()
 def change_passwd(request):
-    return render(request,'Uc/uc_change_passwd.html')
+    return render(request,'uc/uc_change_passwd.html')
+
+class ProfileView(LoginRequiredMixin,View):
+    def get(self,request):
+        return render(request, "uc/uc_profile.html")
+
+    def post(self, request):
+        ret_info = {"code": 200, "msg": "修改成功"}
+        try:
+            if request.POST.get("email"):
+                request.user.email = request.POST.get("email")
+            if request.POST.get("mobile"):
+                print('change mobile')
+                request.user.mobile = request.POST.get("mobile")
+            if request.POST.get("qq"):
+                request.user.qq = request.POST.get("qq")
+            if request.POST.get("realname"):
+                request.user.realname = request.POST.get("realname")
+            request.user.save()
+        except Exception as ex:
+            ret_info = {"code": 200, "msg": "修改失败"}
+        return render(request, "uc/uc_profile.html", {"ret_info": ret_info})
+
+
+class Collect(LoginRequiredMixin,View):
+    def get(self,request):
+        from django.db import connection
+        cursor = connection.cursor()
+        cursor.execute("SELECT house_houseinfo.id,house_houseinfo.type,house_houseinfo.info,house_houseinfo.location,house_houseinfo.photo,house_houseinfo.price,house_houseinfo.title  FROM show_housecollection,Uc_user,house_houseinfo WHERE Uc_user.id=8 and show_housecollection.status=1 and house_houseinfo.id=show_housecollection.house_id")
+        rows = cursor.fetchall()
+
+        # rows = cursor.fetchmany(2)  返回2条数据(3,4,5,6,7,...)
+        kwag = {
+            "houselist": rows,
+        }
+
+        return render(request,"uc/uc_collection.html",kwag)

@@ -226,7 +226,7 @@
             <ul class="login">
 				<li><i class="icon-login"></i></li>
                 {% if request.user.is_authenticated %}
-                <li><a id="usercenter"><span>个人中心{{ request.user }}</span></a></li>
+                <li><a id="usercenter" href="{% url "uc:profile" %}"><span>个人中心{{ request.user }}</span></a></li>
                 {% else %}
                 <li><a data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="register" id="register_modeal_btn"><span>注册</span></a></li>
                 {% endif %}
@@ -363,6 +363,7 @@
 </footer>
 
 <script src="/static/js/jquery.js" type="text/javascript"></script>
+<script src="/static/js/common-scripts.js"></script>
 <script src="/static/js/jquery-ui.js" type="text/javascript"></script>
 <script src="/static/js/bootstrap.js" type="text/javascript"></script>
 <script type="text/javascript" src="/static/js/jquery.appear.js"></script>
@@ -374,16 +375,12 @@
 <script type="text/javascript" src="/static/js/scripts.js"></script>
 <script type="text/javascript" src="/static/js/index.js"></script>
 <script type="text/javascript" src="/static/js/share.js"></script>
+{% block load_css %}
+    {% endblock %}
 {% block load_js %}
 
 {% endblock %}
 <script>
-$('#usercenter').click(function () {
-    {% if request.user.is_authenticated %}
-    alert(
-        {{ request.user.mobile }});
-    {% endif %}
-});
 function countDown(obj,second,name){
 // 如果秒数还是大于0，则表示倒计时还没结束
  console.log("老子到这了");

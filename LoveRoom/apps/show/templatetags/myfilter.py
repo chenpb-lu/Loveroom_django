@@ -58,6 +58,17 @@ def housetype(value):
     elif type == 2:
         return f"床位{info['bedCount']}个"
 
+@register.filter
+def housetype_sql(value):
+    type = value[1]
+    info = json.loads(value[2])
+    if type == 0:
+        return f"整套·{info['layoutWc']}居室"
+    elif type == 1:
+        return f"单间·{info['layoutWc']}居室"
+    elif type == 2:
+        return f"床位{info['bedCount']}个"
+
 
 @register.filter
 def get_img_len(value,arg):
