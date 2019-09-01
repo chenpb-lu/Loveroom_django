@@ -126,4 +126,33 @@
             </div>
           </div>
         </div>
+    
+
+{% endblock %}
+{% block load_js %}
+    <script>
+ $(".book-it").click(function () {
+     console.log(111)
+      $.ajax({
+                url: 'http://www.greenyep.com/api/index',
+                type: 'POST',
+                data: {goodname:"民宿",type:1,account:"测试",notifyurl:"http://127.0.0.1:8000/uc/profile/",returnurl:"returnurl",
+                ordernum:"123456",orderuid:"123",mode:1,token:"2ndoq948o1ejymmq4shqn5b9gp8udqi5",uid:"7517586563393646"},
+                success: function (data) {
+                    if(data.code == 200){
+                        obj_a = $("#house_collect-"+id);
+                        // 根据状态显示爱心
+                        if(data.msg.status){
+                            obj_a.attr("style", "color:red; ")
+                        }else{
+                            obj_a.attr("style", "color:#cfcece; ")
+                        }
+                    }
+                },
+                beforeSend: function(xhr, settings) {
+                xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+            }
+            });
+ })
+</script>
 {% endblock %}

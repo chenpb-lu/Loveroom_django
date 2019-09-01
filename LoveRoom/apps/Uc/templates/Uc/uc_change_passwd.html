@@ -6,7 +6,7 @@
               <h4>修改密码</h4>
               <hr/>
               <div class="row col-md-7">
-                    <form class="form-horizontal" role="form" method="post">
+                    <form class="form-horizontal" role="form" method="post" href="{% url "uc:change_passwd" %}">
                          {% csrf_token %}
                           <div class="form-group">
                               <label for="inputPasswordOld" class="col-lg-3 control-label">旧密码</label>
@@ -28,7 +28,7 @@
                           </div>
                           <div class="form-group">
                               <div class="col-lg-offset-3 col-lg-9">
-                                  <button type="submit" class="btn btn-danger">提交</button>
+                                  <button type="submit" class="btn btn-danger" id="change_passwd_btn"  style="color: white" disabled="disabled" >提交</button>
                               </div>
                           </div>
                      </form>
@@ -37,5 +37,61 @@
           </div>
       </div>
   </div>
+
+{% endblock %}
+{% block load_js2 %}
+<script>
+var oldflag = false;
+var newflag = false;
+var newflag2 = false;
+$("#inputPasswordOld").blur(function () {
+    reg1 = /^.*[\d]+.*$/;
+    reg2 = /^.*[A-Za-z]+.*$/;
+    reg3 = /^.*[_@#%&^+-/*\/\\]+.*$/;//验证密码
+    var Pval = $("#inputPasswordOld").val();
+    if (Pval.length > 16 || Pval.length < 8) {
+        alert("密码应为8-16个字符，区分大小写")
+    } else if (!((reg1.test(Pval) && reg2.test(Pval)) || (reg1.test(Pval) && reg3.test(Pval)) || (reg2.test(Pval) && reg3.test(Pval)) )) {
+        alert("需至少包含数字、字母和符号中的两种类型");
+    }else{
+        oldflag = true;
+    }
+    check();
+});
+$("#inputPasswordNew2").blur(function () {
+    check()
+});
+$("#inputPasswordNew2").blur(function () {
+    if ($("#inputPasswordNew1").val() != $("#inputPasswordNew2").val()) {
+            $("#inputPasswordNew1").val('');
+            $("#inputPasswordNew2").val('');
+            alert("两次输入的新密码不一致！");
+        }else{
+            reg1 = /^.*[\d]+.*$/;
+            reg2 = /^.*[A-Za-z]+.*$/;
+            reg3 = /^.*[_@#%&^+-/*\/\\]+.*$/;//验证密码
+            var Pval = $("#inputPasswordNew1").val();
+            if (Pval.length > 16 || Pval.length < 8) {
+                alert("密码应为8-16个字符，区分大小写")
+            } else if (!((reg1.test(Pval) && reg2.test(Pval)) || (reg1.test(Pval) && reg3.test(Pval)) || (reg2.test(Pval) && reg3.test(Pval)) )) {
+                alert("需至少包含数字、字母和符号中的两种类型");
+            }else{
+                newflag = true;
+                newflag2 = true;
+            }
+            check();
+
+    }
+});
+    function check() {
+        if(oldflag && newflag && newflag2){
+        $("#change_passwd_btn").removeAttr("disabled");
+         }
+    }
+
+{% if msg %}
+alert("{{ msg }}");
+{% endif %}
+</script>
 
 {% endblock %}

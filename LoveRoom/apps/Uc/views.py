@@ -10,6 +10,16 @@ from django.core.paginator import Paginator,EmptyPage, PageNotAnInteger
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
 logger = logging.getLogger('account')
+from django.contrib.auth.hashers import check_password as auth_check_password
+
+class LoginRequiredMixin(object):
+    """
+    登陆限定，并指定登陆url
+    """
+    @classmethod
+    def as_view(cls, **initkwargs):
+        view = super(LoginRequiredMixin, cls).as_view(**initkwargs)
+        return login_required(view, login_url='/')
 
 # Create your views here.
 class Register(View):
@@ -150,9 +160,27 @@ def logout(request):
     auth.logout(request)
     return redirect(reverse("house:index"))
 
-@login_required()
-def change_passwd(request):
-    return render(request,'uc/uc_change_passwd.html')
+
+class ChangePasswd(LoginRequiredMixin,View):
+    def get(self,request):
+        return render(request,'uc/uc_change_passwd.html')
+    def post(self,request):
+        ret = {"status": 400, "msg": "调用方式错误"}
+        oldpassword = request.POST.get("oldpassword")
+        newpasswd1 = request.POST.get("newpassword1")
+        if auth_check_password(oldpassword, request.user.password):
+            request.user.password=make_password(newpasswd1)
+            logger.info(f"{request.user.username}注销成功")
+            logger.info(f"{request.user.username}修改密码成功")
+            request.user.save()
+            return render(request,'house/index.html',{"msg":"修改密码成功，请重新登录"})
+
+        else:
+            ret ={"status": 300, "msg": "旧密码错误"}
+            return render(request,"uc/uc_change_passwd.html",{"msg":"旧密码错误"})
+
+
+
 
 class ProfileView(LoginRequiredMixin,View):
     def get(self,request):
@@ -182,10 +210,31 @@ class Collect(LoginRequiredMixin,View):
         cursor = connection.cursor()
         cursor.execute("SELECT house_houseinfo.id,house_houseinfo.type,house_houseinfo.info,house_houseinfo.location,house_houseinfo.photo,house_houseinfo.price,house_houseinfo.title  FROM show_housecollection,Uc_user,house_houseinfo WHERE Uc_user.id=8 and show_housecollection.status=1 and house_houseinfo.id=show_housecollection.house_id")
         rows = cursor.fetchall()
+        paginator = Paginator(rows, 12)
+        page = request.GET.get('page')
+        numlist = []
+        if paginator.num_pages > 5:
+            numlist = ['1', '2', '3', '4', '5']
+        else:
+            for i in range(1, paginator.num_pages + 1):
+                numlist.append(str(i))
+        try:
+            contacts = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            contacts = paginator.page(1)
+            page = 1
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            contacts = paginator.page(paginator.num_pages)
+            page = paginator.num_pages
 
         # rows = cursor.fetchmany(2)  返回2条数据(3,4,5,6,7,...)
         kwag = {
-            "houselist": rows,
+            "houselist": contacts,
+            "page" : page,
+            'fivenum': numlist,
+            'pagenum': paginator.num_pages,
         }
 
         return render(request,"uc/uc_collection.html",kwag)

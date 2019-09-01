@@ -22,11 +22,10 @@
                                     <a href="/show/{{ item.0 }}/?st={{ st }}&et={{ et }}"><p style="margin-bottom: 0px !important;height: 24px"><strong>{{ item.6|limit_title }}</strong></p></a>
                                     <p style="color: #9faab6;height: 15px"><span style="font-size: 5px">{{ item|housetype_sql }}  |</span><span style="font-size: 5px">可住{{ item.2|jsonvalue:"maxGuestNumber" }}人   |</span><span style="font-size: 5px">{{ item.3|jsonvalue:"districtName" }}</span><p>
 									<div class="post-meta">
-                                    {% if request.user.is_authenticated %}
-                                        <a style="color: #cfcece;" id="house_collect-{{ item.0 }}" class="like" ><i class="fa fa-heart"></i></a>
-                                    {% else %}
-                                        <a style="color: #cfcece;" id="house_collect-{{ item.0 }}" class="like" ><i class="fa fa-heart"></i></a>
-                                    {% endif %}
+
+                                        <a style="color: #cf251f;" id="house_collect-{{ item.0 }}" class="like" ><i class="fa fa-heart"></i></a>
+
+
 
                                      </div>
                                     </div>
@@ -40,6 +39,67 @@
                     {% endif %}
 
 				</ul>
+                <div class="numbering">
+                        <ul class="pagination" id="pagination_cpb">
+
+                            {% if houselist.has_previous %}
+                            <li><a href="?page={{ houselist.previous_page_number }}">上一页</a></li>
+                            {% endif %}
+                            {% if page|contrast:'6'  %}
+                                {% for i in fivenum %}
+                                <li {% ifequal page i %}class="active"{% endifequal %}><a href="?page={{ i }}">{{ forloop.counter }}</a></li>
+                                {% endfor %}
+                                {% if pagenum|contrast:'6' %}
+                                {% else %}
+                                    <li ><a >···</a></li>
+                                    <li ><a href="?page={{ pagenum}}">{{ pagenum }}</a></li>
+                                {% endif %}
+                            {% else %}
+                                <li ><a href="?page=1">1</a></li>
+                                <li ><a >···</a></li>
+
+                                {% if page|add:'2' < pagenum %}
+                                    <li ><a href="?page={{ page|add:'-2' }}">{{ page|add:'-2' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-1' }}">{{ page|add:'-1' }}</a></li>
+                                    <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                                    <li ><a href="?page={{ page|add:'1' }}">{{ page|add:'1' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'2' }}">{{ page|add:'2' }}</a></li>
+                                    <li><a>···</a></li>
+                                    <li ><a href="?page={{ pagenum}}">{{ pagenum }}</a></li>
+                                {% endif %}
+
+                                {% ifequal page|add:'2'  pagenum  %}
+                                    <li ><a href="?page={{ page|add:'-2' }}">{{ page|add:'-2' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-1' }}">{{ page|add:'-1' }}</a></li>
+                                    <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                                    <li ><a href="?page={{ page|add:'1' }}">{{ page|add:'1' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'2' }}">{{ page|add:'2' }}</a></li>
+                                {% endifequal %}
+                                {% ifequal page|add:'1'  pagenum  %}
+                                    <li ><a href="?page={{ page|add:'-3' }}">{{ page|add:'-3' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-2' }}">{{ page|add:'-2' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-1' }}">{{ page|add:'-1' }}</a></li>
+                                    <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                                    <li ><a href="?page={{ page|add:'1' }}">{{ page|add:'1' }}</a></li>
+                                {% endifequal %}
+                                {% ifequal page|add:'0'  pagenum  %}
+                                    <li ><a href="?page={{ page|add:'-4' }}">{{ page|add:'-4' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-3' }}">{{ page|add:'-3' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-2' }}">{{ page|add:'-2' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-1' }}">{{ page|add:'-1' }}</a></li>
+                                    <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                                {% endifequal %}
+
+                            {% endif %}
+
+
+                            {% if houselist.has_next %}
+                            <li><a href="?page={{ houselist.next_page_number }}">下一页</a></li>
+                            {% endif %}
+
+
+					    </ul>
+				    </div>
                 </div>
 
           </div>

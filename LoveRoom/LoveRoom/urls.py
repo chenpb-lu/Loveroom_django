@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'^uc/',include('apps.Uc.urls', namespace='uc')),
     url(r'^apis/', include('apps.apis.urls', namespace="apis")),
     url(r'^show/',include('apps.show.urls', namespace="show")),
+    url(r'^pay/',include('apps.alipay.urls')),
     url(r'^$',views.index)
 ]
 

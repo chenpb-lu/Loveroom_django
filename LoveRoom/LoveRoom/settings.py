@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'apps.Uc',
     'apps.help',
     'apps.apis',
-    'apps.show'
+    'apps.show',
+    'apps.alipay',
 ]
 
 MIDDLEWARE = [
@@ -268,4 +269,16 @@ CACHES = {
              "PASSWORD": "",
         },
     },
+}
+
+ALIPAY = {
+    'app_id': '2016101400680725',
+    'key': '760bdzec6y9goq7ctyx96ezkz78287de',
+    'seller_email': 'overseas_kgtest@163.com',
+    'gateway': 'https://openapi.alipaydev.com/gateway.do?',
+    'server_url': "http://127.0.0.1:8000",
+    # app的私钥
+    'app_private_key': "keys/app_private_key.txt",
+    # alipay的公钥
+    'alipay_public_key': "keys/alipay_public_key.txt",
 }
