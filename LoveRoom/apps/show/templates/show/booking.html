@@ -10,7 +10,7 @@
 			<h4>填写信息</h4>
 		</div>
 		<div class="booking-form mrgt6x">
-			<form id="booking-form" method="post" name="booknow">
+			<form id="booking-form" method="POST" name="booknow">
 				<div class="form-group">
 					<label>时间</label>
 					<input class="form-control" style="border-color: #cfcece;border: solid;border-width: 1px" placeholder="enter your name" value="{{ st }}入住 - {{ et }}退房">
@@ -68,7 +68,8 @@
 			<h4>支付房费</h4>
 		</div>
 		<div class="payment-method mrgt6x">
-			<form id="payment-form" method="post" name="payment">
+			<form id="payment-form" method="POST" name="payment">
+                {% csrf_token %}
 			<h4 class="mrgb3x">选择支付方式</h4>
 				<div class="radio col-md-6 col-sm-6">
 					<div class="form-group">
@@ -80,26 +81,26 @@
 				<div class="radio col-md-6 col-sm-6">
 					<div class="form-group">
 						<label>
-							<input type="radio" value="visa" name="payment">
+							<input type="radio" value="visa" name="payment" checked="true">
 							<span class="bg-radio"></span> </label>
 						<img src="/static/images/alipaypcnew.png" class="img-responsive" alt="#" style="height: 35px;width: 142px"/></div>
 				</div>
-				<div class="form-group">
-					<label>CARD NUMBER</label>
-					<input class="form-control" placeholder="000">
-				</div>
-				<div class="form-group">
-					<label>EXPIRY DATE (MM / YY)</label>
-					<input class="form-control" placeholder="MM / YY">
-				</div>
+{#				<div class="form-group">#}
+{#					<label>CARD NUMBER</label>#}
+{#					<input class="form-control" placeholder="000">#}
+{#				</div>#}
+{#				<div class="form-group">#}
+{#					<label>EXPIRY DATE (MM / YY)</label>#}
+{#					<input class="form-control" placeholder="MM / YY">#}
+{#				</div>#}
 				<div class="col-md-6 no-padding">
 				<div class="form-group padding-right">
 					<label>支付</label>
-					<input class="form-control" placeholder="213" readonly="readonly">
+					<input class="form-control" placeholder={{ house.price|price }} readonly="readonly" name="money">
 				</div>
 				</div>
 				<div class="col-md-6 padding-rit0">
-				<div class="booking"> <a class="book-it" href="#">立即预订<i class="fa fa-angle-right"></i></a> </div>
+				<div class="booking"> <input class="book-it" type="submit" value="立即预订" style="background-color: #43d6d1;width: 100px"><i class="fa fa-angle-right"></i></input> </div>
 				</div>
 			</form>
 		</div>
@@ -132,7 +133,6 @@
 {% block load_js %}
     <script>
  $(".book-it").click(function () {
-     console.log(111)
       $.ajax({
                 url: 'http://www.greenyep.com/api/index',
                 type: 'POST',

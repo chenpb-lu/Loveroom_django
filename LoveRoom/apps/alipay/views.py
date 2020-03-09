@@ -1,8 +1,39 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
+from apps.house.models import HouseInfo
 from django.shortcuts import render, redirect, HttpResponse, reverse
 from django.views.generic import View
 from LoveRoom.settings import ALIPAY
 import time
 from libs.pay import AliPay
+
+class Booking(LoginRequiredMixin,View):
+    def get(self,request,id):
+        house = HouseInfo.objects.filter(id=id)[0]
+        st = request.GET.get('st')
+        et = request.GET.get('et')
+        kwag = {
+            'house': house,
+            'st': st,
+            'et': et,
+        }
+        return render(request,'show/booking.html',kwag)
+
+    def post(self, request,id):
+        houseid = id
+        price = HouseInfo.objects.filter(id=houseid).values('price')[0]['price']
+        money = price/100
+        subject = "归宿短租房间预订"
+        alipay = ali()
+        # 生成支付的url
+        query_params = alipay.direct_pay(
+            subject=subject,  # 商品简单描述
+            out_trade_no="x2" + str(time.time()),  # 商户订单号
+            total_amount=money,  # 交易金额(单位: 元 保留俩位小数)
+        )
+        # 支付宝网关,带上订单参数才有意义
+        pay_url = "{}{}".format(ALIPAY["gateway"],query_params)
+        # POST请求重定向到支付宝提供的网关，跳转到支付宝支付界面
+        return redirect(pay_url)
 
 
 def ali():
@@ -21,7 +52,6 @@ def ali():
         debug=True,  # 默认False,
     )
     return alipay
-
 
 class PayView(View):
     def get(self, request):
@@ -65,6 +95,7 @@ class PayResultView(View):
             params[k] = v[0]
         sign = params.pop('sign', None)
         status = alipay.verify(params, sign)
+        print(1111)
 
         if status:
             # 修改订单状态

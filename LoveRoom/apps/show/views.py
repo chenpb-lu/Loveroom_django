@@ -57,13 +57,13 @@ class showDetail(View):
 
         if minprice:
             minprice_b = int(minprice)*100
-            print(minprice_b)
+            # print(minprice_b)
             houselist = houselist.filter(price__gt=minprice_b)
         if maxprice:
             maxprice_b = int(maxprice)*100
-            print(maxprice)
+            # print(maxprice)
             houselist = houselist.filter(price__lt=maxprice_b)
-        # except:
+        # else:
         #     houselist = []
 
         if not st and not et:
@@ -74,6 +74,7 @@ class showDetail(View):
             et = n_days.strftime('%m/%d/%Y')
         districtlist = SiteInfo.objects.filter(cityname=city, type=0).values('name', 'id')
         arealist = SiteInfo.objects.filter(cityname=city, type=7).values('name', 'id')
+        houselist = houselist.order_by('id')
         paginator = Paginator(houselist, 12)
         page = request.GET.get('page')
         numlist = []

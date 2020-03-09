@@ -18,6 +18,7 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.PayView.as_view(), name="pay"),
+    url(r'^booking/(?P<id>\d+)/$',views.Booking.as_view(),name='book'),
     url(r'^result/$', views.PayResultView.as_view(), name="pay_result"),
 
 

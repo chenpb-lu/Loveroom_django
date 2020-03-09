@@ -350,7 +350,7 @@
     <script>
  $("#bookNow").click(function () {
         {% if request.user.is_authenticated %}
-             window.location.href="/show/booking/{{ house.id }}/?st={{ st }}&et={{ et }}";
+             window.location.href="/pay/booking/{{ house.id }}/?st={{ st }}&et={{ et }}";
         {% else %}
         alert("请先登录！");
 
