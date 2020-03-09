@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0050)http://www.pmob.co.uk/temp/fixedlayoutexample5.htm -->
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>Fixed header and footer for IE</TITLE>
+<META content="text/html; charset=iso-8859-1" http-equiv=Content-Type>
+<STYLE type=text/css>BODY {
+MARGIN: 0px
+}
+HTML {
+PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: 100%; PADDING-TOP: 0px
+}
+BODY {
+PADDING-BOTTOM: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; HEIGHT: 100%; PADDING-TOP: 0px
+}
+* HTML {
+PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+* HTML BODY {
+PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; OVERFLOW: hidden; PADDING-TOP: 0px
+}
+* HTML #outer {
+HEIGHT: 99.9%; OVERFLOW: auto; voice-family: inherit
+}
+* HTML #contain-all {
+Z-INDEX: 1; POSITION: absolute; OVERFLOW-Y: scroll; WIDTH: 100%; HEIGHT: 100%
+}
+#top-bar {
+Z-INDEX: 999; POSITION: absolute; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-LEFT: 0px; WIDTH: 100%; PADDING-RIGHT: 0px; HEIGHT: 50px; OVERFLOW: hidden; TOP: 0px; PADDING-TOP: 0px; LEFT: 0px
+}
+#topbar-inner {
+BACKGROUND: red; HEIGHT: 50px; width: 300px;
+}
+#footer-inner {
+BACKGROUND: red; HEIGHT: 50px
+}
+* HTML #topbar-inner {
+MARGIN-RIGHT: 17px
+}
+* HTML #footer-inner {
+MARGIN-RIGHT: 17px
+}
+#footer {
+Z-INDEX: 999; POSITION: absolute; WIDTH: 100%; BOTTOM: 0px; HEIGHT: 50px
+}
+.spacer {
+HEIGHT: 50px
+}
+P {
+MARGIN-TOP: 0px
+}
+HTML > BODY #top-bar {
+POSITION: fixed
+}
+HTML > BODY #footer {
+POSITION: fixed
+}
+</STYLE>
+
+<META name=GENERATOR content="MSHTML 8.00.7600.16490"></HEAD>
+<BODY>
+<DIV id=outer>
+<DIV id=contain-all>
+<DIV is an experimental layout and untested in a real situation but
+preliminary results look good.</P>
+<P>The header and footer need to be a fixed height and are therefore not suited
+to large amounts of fluid content.</P>
+<P>The code comments for ie are documented below as they needed to be removed
+from the code for ie mac</P>
+<P>* html, * html body{<BR>overflow:hidden;/* remove scroll mechanism from
+body*/<BR>padding:50px 0;/* for ie5 and 5.5.*/<BR>margin:-50px
+0;<BR>padd\ing:0;<BR>margin:0;<BR>}</P>
+<P>* html #outer { <BR>overflow:auto;/* this is basically the root element
+now*/<BR>height:100%;<BR>/* we need to make ie5 jump the next style block (
+contain-all) so we use the voice hack*/<BR>voice-family: "\"}\"";
+voice-family:inherit; <BR>}<BR>* html #contain-all{/* must contain all content
+except for top and bottom bars - ie5 doesnt want this so jumps it as mentioned
+above*/<BR>position:absolute;/* due to a bug in ie6 where children of elements
+that have overflow defined behave as those they are
+fixed*/<BR>overflow-y:scroll;<BR>width:100%;<BR>height:100%;<BR>z-index:1;<BR>}<BR></P>
+<P> </P>
+<P>some text to wrap : some text to wrap : some text to cause scrolling : : some
+text to wrap : some text to wrap : some text to cause scrolling : : some text to
+wrap : some text to wrap : some text to cause scrolling : : some text to wrap :
+some text to wrap : some text to cause scrolling : : some text to wrap : some
+text to wrap : some text to cause scrolling : : some text to wrap : some text to
+wrap : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>some text to cause scrolling : </P>
+<P>Last bit of text</P>
+<DIV id=top-bar>
+<DIV id=topbar-inner>Fixed Top & bottom- Demo works in IE5 IE5.5. and ie6 -
+Firefox 1.0+, Mozilla 1.3+, NN 6.2, Opera 6.03 7.2 7.5,8 : (Mac OS X 10.4 -
+FireFox 1.5.0.1, Safari 2.0.3 (417.8), IE 5.2 (5.2.3 (5815.1)) </DIV></DIV>
+<DIV id=footer>
+<DIV id=footer-inner>Fixed footer </DIV></DIV></BODY></HTML>

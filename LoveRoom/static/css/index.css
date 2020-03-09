@@ -1,0 +1,128 @@
+*{ margin: 0;padding: 0;}
+li,ul{list-style: none;}
+img,input{border: 0;}
+a{text-decoration: none;}
+body{font-family: "微软雅黑","Microsoft Yahei",Arial,Helvetica,sans-serif,"宋体";font-size: 14px;color: #515151;}
+body input, body textarea {font-family: "微软雅黑","Microsoft Yahei",Arial,Helvetica,sans-serif,"宋体";background-color: white;outline: none;}
+
+.content{ width: 100%; height: auto;}
+.ucSimpleHeader{ height: 30px;margin: 0 auto;position: relative;padding-top: 45px;width: 1000px;}
+
+
+.meizuLogo{ width: 110px; height: 20px; float: left;background: url("images/base.png") -388px -90px no-repeat; display: block;}
+.trigger{float: right;height: 20px;line-height: 20px;width: 100px;text-align: center;}
+.trigger a{color: #7f7f7f;}
+.trigger a:hover{color: #474747;}
+.trigger a:nth-child(3){color:#474747;}
+/*mainForm1*/
+
+.mainForm{margin-top: 10px;width: 360px;margin: 0px auto 0px;overflow: hidden;}
+.number{font-size: 20px;margin-left: -5px;margin-bottom: 30px;width: 350px;text-align: center;}
+.number a{color: #515151;}
+.linkABlue:visited {color: #00a7ea;}
+.linkAGray:hover{color: #2b2b2b;}
+.number span{color: #d9d9d9;display: inline-block;border: 1px solid #dadada;border-left: 1px;height: 16px;line-height: 20px;margin-right: 50px;margin-left: 50px;}
+.normalInput{float: left;position: relative;display: inline-block;padding: 0px 10px;width: 340px;height: 50px;line-height: 22px;font-size: 16px;margin-bottom: 20px;border: 1px solid #dadada;outline: none;color: #474747;overflow: visible;}
+.error{display: none;margin-left: 0px;margin-bottom: 20px;color: red;float: left;}
+/*#mainForm1 .normalInput input,#mainForm2 .normalInput input{line-height: 22px;padding: 14px 0;height: 22px;}*/
+/*#mainForm1_register .normalInput input,#mainForm2 .normalInput input{line-height: 22px;padding: 14px 0;height: 22px;}*/
+.normalInput input{font-size: 16px;width: 100%;padding: 22px 0;height: 22px;}
+.errorC{ margin-bottom: 10px;border-color: red;color: red;}
+.checkedN{border: 1px solid #1ece6d;}
+
+
+.formLine{color: #d9d9d9;height: 40px;display: inline-block;border-left: 1px solid #dadada;position: absolute;right: 100px;top: 5px;}
+#getKey{width: 80px;border: none;outline: none;height: 50px;line-height: 50px;font-size: 16px;position: absolute;right: 10px;top: 0px;}
+#getKey_login{width: 80px;border: none;outline: none;height: 50px;line-height: 50px;font-size: 16px;position: absolute;right: 10px;top: 0px;}
+.i_icon{display: inline-block;width: 100%;height: 100%;overflow: hidden;}
+.normalInput .password{float: left;width: 200px;}
+.normalInput .password1{float: left;width: 200px;display: none;}
+.normalInput .passwordN{float: left;width: 200px;}
+.normalInput .password1N{float: left;width: 200px;display: none;}
+.pwdBtnShow{outline: none;position: relative;display: inline-block;width: 30px;height: 30px;cursor: pointer;overflow: hidden;float: right;margin-right: 5px;}
+#pwdBtn {margin-top: 13px;margin-bottom: 10px;}
+.pwdBtnShow i{background-image:url("images/elements.png");background-position: -60px -93px; background-repeat: no-repeat;}
+.pwdBtnShowN{outline: none;position: relative;display: inline-block;width: 30px;height: 30px;cursor: pointer;overflow: hidden;float: right;margin-right: 5px;}
+#pwdBtnN {margin-top: 13px;margin-bottom: 10px;}
+.pwdBtnShowN i{background-image:url("images/elements.png");background-position: -60px -93px; background-repeat: no-repeat;}
+
+.rememberField{margin-bottom: 30px;height: 20px;line-height: 20px;float: left;display: block;}
+.checkboxPic {outline: none; display: inline-block;width: 25px;height: 20px;line-height: 20px;cursor: pointer;vertical-align: middle;overflow: hidden;}
+.check_chk i {background-position: -31px -127px;background-image: url("images/elements.png");background-repeat: no-repeat;}
+.pointer{cursor: pointer;}
+.otherError{display: none;margin-left: 0px;margin-bottom: 20px;color: red;float: left;}
+.fullBtnBlue{display: inline-block;height: 50px;width: 342px;font-size: 20px;line-height: 50px;text-align: center;margin-bottom: 20px;outline: none;cursor: pointer;background-color: #32a5e7;color: #fff;}
+/*mainForm1end*/
+
+/*mainForm2*/
+.linkAGray2:visited {color: #00a7ea;}
+.linkABlue2:hover{color: #2b2b2b;}
+.normalInput .username{width: 220px;border: none;outline: none;font-size: 16px;height: 22px;line-height: 22px;padding: 22px 0;}
+.grayTip {height: 50px;line-height: 50px;vertical-align: top;display: inline-block;color: #7f7f7f;}
+/*mainForm2end*/
+
+.footer{position: absolute;bottom: 0;width: 100%;height: 130px;border-top: solid 1px #E5E6E7;background-color: #fff;color: black;top: 669px;}
+.footerInner{width: 1000px;margin: 24px auto 30px;}
+
+.footerLayer1{height: 50px;line-height: 50px;}
+.footerInnerLink{float: left;}
+.footerInnerLink a{color: black;}
+.foot-line {background-color: #888;margin: 0px 5px;width: 1px;height: 10px;}
+.footerLanguage{position: relative;overflow: hidden;cursor: default;background: url("images/base.png") -30px -150px no-repeat;}
+
+.footerService{float: left;margin-left: 36px;}
+.serviceLabel{margin-right: 10px;}
+.serviceNum{margin-right: 20px;}
+.serviceOnline{display: inline-block;height: 20px;line-height: 18px;width: 64px;color: white;background-color: #32a5e7;border-radius: 2px;-webkit-border-radius: 2px;text-align: center;}
+
+.footerOuterLink{position: relative;float: right;padding-top: 9px;}
+.footerOuterLink a{margin-left: 10px;display: inline-block;overflow: hidden;width: 32px;height: 32px;}
+.footerOuterLink i{background: url("images/base.png") no-repeat;}
+.footerSinaMblog i{background-position: -168px -91px;}
+.footerTencentMblog i{background-position: -210px -91px;}
+.footerWeChat i{background-position: -252px -91px;}
+.footerQzone i{background-position: -294px -91px;}
+
+.footerSinaMblog:hover i{background-position: -168px -137px;}/*只能作用于自身或子元素加  ~(通用兄弟选择器)   可以作用于兄弟元素*/
+.footerTencentMblog:hover i{background-position: -210px -137px;}
+.footerWeChat:hover i{background-position: -252px -137px;}
+.footerQzone:hover i{background-position: -294px -137px;}
+.wechatPic{position: absolute;z-index: 100;width: 310px;height: 270px;background: url("images/weixin.png") no-repeat;left: -38px;top: -267px;display: none;}
+.footerWeChat:hover ~ .wechatPic{display: block;}
+
+
+.footerLanguagMenuBox{display: inline-block;}
+.footerLanguagMenu{left: 474.5px;bottom: 89px;display: none;box-shadow: 0px 0px 10px #E1E4E8;border-radius: 2px;background-color: #FEFEFE;position: absolute;border: solid 1px #E1E4E8;overflow: hidden;width: 140px; height: 200px;z-index: 10;}
+.footerLanguagMenu a{display: block;height: 40px;line-height: 40px;width: 118px;margin: 0px auto;border-bottom: solid 1px #E4E7E9;font-size: 14px;color: #000000;text-align: left;padding-left: 10px;}
+.footerLanguagMenu .checked, .footerLanguagMenu .checked:hover {color: #1daeed;}
+.footerLanguagMenu .ClobalItem:hover{color: #515151;}
+#globalContainer a:nth-child(5){border-width: 0px;}
+.footerLanguagMenuBox:hover  #globalContainer{display: block;}
+
+
+.copyrightWrap{width: 100%;}
+.copyrightInner{width: 1000px;margin: 0px auto;overflow: hidden;}
+.copyrightInner span{color: #a2a2a2;float: left;}
+.copyrightInner a{float: left;color: #a2a2a2;margin-left: 6px;white-space: nowrap;}/*white-space 属性设置如何处理元素内的空白。*/
+
+/*#mz_Float{position: absolute;z-index: 1000;top: -376px;left: 851px;width: 200px;display: block;}*/
+#mz_Float{position: absolute;z-index: 1000;left: 400px;width: 200px;display: none;}
+
+.mz_FloatBox{position: relative;}
+.mz3AngleL{z-index: 1;position: absolute;width: 10px;height: 16px;top: 10px;left: -1px;overflow: hidden;}
+.mz3AngleL i {background-position: 0px -96px;background-image: url("images/elements.png");background-repeat:  no-repeat;}
+.mzFloatTip {width: 170px; padding: 6px 10px 6px 10px;background-color:#fff;position: absolute;right: 0px;color: #515151;border: solid 1px #E5E5E5;}
+.bRadius2 {border-radius: 2px;}
+/*outline: medi um none;*/
+
+.mainForm2{display: none;}
+
+
+#mz_Float_login{position: absolute;z-index: 1000;left: 400px;width: 200px;display: none;}
+.mz_FloatBox_login{position: relative;}
+.mz3AngleL_login{z-index: 1;position: absolute;width: 10px;height: 16px;top: 10px;left: -1px;overflow: hidden;}
+.mz3AngleL_login i {background-position: 0px -96px;background-image: url("images/elements.png");background-repeat:  no-repeat;}
+.mzFloatTip_login {width: 170px; padding: 6px 10px 6px 10px;background-color:#fff;position: absolute;right: 0px;color: #515151;border: solid 1px #E5E5E5;}
+.bRadius2_login {border-radius: 2px;}
+/*outline: medi um none;*/
+.ul_other_login li{display: inline ;padding: 10px}

@@ -12,6 +12,15 @@
 <link href="css/revolution-slider.css" rel="stylesheet" type="text/css">
 <link href="css/owl.carousel.css" rel="stylesheet" type="text/css">
 <link href="css/responsive.css" rel="stylesheet" type="text/css">
+<link href="css/cpb.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/safe/css.css" />
+<link rel="stylesheet" href="css/safe/common.min.css" />
+<link rel="stylesheet" href="css/safe/ms-style.min.css" />
+<link rel="stylesheet" href="css/safe/personal_member.min.css" />
+<link rel="stylesheet" href="css/safe/Snaddress.min.css" />
+<link rel="stylesheet" href="css/sui.css" />
+
+
 </head>
 
 <body>
@@ -113,759 +122,375 @@
 		</div>
 	</div>
 </header>
-<div id="mainslider">
-	<div class="slider">
-		<div class="fullscreen-container">
-			<div class="fullscreenbanner">
-				<ul>
-					<li data-transition="slide" data-slotamount="10"> <img class="img-responsive" alt="" src="images/sliderimg-1.png"/>
-						<div class="caption sfb" 
-								data-x="center" 
-								data-y="160" 
-								data-speed="1000" 
-								data-start="1000" 
-								data-easing="easeOutExpo">
-							<div class="slider-text clearfix">
-								<div class="text-box">
-									<h2>Luxurious Hotel Suite</h2>
-									<p>Whether you’re looking to sell or let your home or want to buy or rent a</p>
-									<p> home, we really are the people for you to come to.</p>
-								</div>
-								<div class="slider-button">
-									<div class="view-btn"> <a href="">VIEW DETAILS</a> </div>
-									<div class="signup-btn"> <a href="#">SIGNUP NOW</a> </div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li data-transition="slide" data-slotamount="10"> <img class="img-responsive" alt="" src="images/sliderimg-2.png"/>
-						<div class="caption sfb" 
-								data-x="center" 
-								data-y="center" 
-								data-speed="1000" 
-								data-start="1000" 
-								data-easing="easeOutExpo">
-							<div class="slider-text clearfix">
-								<div class="text-box">
-									<h2>Luxurious Hotel Suite</h2>
-									<p>Whether you’re looking to sell or let your home or want to buy or rent a</p>
-									<p> home, we really are the people for you to come to.</p>
-								</div>
-								<div class="slider-button">
-									<div class="view-btn"> <a href="">VIEW DETAILS</a> </div>
-									<div class="signup-btn"> <a href="#">SIGNUP NOW</a> </div>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li data-transition="slide" data-slotamount="10"> <img class="img-responsive" alt="" src="images/sliderimg-3.png"/>
-						<div class="caption sfb" 
-								data-x="center" 
-								data-y="center" 
-								data-speed="1000" 
-								data-start="1000" 
-								data-easing="easeOutExpo">
-							<div class="slider-text clearfix">
-								<div class="text-box">
-									<h2>Luxurious Hotel Suite</h2>
-									<p>Whether you’re looking to sell or let your home or want to buy or rent a</p>
-									<p> home, we really are the people for you to come to.</p>
-								</div>
-								<div class="slider-button">
-									<div class="view-btn"> <a href="">VIEW DETAILS</a> </div>
-									<div class="signup-btn"> <a href="#">SIGNUP NOW</a> </div>
-								</div>
-							</div>
-						</div>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="top-tabs">
-	<div class="container">
-		<ul class="nav nav-tabs">
-			<li class="active"><a data-toggle="tab" href="#properties" aria-expanded="true"><i class="icon-home10"></i> Properties</a></li>
-			<li><a data-toggle="tab" href="#flights" aria-expanded="true"><i class="icon-aircraft"></i>Flights</a></li>
-			<li><a data-toggle="tab" href="#vacations" aria-expanded="true"><i class="icon-calendar9"></i>Vacations</a></li>
-		</ul>
-		<div class="tab-content clearfix">
-			<div id="properties" class="tab-pane fade in active">
-				<div class="search-options">
-					<div class="search-form">
-						<form id="property-search" name="propertysearch" method="post">
-							<div class="form-inner">
-								<div class="left-options col-md-6">
-									<div class="form-section col-md-6">
-										<label>Propert ID</label>
-										<input class="form-control" placeholder="ANY">
-									</div>
-									<div class="form-section col-md-6">
-										<label>Property Location</label>
-										<div class="select-box">
-											<select class="form-control" name="dropdown">
-												<option value="ANY">ANY</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-section col-md-6">
-										<label>Rooms</label>
-										<input class="form-control" placeholder="1">
-									</div>
-									<div class="form-section col-md-6">
-										<label>Number of Guests</label>
-										<div class="select-box">
-											<select class="form-control" name="dropdown">
-												<option value="5">5</option>
-											</select>
-										</div>
-									</div>
-								</div>
-								<div class="right-options col-md-6">
-									<div class="form-section col-md-6">
-										<label>Property Status</label>
-										<div class="select-box">
-											<select class="form-control" name="dropdown">
-												<option value="ANY">ANY</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-section col-md-6">
-										<label>Property Type</label>
-										<div class="select-box">
-											<select class="form-control" name="dropdown">
-												<option value="Choose">CHOOSE</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-section col-md-6">
-										<p>
-											<label for="amount">Define a price</label>
-											<input type="text" id="amount" readonly style="border:0; color:#fa8526; font-weight:bold;">
-										</p>
-										<div id="slider-range"><span class="minvalue">MIN</span><span class="maxvalue">MAX</span></div>
-									</div>
-									<div class="form-section col-md-6">
-										<div class="search-btn"> <a href="#">SEARCH FOR IT</a> </div>
-									</div>
-								</div>
-							</div>
-						</form>
+<div id="ms-center" class="personal-member">
+			<div class="cont">
+				<div class="cont-side">
+					<div class="side-neck" style="margin-top: 20px;">
+						<i></i>
 					</div>
-				</div>
-			</div>
-			<div id="flights" class="tab-pane fade">
-				<div class="search-options">
-					<div class="search-form">
-						<form id="flight-search" name="propertysearch" method="post">
-							<div class="form-inner">
-								<div class="left-options col-md-6">
-									<div class="form-section col-md-6">
-										<label>Propert ID</label>
-										<input class="form-control" placeholder="ANY">
-									</div>
-									<div class="form-section col-md-6">
-										<label>Property Location</label>
-										<div class="select-box">
-											<select class="form-control" name="dropdown">
-												<option value="ANY">ANY</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-section col-md-6">
-										<label>Rooms</label>
-										<input class="form-control" placeholder="1">
-									</div>
-									<div class="form-section col-md-6">
-										<label>Number of Guests</label>
-										<div class="select-box">
-											<select class="form-control" name="dropdown">
-												<option value="5">5</option>
-											</select>
-										</div>
-									</div>
-								</div>
-								<div class="right-options col-md-6">
-									<div class="form-section col-md-6">
-										<label>Property Status</label>
-										<div class="select-box">
-											<select class="form-control" name="dropdown">
-												<option value="ANY">ANY</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-section col-md-6">
-										<label>Property Type</label>
-										<div class="select-box">
-											<select class="form-control" name="dropdown">
-												<option value="Choose">CHOOSE</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-section col-md-6">
-										<p>
-											<label for="amount">Define a price</label>
-											<input type="text" id="amount2" readonly style="border:0; color:#fa8526; font-weight:bold;">
-										</p>
-										<div id="slider-range2"><span class="minvalue">MIN</span><span class="maxvalue">MAX</span></div>
-									</div>
-									<div class="form-section col-md-6">
-										<div class="search-btn"> <a href="#">SEARCH FOR IT</a> </div>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-			<div id="vacations" class="tab-pane fade">
-				<div class="search-options">
-					<div class="search-form">
-						<form id="vacation-search" name="propertysearch" method="post">
-							<div class="form-inner">
-								<div class="left-options col-md-6">
-									<div class="form-section col-md-6">
-										<label>Propert ID</label>
-										<input class="form-control" placeholder="ANY">
-									</div>
-									<div class="form-section col-md-6">
-										<label>Property Location</label>
-										<div class="select-box">
-											<select class="form-control" name="dropdown">
-												<option value="ANY">ANY</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-section col-md-6">
-										<label>Rooms</label>
-										<input class="form-control" placeholder="1">
-									</div>
-									<div class="form-section col-md-6">
-										<label>Number of Guests</label>
-										<div class="select-box">
-											<select class="form-control" name="dropdown">
-												<option value="5">5</option>
-											</select>
-										</div>
-									</div>
-								</div>
-								<div class="right-options col-md-6">
-									<div class="form-section col-md-6">
-										<label>Property Status</label>
-										<div class="select-box">
-											<select class="form-control" name="dropdown">
-												<option value="ANY">ANY</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-section col-md-6">
-										<label>Property Type</label>
-										<div class="select-box">
-											<select class="form-control" name="dropdown">
-												<option value="Choose">CHOOSE</option>
-											</select>
-										</div>
-									</div>
-									<div class="form-section col-md-6">
-										<p>
-											<label for="amount">Define a price</label>
-											<input type="text" id="amount3" readonly style="border:0; color:#fa8526; font-weight:bold;">
-										</p>
-										<div id="slider-range3"><span class="minvalue">MIN</span><span class="maxvalue">MAX</span></div>
-									</div>
-									<div class="form-section col-md-6">
-										<div class="search-btn"> <a href="#">SEARCH FOR IT</a> </div>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<section>
-	<div class="container">
-		<div class="visit-place">
-			<div class="section-heading mrgt7x mrgb7x">
-				<h3><span>BEST PLACE TO VISIT</span></h3>
-			</div>
-			<div class="places mrgb7x">
-				<div class="col-md-4 col-sm-6">
-					<div class="place-img"> <img src="images/best-place-1.jpg" class="img-responsive" alt="#"/>
-						<div class="place-text">
-							<h2>TRAVEL</h2>
-							<a href="#">Great sightseeing</a> </div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="place-img"> <img src="images/best-place2.jpg" class="img-responsive" alt="#"/>
-						<div class="place-text">
-							<h2>LOCATION</h2>
-							<a href="#">Best place to stay</a> </div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6">
-					<div class="place-img"> <img src="images/best-place3.jpg" class="img-responsive" alt="#"/>
-						<div class="place-text">
-							<h2>NATURE</h2>
-							<a href="#">Best place to see</a> </div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<section>
-	<div class="container">
-		<div class="featured-properties animated out" data-delay="0" data-animation="fadeInUp">
-			<div class="section-heading mrgt7x mrgb7x">
-				<h3><span>OUR FEATURED PROPERTIES</span></h3>
-			</div>
-			<div class="section-detail">
-				<div class="col-md-4 col-sm-6 animated out" data-delay="0" data-animation="fadeInUp">
-					<div class="property-box border-hover">
-						<div class="appartment-img"><img src="images/propertyimg-1.jpg" class="img-responsive" alt="#" />
-							<div class="detail-btn"> <a href="#" class="more-detail"><i class="fa fa-angle-right"></i>MORE DETAIL</a> </div>
-						</div>
-						<div class="property-text">
-							<div class="appartment-name">
-								<h4>Los Angeles Appartement</h4>
-								<p>We are one of the few agents in the area that genuinely are specialists in both sales and lettings. </p>
-								<div class="post-meta"> <a href="#"><i class="fa fa-heart"></i>214</a> </div>
-							</div>
-							<div class="property-price">
-								<h1><span><sup>$</sup>450</span></h1>
-							</div>
-							<ul class="appartment-detail">
-								<li>1 Room</li>
-								<li>2 Beds</li>
-								<li>1 Bath</li>
-								<li>84 SQ FT</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6 animated out" data-delay="0" data-animation="fadeInUp">
-					<div class="property-box border-hover">
-						<div class="appartment-img"><img src="images/propertyimg-2.jpg" class="img-responsive" alt="#" />
-							<div class="detail-btn"> <a href="#" class="more-detail"><i class="fa fa-angle-right"></i>MORE DETAIL</a> </div>
-						</div>
-						<div class="property-text">
-							<div class="appartment-name">
-								<h4>New York City Loft</h4>
-								<p>If you’re a home owner looking to move on, we will come and carry out a free, no-obligation valuation on your property. </p>
-								<div class="post-meta"> <a href="#"><i class="fa fa-heart"></i>132</a> </div>
-							</div>
-							<div class="property-price">
-								<h1><span><sup>$</sup>610</span></h1>
-							</div>
-							<ul class="appartment-detail">
-								<li>2 Room</li>
-								<li>4 Beds</li>
-								<li>2 Bath</li>
-								<li>134 SQ FT</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 col-sm-6 animated out" data-delay="0" data-animation="fadeInUp">
-					<div class="property-box border-hover">
-						<div class="appartment-img"><img src="images/propertyimg-3.jpg" class="img-responsive" alt="#" />
-							<div class="detail-btn"> <a href="#" class="more-detail"><i class="fa fa-angle-right"></i>MORE DETAIL</a> </div>
-						</div>
-						<div class="property-text">
-							<div class="appartment-name">
-								<h4>San Diego Hotel Room</h4>
-								<p>We do market all our properties on the big property websites and our own site but we may have something new on our books. </p>
-								<div class="post-meta"> <a href="#"><i class="fa fa-heart"></i>88</a> </div>
-							</div>
-							<div class="property-price">
-								<h1><span><sup>$</sup>390</span></h1>
-							</div>
-							<ul class="appartment-detail">
-								<li>1 Room</li>
-								<li>2 Beds</li>
-								<li>1 Bath</li>
-								<li>64 SQ FT</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<section class="mrgt9x">
-	<div class="container">
-		<div class="properties-listing animated out" data-delay="0" data-animation="fadeInUp">
-			<ul class="listing-name mrgb5x">
-				<li class="filter" data-filter="all"><a href="javascript:;">Properties</a></li>
-				<li class="filter" data-filter="hotels"><a href="javascript:;">Hotels</a></li>
-				<li class="filter" data-filter="vacations"><a href="javascript:;">Vacations</a></li>
-				<li class="filter" data-filter="flights"><a href="javascript:;">Flights</a></li>
-			</ul>
-			<ul class="filter-list">
-				<li class="mix hotels col-md-3 animated out" data-delay="0" data-animation="fadeInUp">
-					<div class="property-detail">
-						<div class="property-image"> <img src="images/listingimg-1.jpg" class="img-responsive" alt="#" />
-							<div class="zoom-img"> <a href="images/listingimg-1.jpg"><i class="fa fa-plus"></i></a> <a href="images/listingimg-2.jpg"></a> <a href="images/listingimg-3.jpg"></a> </div>
-						</div>
-						<ul class="clearfix">
-							<li>
-								<h4>city appartment</h4>
-							</li>
-							<li><span>Timesquare 14 London, UK</span></li>
-							<li class="property-price"><span><sup>$</sup>450</span></li>
-							<li><a href="#" class="detail"><span>DETAILS</span></a></li>
-						</ul>
-					</div>
-				</li>
-				<li class="mix hotels col-md-3 animated out" data-delay="0" data-animation="fadeInUp">
-					<div class="property-detail">
-						<div class="property-image"> <img src="images/listingimg-2.jpg" class="img-responsive" alt="#" />
-							<div class="zoom-img"> <a href="images/listingimg-2.jpg"><i class="fa fa-plus"></i></a> <a href="images/listingimg-3.jpg"></a> <a href="images/listingimg-4.jpg"></a> </div>
-						</div>
-						<ul class="clearfix">
-							<li>
-								<h4>Hotel Suite</h4>
-							</li>
-							<li><span>Timesquare 14 London, UK</span></li>
-							<li class="property-price"><span><sup>$</sup>690</span></li>
-							<li><a href="#" class="detail"><span>DETAILS</span></a></li>
-						</ul>
-					</div>
-				</li>
-				<li class="mix hotels col-md-3 animated out" data-delay="0" data-animation="fadeInUp">
-					<div class="property-detail">
-						<div class="property-image"> <img src="images/listingimg-3.jpg" class="img-responsive" alt="#" />
-							<div class="zoom-img"> <a href="images/listingimg-3.jpg"><i class="fa fa-plus"></i></a> <a href="images/listingimg-4.jpg"></a> <a href="images/listingimg-5.jpg"></a> </div>
-						</div>
-						<ul class="clearfix">
-							<li>
-								<h4>Luxury Penthouse</h4>
-							</li>
-							<li><span>Timesquare 14 London, UK</span></li>
-							<li class="property-price"><span><sup>$</sup>740</span></li>
-							<li><a href="#" class="detail"><span>DETAILS</span></a></li>
-						</ul>
-					</div>
-				</li>
-				<li class="mix hotels col-md-3 animated out" data-delay="0" data-animation="fadeInUp">
-					<div class="property-detail">
-						<div class="property-image"> <img src="images/listingimg-4.jpg" class="img-responsive" alt="#" />
-							<div class="zoom-img"> <a href="images/listingimg-4.jpg"><i class="fa fa-plus"></i></a> <a href="images/listingimg-5.jpg"></a> <a href="images/listingimg-6.jpg"></a> </div>
-						</div>
-						<ul class="clearfix">
-							<li>
-								<h4>Luxury Appartement</h4>
-							</li>
-							<li><span>Timesquare 14 London, UK</span></li>
-							<li class="property-price"><span><sup>$</sup>390</span></li>
-							<li><a href="#" class="detail"><span>DETAILS</span></a></li>
-						</ul>
-					</div>
-				</li>
-				<li class="mix vacations col-md-3 animated out" data-delay="0" data-animation="fadeInUp">
-					<div class="property-detail">
-						<div class="property-image"> <img src="images/listingimg-5.jpg" class="img-responsive" alt="#" />
-							<div class="zoom-img"> <a href="images/listingimg-5.jpg"><i class="fa fa-plus"></i></a> <a href="images/listingimg-6.jpg"></a> <a href="images/listingimg-7.jpg"></a> </div>
-						</div>
-						<ul class="clearfix">
-							<li>
-								<h4>Hotel Suite</h4>
-							</li>
-							<li><span>Timesquare 14 London, UK</span></li>
-							<li class="property-price"><span><sup>$</sup>520</span></li>
-							<li><a href="#" class="detail"><span>DETAILS</span></a></li>
-						</ul>
-					</div>
-				</li>
-				<li class="mix vacations col-md-3 animated out" data-delay="0" data-animation="fadeInUp">
-					<div class="property-detail">
-						<div class="property-image"> <img src="images/listingimg-6.jpg" class="img-responsive" alt="#" />
-							<div class="zoom-img"> <a href="images/listingimg-6.jpg"><i class="fa fa-plus"></i></a> <a href="images/listingimg-7.jpg"></a> <a href="images/listingimg-8.jpg"></a> </div>
-						</div>
-						<ul class="clearfix">
-							<li>
-								<h4>City Appartement</h4>
-							</li>
-							<li><span>Timesquare 14 London, UK</span></li>
-							<li class="property-price"><span><sup>$</sup>630</span></li>
-							<li><a href="#" class="detail"><span>DETAILS</span></a></li>
-						</ul>
-					</div>
-				</li>
-				<li class="mix flights col-md-3 animated out" data-delay="0" data-animation="fadeInUp">
-					<div class="property-detail">
-						<div class="property-image"> <img src="images/listingimg-7.jpg" class="img-responsive" alt="#" />
-							<div class="zoom-img"> <a href="images/listingimg-7.jpg"><i class="fa fa-plus"></i></a> <a href="images/listingimg-8.jpg"></a> <a href="images/listingimg-1.jpg"></a> </div>
-						</div>
-						<ul class="clearfix">
-							<li>
-								<h4>Hotel Room</h4>
-							</li>
-							<li><span>Timesquare 14 London, UK</span></li>
-							<li class="property-price"><span><sup>$</sup>470</span></li>
-							<li><a href="#" class="detail"><span>DETAILS</span></a></li>
-						</ul>
-					</div>
-				</li>
-				<li class="mix flights col-md-3 animated out" data-delay="0" data-animation="fadeInUp">
-					<div class="property-detail">
-						<div class="property-image"> <img src="images/listingimg-8.jpg" class="img-responsive" alt="#" />
-							<div class="zoom-img"> <a href="images/listingimg-8.jpg"><i class="fa fa-plus"></i></a> <a href="images/listingimg-1.jpg"></a> <a href="images/listingimg-2.jpg"></a> </div>
-						</div>
-						<ul class="clearfix">
-							<li>
-								<h4>Luxury Boutique</h4>
-							</li>
-							<li><span>Timesquare 14 London, UK</span></li>
-							<li class="property-price"><span><sup>$</sup>899</span></li>
-							<li><a href="#" class="detail"><span>DETAILS</span></a></li>
-						</ul>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</div>
-</section>
-<section class="bg-dark parallex mrgb4x">
-	<div class="container">
-		<div class="inner-text">
-			<h2>FIND BEST PLACE FOR LIVING</h2>
-			<span> </span>
-			<p>Spend vacations in best hotels and resorts</p>
-			<p>find the great place of your choice using different searching options.</p>
-		</div>
-	</div>
-</section>
-<section>
-	<div class="container">
-		<div class="meet-client animated out" data-delay="0" data-animation="fadeInUp">
-			<div class="section-heading mrgb6x">
-				<h3><span>MEET OUR CLIENTS</span></h3>
-			</div>
-			<div class="row">
-				<div class="col-md-3 col-sm-4 mrgb8x animated out" data-delay="0" data-animation="fadeInUp">
-					<div class="agent-profile">
-						<div class="agent-img"><img src="images/agent-1.jpg" class="img-responsive" alt="#" />
-							<div class="img-hover"> <a href="images/agent-1.jpg" class="plus-link"></a></div>
-						</div>
-						<div class="agent-detail">
-							<div class="agent-name">
-								<h5>Jonathan Doe</h5>
-								<span class="vaction">vaction</span> </div>
-							<ul class="agent-contact">
-								<li><i class="fa fa-phone"></i></li>
-								<li><span>Mobile</span></li>
-								<li class="contact-info"><a href="#">+49 123 456 789</a></li>
-							</ul>
-							<ul class="agent-mail">
-								<li><i class="icon-email4"></i></li>
-								<li><span>E-mail</span></li>
-								<li class="contact-info"><a href="#"> johndoe@email.com</a></li>
-							</ul>
-							<ul class="social-profile">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-								<li><a href="#"><i class="fa fa-google"></i></a></li>
-							</ul>
-							<div class="full-profile-btn"> <a href="#" class="see-more">see full profile</a> </div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-4 mrgb8x animated out" data-delay="0" data-animation="fadeInUp">
-					<div class="agent-profile">
-						<div class="agent-img"> <img src="images/agent-2.jpg" class="img-responsive" alt="#" />
-							<div class="img-hover"> <a href="images/agent-2.jpg" class="plus-link"></a></div>
-						</div>
-						<div class="agent-detail">
-							<div class="agent-name">
-								<h5>Susan Withersoon</h5>
-								<span class="estate">estate</span> </div>
-							<ul class="agent-contact">
-								<li><i class="fa fa-phone"></i></li>
-								<li><span>Mobile</span></li>
-								<li class="contact-info"><a href="#">+49 123 456 789</a></li>
-							</ul>
-							<ul class="agent-mail">
-								<li><i class="icon-email4"></i></li>
-								<li><span>E-mail</span></li>
-								<li class="contact-info"><a href="#"> johndoe@email.com</a></li>
-							</ul>
-							<ul class="social-profile">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-								<li><a href="#"><i class="fa fa-google"></i></a></li>
-							</ul>
-							<div class="full-profile-btn"> <a href="#" class="see-more">see full profile</a> </div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-4 mrgb8x animated out" data-delay="0" data-animation="fadeInUp">
-					<div class="agent-profile">
-						<div class="agent-img"> <img src="images/agent-3.jpg" class="img-responsive" alt="#" />
-							<div class="img-hover"> <a href="images/agent-3.jpg" class="plus-link"></a></div>
-						</div>
-						<div class="agent-detail">
-							<div class="agent-name">
-								<h5>Steven Abraham</h5>
-								<span class="vaction">vaction</span> </div>
-							<ul class="agent-contact">
-								<li><i class="fa fa-phone"></i></li>
-								<li><span>Mobile</span></li>
-								<li class="contact-info"><a href="#">+49 123 456 789</a></li>
-							</ul>
-							<ul class="agent-mail">
-								<li><i class="icon-email4"></i></li>
-								<li><span>E-mail</span></li>
-								<li class="contact-info"><a href="#"> johndoe@email.com</a></li>
-							</ul>
-							<ul class="social-profile">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-								<li><a href="#"><i class="fa fa-google"></i></a></li>
-							</ul>
-							<div class="full-profile-btn"> <a href="#" class="see-more">see full profile</a> </div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3 col-sm-4 mrgb8x animated out" data-delay="0" data-animation="fadeInUp">
-					<div class="agent-profile">
-						<div class="agent-img"> <img src="images/agent-4.jpg" class="img-responsive" alt="#" />
-							<div class="img-hover"> <a href="images/agent-4.jpg" class="plus-link"></a></div>
-						</div>
-						<div class="agent-detail">
-							<div class="agent-name">
-								<h5>Lucas Bernie </h5>
-								<span class="financial">financial</span> </div>
-							<ul class="agent-contact">
-								<li><i class="fa fa-phone"></i></li>
-								<li><span>Mobile</span></li>
-								<li class="contact-info"><a href="#">+49 123 456 789</a></li>
-							</ul>
-							<ul class="agent-mail">
-								<li><i class="icon-email4"></i></li>
-								<li><span>E-mail</span></li>
-								<li class="contact-info"><a href="#"> johndoe@email.com</a></li>
-							</ul>
-							<ul class="social-profile">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-instagram"></i></a></li>
-								<li><a href="#"><i class="fa fa-google"></i></a></li>
-							</ul>
-							<div class="full-profile-btn"> <a href="#" class="see-more">see full profile</a> </div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+					<div class="ms-side" style="margin-top: 20px;">
+						<article class="side-menu side-menu-off">
+							<dl class="side-menu-tree" style="padding-left: 30px;">
+								<dt><img src="images/左侧/我的购物车.png"  style="margin-right: 10px;margin-left: -20px;"/>我的购物车</dt>
+								<dt><img src="images/左侧/file.png"  style="margin-right: 10px;margin-left: -20px;"/>订单管理</dt>
+								<dd>
+									<a href="我的订单标注.html">我的订单</a>
 
-<section>
-	<div class="container">
-		<div class="testimonial animated out" data-delay="0" data-animation="fadeInUp">
-			<div class="col-md-6">
-				<div class="section-heading mrgb4x">
-					<h3>What did your clients say</h3>
+								</dd>
+								<dd>
+									<a href="宝贝收藏.html">我的收藏</a>
+
+								</dd>
+								<dd>
+									<a href="我的评价.html">我的评价</a>
+
+								</dd>
+								<dd>
+									<a href="我的足迹.html">我的足迹</a>
+
+								</dd>
+								<dd>
+									<a href="我的拍卖.html">我的拍卖</a>
+
+								</dd>
+								<dd>
+									<a>我的优惠券</a>
+
+								</dd>
+								<dt><img src="images/左侧/我的买啦.png"  style="margin-right: 10px;margin-left: -20px;"/>我的买啦</dt>
+								<dd>
+									<a href="我的推荐.html">我的推荐</a>
+
+								</dd>
+								<dd>
+									<a href="我的钱包.html">我的钱包</a>
+
+								</dd>
+								<dd>
+									<a href="我要提现.html">我要提现</a>
+
+								</dd>
+								<dd>
+									<a href="买豆">我的买豆</a>
+
+								</dd>
+								<dd>
+									<a href="邀请管理-收入明细.html">邀请管理</a>
+
+								</dd>
+								<dt><img src="images/左侧/v-card-3.png"  style="margin-right: 10px;margin-left: -20px;"/>售后服务</dt>
+								<dd>
+									<a href="退换货.html">退换货</a>
+
+								</dd>
+								<dd>
+									<a href="意见投诉.html" style="color:#f70">意见/投诉</a>
+
+								</dd>
+							</dl>
+							<a ison="on" class="switch-side-menu icon-up-side"><i></i></a>
+						</article>
+					</div>
 				</div>
-				<div class="section-detail">
-					<div class="testi-carousel owl-carousel">
-						<div class="item">
-							<div class="testimonial-box">
-								<div class="client-img"> <img src="images/testimonial-img.jpg" class="img-responsive" alt="#" /> </div>
-								<div class="client-name">
-									<h4>Jessica P.</h4>
+				<div class="cont-main">
+					<div class="main-wrap mt15" style="border: 0px;">
+						<!--<h3>
+	                        <strong>我的会员等级</strong>
+	                    </h3>-->
+						<div class="server-wrapper">
+							<div class="server-tab" style="margin-top: 26px;">
+								<div style=" float: left;vertical-align: bottom;text-align: center;">
+								<div style="width: 680px;padding: 10px;float: left;background-color: #fff;height: 250px;">
+								<div style="float: left;width:200px ;height: 152px;border: 1px #ccc solid;box-shadow: 1px 1px 1px #F5F5F5;padding: 5px;">
+									<div style="width: 100%;height: 100%;border: 1px #F2873B dashed;">
+										<span style="font-size: 18px;color: #686868;font-weight: bold;display: block;    display: block; width: 100px; margin-left: 50px;    margin-top:20px;">2016年4月</span>
+										<span style="font-size: 36px;color: #F88600;display: block;    display: block; width: 100px; margin-left: 50px;margin-top: 28;">12</span>
+									     <input  type="button" value="签到领买豆" style="background-color: #f56a48;border-radius: 5px;color: #fff; font-size:14px;border: 0px;width: 107px;height: 26px;margin-top: 30px;" />
+									</div>
 								</div>
-								<div class="rating"> <span>13 July, 2014</span> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-								<div class="client-review">
-									<p>The best lunch ever. I really liked this hotel, as it was just perfect. We had some fun with the animations and the rooms were very clean. We can create a brand that stands out and truly reflects your business.</p>
+
+								<div style="float: left;width:200px ;height: 152px;;margin-left: 20px;border: 1px #ccc solid;box-shadow: 1px 1px 1px #F5F5F5;padding: 5px;">
+									<div style="width: 100%;height: 100%;border: 1px #F2873B dashed;">
+										<span style="font-size: 18px;color: #686868;font-weight: bold;display: block;    display: block; width: 100px; margin-left: 50px; margin-bottom: 20px;   margin-top: 20px;">我的资产</span>
+									    <span style="width: 87px;height: 20px;background-color: #fee3dc;padding: 5px;border: 1px #C62B26 dashed;border-radius: 5px;">显示今日收益</span>
+										<img src="images/我的买豆/矢量智能对象.png" style="position: absolute; margin-top: 30px;  margin-left: -80px;;" />
+									</div>
 								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimonial-box">
-								<div class="client-img"> <img src="images/testimonial-img.jpg" class="img-responsive" alt="#" /> </div>
-								<div class="client-name">
-									<h4>Jessica P.</h4>
+
+								<div style="float: left;width:200px ;height: 152px;margin-left: 20px;border: 1px #ccc solid;box-shadow: 1px 1px 1px #F5F5F5;padding: 5px;">
+									<div style="width: 100%;height: 100%;border: 1px #F2873B dashed;">
+										<span style="font-size: 18px;color: #686868;font-weight: bold;display: block;    display: block; width: 100px; margin-left: 50px;    margin-top: 20px; margin-bottom: 20px;">我的买豆</span>
+										<span style="width: 87px;height: 20px;background-color: #fee3dc;padding: 5px;border: 1px #C62B26 dashed;border-radius: 5px;">显示今日收益</span>
+									    <img src="images/我的买豆/猪的图标.png" style="position: absolute; margin-top: 13px;  margin-left: -80px;;" />									</div>
 								</div>
-								<div class="rating"> <span>13 July, 2014</span> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-								<div class="client-review">
-									<p>The best lunch ever. I really liked this hotel, as it was just perfect. We had some fun with the animations and the rooms were very clean. We can create a brand that stands out and truly reflects your business.</p>
+
+								<div style="border-top:1px #ccc solid;width: 650px;position: absolute;margin-top: 200px;margin-left: 20px;float: left;"></div>
+								<div style="position: absolute;margin-top: 230px;font-size: 14px;color: #686868;float: left;">
+									<span style="margin-left: 20px;">待付款</span>
+									<font style="color: #CF2D27;">0</font>
+									<span style="margin-left: 40px;margin-right: 40px;">|</span>
+									<span >待发货</span>
+									<font style="color: #CF2D27;">0</font>
+									<span style="margin-left: 40px;margin-right: 40px;">|</span>
+									<span>待收货</span>
+									<font style="color: #CF2D27;">0</font>
+									<span style="margin-left: 40px;margin-right: 40px;">|</span>
+									<span>待评价</span>
+									<font style="color: #CF2D27;">0</font>
+									<span style="margin-left: 40px;margin-right: 40px;">|</span>
+									<span>退款</span>
+
 								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div class="testimonial-box">
-								<div class="client-img"> <img src="images/testimonial-img.jpg" class="img-responsive" alt="#" /> </div>
-								<div class="client-name">
-									<h4>Jessica P.</h4>
 								</div>
-								<div class="rating"> <span>13 July, 2014</span> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-								<div class="client-review">
-									<p>The best lunch ever. I really liked this hotel, as it was just perfect. We had some fun with the animations and the rooms were very clean. We can create a brand that stands out and truly reflects your business.</p>
+
+
+								<!--
+                                	作者：右侧
+                                	时间：2016-05-24
+                                	描述：
+                                -->
+								<div style="float: left;width:250px ;height: 152px;margin-left: 20px;">
+								 <p style="font-size: 14px;color: #686868;text-align:center;background-color: #fff;padding: 10px;color: #F88600;font-size: 14px;">菜单管理</p>
+								 <div style="background-color: #fff;margin-top: 10px;height: 300px;padding: 10px;">
+								 	<p style="font-size: 16px;text-align: left;">我的优惠券</p>
+								 	<img src="images/个人中心/组-15.png"/>
+								 	<img src="images/个人中心/组-14.png" style="margin-top: 20px;"/>
+								 	<p style="margin-top: 30px;font-size: 14px;color: #686868;">全部优惠券(<font color="red">96</font>)</p>
+								 </div>
+
+								<div style="background-color: #fff;margin-top: 10px;height: 200px;padding: 10px;">
+								 	<p style="font-size: 20px;text-align: left;">收藏的商品</p>
+								 	<img src="images/个人中心/形状-1.png" style="margin-top: 20px;"/>
+								 	<p style="margin-top: 30px;font-size: 14px;color: #686868;">您的收藏空空的，赶紧<br/>
+								 	去首页看看购物吧</p>
+								 </div>
+
+								<div style="background-color: #fff;margin-top: 10px;height: 300px;padding: 10px;">
+								 	<p style="font-size: 16px;text-align: left;">购物车</p>
+								 	<div style="float:left ;">
+								 	<img src="images/个人中心/屏幕快照-2016-04-08-15.50.46.png" style="margin-top: 10px;height: 100px;width: 100px;float: left;"/>
+								 	<br />
+								 	<span style="display: block;float: left;margin-left: 10px;color: #f78642;font-size: 16px;">¥156</span>
+								 	<del style="float: left;margin-left: 20px;">¥189</del>
+								 	<p style="width: 100px;font-size: 12px;color: #686868">化妆水化妆水化妆水化妆水化妆水化妆水</p>
+								 	</div>
+								 	 <div style="float:left ;">
+								 	 	 <img src="images/个人中心/屏幕快照-2016-04-08-15.50.46.png" style="margin-top: 10px;height: 100px;width: 100px;float: left;margin-left: 20px;"/>
+								 	 	<br />
+								 	<span style="display: block;float: left;margin-left: 40px;color: #f78642;font-size: 16px;">¥156</span>
+								 	<del style="float: left;margin-left: 20px;">¥189</del>
+								 		<p style="width: 100px;margin-left: 20px;font-size: 12px;color: #686868;">化妆水化妆水化妆水化妆水化妆水化妆水</p>
+								 	 </div>
+
+								   <p style="margin-top: 30px;font-size: 14px;color: #686868;">查看购物车(<font color="red">96</font>)</p>
+
 								</div>
-							</div>
+
+
+								<div style="background-color: #fff;margin-top: 10px;height: 200px;padding: 10px;">
+								 	<p style="font-size: 16px;text-align: left;">我的足迹</p>
+								 	<img src="images/个人中心/矢量智能对象.png" style="margin-top: 20px;"/>
+								 	<p style="margin-top: 30px;font-size: 14px;color: #686868;">您还没有留下任何足迹呢！</p>
+								 </div>
+
+
+								</div>
+
+								<!--右侧---end------->
+
+								<div style="width: 680px;padding:10px;display: inline-block; float: left;margin-top: 20px;background-color: #fff;">
+									<div style="border-bottom: 1px #ccc solid;">
+										<p style="font-size: 20px;text-align: left;">我的物流</p>
+									</div>
+									<div style="padding: 20px 20px;border-bottom: 1px #F5F5F5 solid;height: 150px;">
+										<div style="float: left;margin-top: 10px;">
+											<img src="images/宝贝收藏/组-58.png" />
+										</div>
+										<div style="float: left;margin-top: 20px;">
+											<p>在浙江临安市公司市区北方扫描，快件已被签收</p>
+											<p>2016-04-10 12:20:30  <strong>查看物流信息</strong> </p>
+										</div>
+										<div style="float: right;margin-right: 20px;margin-top: 50px;">
+											<button style="border: 1px #ccc solid;padding: 5px;background-color: #fff;">确认收货</button>
+										</div>
+
+									</div>
+									<div style="padding: 20px 20px;border-bottom: 1px #F5F5F5 solid;height: 150px;">
+										<div style="float: left;margin-top: 10px;">
+											<img src="images/宝贝收藏/组-56.png" />
+										</div>
+										<div style="float: left;margin-top: 20px;">
+											<p>在浙江临安市公司市区北方扫描，快件已被签收</p>
+											<p>2016-04-10 12:20:30  <strong>查看物流信息</strong> </p>
+										</div>
+										<div style="float: right;margin-right: 20px;margin-top: 50px;">
+											<button style="border: 1px #ccc solid;padding: 5px;background-color: #fff;">确认收货</button>
+										</div>
+
+									</div>
+									<div style="padding: 20px 20px;border-bottom: 1px #F5F5F5 solid;height: 150px;">
+										<div style="float: left;margin-top: 10px;">
+											<img src="images/宝贝收藏/组-57.png" />
+										</div>
+										<div style="float: left;margin-top: 20px;">
+											<p>在浙江临安市公司市区北方扫描，快件已被签收</p>
+											<p>2016-04-10 12:20:30  <strong>查看物流信息</strong> </p>
+										</div>
+										<div style="float: right;margin-right: 20px;margin-top: 50px;">
+											<button style="border: 1px #ccc solid;padding: 5px;background-color: #fff;">确认收货</button>
+										</div>
+
+									</div>
+									<p style="text-align: center;margin-top: 30px;">展开全部信息</p>
+									 <!--<div style="float:left;display: inline;border: 1px #ccc solid;display: inline-block;background-color: #f5f5f5;height: 25px;width: 150px;">
+                                        <input type="text" placeholder="搜索会员编号"  style="padding-left:5px;width:130px;border: 0px;background-color: #fff;line-height: 25px;border-right: 0px #ccc solid;" />
+									    <img src="images/搜索.png"  style="height: 10px;width: 10px;  margin-left: 2px; margin-bottom: 5px;" />
+                                        </div> -->
+								</div>
+
+								<div style="width: 680px;padding:10px;display: inline-block; margin-top: 20px;background-color: #fff;float: left;border-bottom: 1px #ccc solid;padding-bottom: 20px;">
+									<span style="text-align: left;line-height: 20px;">根据浏览 猜你喜欢</span>
+								</div>
+								<div style="width: 680px;padding:10px;display: inline-block; margin-top:0px;background-color: #fff;float: left;">
+									<div style="padding:10px ;text-align: center;float: left;">
+										<div style="float: left;margin-left: 30px">
+											<img src="images/wdxx_01.png" />
+											<p style="width: 180px;">乐扣乐扣彼得兔水杯系列700ml便携式茶杯</p>
+											<span style="display: block;float: left;margin-left: 10px;color: #f78642;font-size: 16px;">¥156</span>
+								 	     <del style="margin-left: 0px;margin-top: 10px;">¥189</del>
+								 	     <dl style="    float: left; margin-top: 30px; margin-left: -50px;">好评：90%</dl>
+								 	     <dl style="float: right;margin-top: 30px;">月销量：56</dl>
+										</div>
+
+										<div style="float: left;margin-left: 30px">
+											<img src="images/wdxx_01.png" />
+											<p style="width: 180px;">乐扣乐扣彼得兔水杯系列700ml便携式茶杯</p>
+											<span style="display: block;float: left;margin-left: 10px;color: #f78642;font-size: 16px;">¥156</span>
+								 	     <del style="margin-left: 0px;margin-top: 10px;">¥189</del>
+								 	     <dl style="    float: left; margin-top: 30px; margin-left: -50px;">好评：90%</dl>
+								 	     <dl style="float: right;margin-top: 30px;">月销量：56</dl>
+										</div>
+
+										<div style="float: left;margin-left: 30px;">
+											<img src="images/wdxx_01.png" />
+											<p style="width: 180px;">乐扣乐扣彼得兔水杯系列700ml便携式茶杯</p>
+											<span style="display: block;float: left;margin-left: 10px;color: #f78642;font-size: 16px;">¥156</span>
+								 	     <del style="margin-left: 0px;margin-top: 10px;">¥189</del>
+								 	     <dl style="    float: left; margin-top: 30px; margin-left: -50px;">好评：90%</dl>
+								 	     <dl style="float: right;margin-top: 30px;">月销量：56</dl>
+										</div>
+
+									</div>
+
+									<div style="padding:10px ;text-align: center;float: left;">
+										<div style="float: left;margin-left: 30px">
+											<img src="images/wdxx_01.png" />
+											<p style="width: 180px;">乐扣乐扣彼得兔水杯系列700ml便携式茶杯</p>
+											<span style="display: block;float: left;margin-left: 10px;color: #f78642;font-size: 16px;">¥156</span>
+								 	     <del style="margin-left: 0px;margin-top: 10px;">¥189</del>
+								 	     <dl style="    float: left; margin-top: 30px; margin-left: -50px;">好评：90%</dl>
+								 	     <dl style="float: right;margin-top: 30px;">月销量：56</dl>
+										</div>
+
+										<div style="float: left;margin-left: 30px">
+											<img src="images/wdxx_01.png" />
+											<p style="width: 180px;">乐扣乐扣彼得兔水杯系列700ml便携式茶杯</p>
+											<span style="display: block;float: left;margin-left: 10px;color: #f78642;font-size: 16px;">¥156</span>
+								 	     <del style="margin-left: 0px;margin-top: 10px;">¥189</del>
+								 	     <dl style="    float: left; margin-top: 30px; margin-left: -50px;">好评：90%</dl>
+								 	     <dl style="float: right;margin-top: 30px;">月销量：56</dl>
+										</div>
+
+										<div style="float: left;margin-left: 30px;">
+											<img src="images/wdxx_01.png" />
+											<p style="width: 180px;">乐扣乐扣彼得兔水杯系列700ml便携式茶杯</p>
+											<span style="display: block;float: left;margin-left: 10px;color: #f78642;font-size: 16px;">¥156</span>
+								 	     <del style="margin-left: 0px;margin-top: 10px;">¥189</del>
+								 	     <dl style="    float: left; margin-top: 30px; margin-left: -50px;">好评：90%</dl>
+								 	     <dl style="float: right;margin-top: 30px;">月销量：56</dl>
+										</div>
+
+									</div>
+
+
+								</div>
+
+
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
-		<div class="latest-news animated out" data-delay="0" data-animation="fadeInUp">
-			<div class="col-md-6 mrgb3x">
-				<div class="section-heading mrgb4x">
-					<h3>Latest News from our Blog</h3>
-				</div>
-				<div class="section-detail">
-					<div class="blog clearfix">
-						<div class="blog-img"><img src="images/blogimg-1.jpg" class="img-responsive" alt="#" /></div>
-						<div class="blog-text">
-							<h4>Resources that we thought you may find useful </h4>
-							<ul class="time">
-								<li><a href="#"><i class="icon-access-time"></i>28 Aprli, 2014</a></li>
-								<li><a href="#"><i class="icon-user13"></i>Jackson Matins</a></li>
-							</ul>
-							<p>Alternatively if you have a specific service or question in mind please don’t hesitate to contact us to discuss ...</p>
-							<a href="#" class="more-btn"><span>MORE</span></a> </div>
-					</div>
-					<div class="blog">
-						<div class="blog-img"><img src="images/blogimg-2.jpg" class="img-responsive" alt="#" /></div>
-						<div class="blog-text">
-							<h4>What about your next vaction?</h4>
-							<ul class="time">
-								<li><a href="#"><i class="icon-access-time"></i>28 Aprli, 2014</a></li>
-								<li><a href="#"><i class="icon-user13"></i>Jackson Matins</a></li>
-							</ul>
-							<p>Alternatively if you have a specific service or question in mind please don’t hesitate to contact us to discuss ...</p>
-							<a href="#" class="more-btn"><span>MORE</span></a> </div>
-					</div>
-				</div>
-			</div>
 		</div>
-	</div>
-</section>
+		<div class="clear "></div>
+		<div class="ng-footer ">
+
+			<textarea class="footer-dom " id="footer-dom-02 ">
+			</textarea>
+			<div class="ng-fix-bar "></div>
+		</div>
+		<style type="text/css ">
+
+			.ng-footer {
+				height: 130px;
+				margin-top: 0;
+			}
+
+
+			.ng-s-footer {
+				height: 130px;
+				background: none;
+				text-align: center;
+			}
+
+			.ng-s-footer p.ng-url-list {
+				height: 25px;
+				line-height: 25px;
+			}
+
+			.ng-s-footer p.ng-url-list a {
+				color: #666666;
+			}
+
+			.ng-s-footer p.ng-url-list a:hover {
+				color: #f60;
+			}
+
+			.ng-s-footer .ng-authentication {
+				float: none;
+				margin: 0 auto;
+				height: 25px;
+				width: 990px;
+				margin-top: 5px;
+			}
+
+			.ng-s-footer p.ng-copyright {
+				float: none;
+				width: 100%;
+			}
+
+			.root1200 .ng-s-footer p.ng-copyright {
+				width: 100%;
+			}
+		</style>
+		<script type="text/javascript " src="js/safe/ms_common.min.js "></script>
+		</div>
+
 <section>
 	<div class="container">
 		<div class="partners mrgt7x mrgb8x animated out" data-delay="0" data-animation="fadeInUp">
 			<div class="partner-carousel owl-carousel">
-				<div class="item"> <a href="#"> <img src="images/partner-1.jpg" class="img-responsive" alt="#" /> </a> </div>
-				<div class="item"> <a href="#"><img src="images/partner-2.jpg" class="img-responsive" alt="#" /></a> </div>
-				<div class="item"> <a href="#"> <img src="images/partner-3.jpg" class="img-responsive" alt="#" /></a> </div>
-				<div class="item"> <a href="#"> <img src="images/partner-4.jpg" class="img-responsive" alt="#" /></a> </div>
-				<div class="item"> <a href="#"> <img src="images/partner-5.jpg" class="img-responsive" alt="#" /></a> </div>
-				<div class="item"> <a href="#"><img src="images/partner-2.jpg" class="img-responsive" alt="#" /></a> </div>
-				<div class="item"> <a href="#"> <img src="images/partner-3.jpg" class="img-responsive" alt="#" /></a> </div>
-				<div class="item"> <a href="#"> <img src="images/partner-4.jpg" class="img-responsive" alt="#" /></a> </div>
-				<div class="item"> <a href="#"> <img src="images/partner-5.jpg" class="img-responsive" alt="#" /></a> </div>
-				<div class="item"> <a href="#"> <img src="images/partner-1.jpg" class="img-responsive" alt="#" /> </a> </div>
+				<div class="item"> <a href="#"> <img src="images/partner-1.jpg" class="images-responsive" alt="#" /> </a> </div>
+				<div class="item"> <a href="#"><img src="images/partner-2.jpg" class="images-responsive" alt="#" /></a> </div>
+				<div class="item"> <a href="#"> <img src="images/partner-3.jpg" class="images-responsive" alt="#" /></a> </div>
+				<div class="item"> <a href="#"> <img src="images/partner-4.jpg" class="images-responsive" alt="#" /></a> </div>
+				<div class="item"> <a href="#"> <img src="images/partner-5.jpg" class="images-responsive" alt="#" /></a> </div>
+				<div class="item"> <a href="#"><img src="images/partner-2.jpg" class="images-responsive" alt="#" /></a> </div>
+				<div class="item"> <a href="#"> <img src="images/partner-3.jpg" class="images-responsive" alt="#" /></a> </div>
+				<div class="item"> <a href="#"> <img src="images/partner-4.jpg" class="images-responsive" alt="#" /></a> </div>
+				<div class="item"> <a href="#"> <img src="images/partner-5.jpg" class="images-responsive" alt="#" /></a> </div>
+				<div class="item"> <a href="#"> <img src="images/partner-1.jpg" class="images-responsive" alt="#" /> </a> </div>
 			</div>
 		</div>
 	</div>
@@ -875,7 +500,7 @@
 		<div class="upper-footer clearfix">
 			<div class="widgets">
 				<div class="col-md-3">
-					<div class="about-widget"> <img src="images/footer-logo.png" class="img-responsive" alt="#" />
+					<div class="about-widget"> <img src="images/footer-logo.png" class="images-responsive" alt="#" />
 						<p>Alternatively if you have a specific service or question in mind please don’t hesitate to contact us to discuss this using the contact details on the Contact Us page of the site.</p>
 					</div>
 				</div>
@@ -937,5 +562,6 @@
 <script src="js/jquery.themepunch.revolution.js" type="text/javascript"></script> 
 <script src="js/jquery.themepunch.tools.min.js" type="text/javascript"></script> 
 <script type="text/javascript" src="js/scripts.js"></script>
+<script type="text/javascript" src="js/cpb.js"></script>
 </body>
 </html>

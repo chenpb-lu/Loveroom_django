@@ -1,0 +1,361 @@
+{% extends "base.html" %}
+{% block content %}
+{% load myfilter %}
+<link href="//at.alicdn.com/t/font_1351044_aqb9j4rag4f.css" rel="stylesheet" type="text/css">
+<div class="container" style="margin-top: 20px">
+<div class="row">
+<div class="col-md-9 property-single-rightbar">
+	<div class="property-single">
+		<div class="sync1 property-carousel owl-carousel">
+            {% for item in house.photo|get_img_len:'1' %}
+                <div class="item">
+                    <div class="property-single-img"> <img src="{{ house.photo|get_img:item }}" class="img-responsive" alt="#"  style="width: 847px;height: 425px"/>
+                        <div class="image-detail">
+                            <div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+                            <div class="place-price"><span>￥{{ house.price|price }}<sup>/天</sup></span></div>
+                        </div>
+                    </div>
+			    </div>
+            {% endfor %}
+
+		</div>
+		<div class="sync2 property-carousel owl-carousel">
+            {% for item in house.photo|get_img_len:'0' %}
+                <div class="item"> <img src="{{ house.photo|get_img:item }}" class="img-responsive" alt="#" style="width: 142px;height: 104px"/> </div>
+            {% endfor %}
+
+		</div>
+	</div>
+	<div class="property-description mrgt5x clearfix animated out" data-delay="0" data-animation="fadeInUp">
+		<div class="property-heading">
+			<h4 style="color: black">{{ house.title|safe }}</h4>
+		</div>
+		<ul class="description-content col-md-4">
+			<li><span class="description-title">地址 </span><span class="title-detail">{{ house.location|house_detail_show:"fullAddress" }}</span></li>
+			<li><span class="description-title">价格</span><span class="title-detail">{{ house.price|price }}</span></li>
+			<li><span class="description-title">类型</span><span class="title-detail">{{ house.type|house_detail_show:'type' }}</span></li>
+			<li><span class="description-title">面积 </span><span class="title-detail">{{ house.info|house_detail_show:'usableArea' }}</span></li>
+			<li><span class="description-title">床 </span><span class="title-detail">{{ house.info|house_detail_show:'bedCount' }}</span></li>
+			<li><span class="description-title">室</span><span class="title-detail">{{ house.info|house_detail_show:'layoutRoom' }}</span></li>
+			<li><span class="description-title">厅</span><span class="title-detail">{{ house.info|house_detail_show:'layoutHall' }}</span></li>
+			<li><span class="description-title">厨</span><span class="title-detail">{{ house.info|house_detail_show:'layoutKitchen' }}</span></li>
+			<li><span class="description-title">卫</span><span class="title-detail">{{ house.info|house_detail_show:'layoutWc' }}</span></li>
+		</ul>
+		<div class="description-text col-md-8">
+			<h4>亮点</h4>
+            {% for i in house.introduce|house_description_show:"description"  %}
+                <p>{{ i }}</p>
+            {% endfor %}
+        <br>
+            <h4>详细介绍</h4>
+                <p>{{ house.introduce|house_detail_show:"detailIntroduction" }}</p>
+        <br>
+            <h4>周边介绍</h4>
+                <p>{{ house.introduce|house_detail_show:"aroundInfo" }}</p>
+{#			<div class="booking-btn"> <a href="#" class="book-it"><i class="fa fa-angle-right"></i>BOOK IT NOW</a> </div>#}
+		</div>
+	</div>
+
+    <div class="find-location mrgt7x clearfix animated out" data-delay="0" data-animation="fadeInUp">
+		<div class="property-heading">
+			<h3 style="color: black"><span>位置信息</span></h3>
+		</div>
+		<div class="map" id="container">
+		</div>
+	</div>
+	<div class="property-features mrgt6x clearfix animated out" data-delay="0" data-animation="fadeInUp">
+		<div class="property-heading">
+			<h3 style="color: black">设施服务</h3>
+		</div>
+		<ul class="features-name page-2">
+            <h4>床型</h4>
+            {% for i in house.facility|house_description_show:"bedList" %}
+                <li class="col-md-3 no-padding"><span>{{ i.value }}*{{ i.metaValue }}</span></li>
+            {% endfor %}
+        </ul>
+	</div>
+    {% for i in house.facility|house_description_show:"metaGroups" %}
+        <div class="property-features mrgt6x clearfix animated out" data-delay="0" data-animation="fadeInUp" style="margin-top: 10px">
+		<div class="property-heading">
+			<h4 style="color: black">{{ i.name }}</h4>
+		</div>
+		<ul class="features-name page-2">
+            {% for j in i.group %}
+                <li class="col-md-3 no-padding" ><i class="iconfont {{ j.metaId|metafont }}" style="color: black;font-size: 30px"></i><span style="color: black;font-size: 15px">{{ j.value }}</span></li>
+            {% endfor %}
+        </ul>
+        </div>
+    {% endfor %}
+
+	<div class="customer-review mrgt7x clearfix animated out" data-delay="0" data-animation="fadeInUp">
+		<div class="property-heading mrgb4x">
+			<h3 ><span>房客评价</span></h3>
+		</div>
+		<ul class="comment-list">
+			<li>
+				<div class="client-comment mrgb7x">
+					<div class="customer-img"> <img src="/static/images/customerimg-1.jpg" class="img-responsive" alt="#" /> </div>
+					<ul class="comment-upper">
+						<li>
+							<h4>Johnathan Doe </h4>
+						</li>
+						<li><span>- posted 2 minutes ago</span></li>
+						<li>
+							<div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+						</li>
+						
+					</ul>
+					<div class="reply-btn"> <a href="#" class="comment-reply"><i class="fa fa-share"></i>REPLY</a> </div>
+					<div class="comment-detail">
+						<p>Whether you need to create a brand from scratch, including marketing materials and a beautiful and functional website or whether you are looking for a design.</p>
+					</div>
+				</div>
+				<ul>
+					<li>
+						<div class="client-comment">
+							<div class="customer-img"> <img src="/static/images/customerimg-2.jpg" class="img-responsive" alt="#" /> </div>
+							<ul class="comment-upper">
+								<li>
+									<h4>Susan Muscluas </h4>
+								</li>
+								<li><span>- posted 3 hours ago</span></li>
+								<li>
+									<div class="rating"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+								</li>
+								
+							</ul>
+							<div class="reply-btn"> <a href="#" class="comment-reply"><i class="fa fa-share"></i>REPLY</a> </div>
+							<div class="comment-detail">
+								<p>Whether you need to create a brand from scratch, including marketing materials and a beautiful and functional website or whether you are looking for a design.</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+
+
+    <div class="property-features mrgt6x clearfix animated out" data-delay="0" data-animation="fadeInUp">
+		<div class="property-heading">
+			<h3 style="color: black">预订须知</h3>
+		</div>
+        <hr>
+		<ul class="features-name page-2">
+            <h4 style="color: #9faab6">入住时间</h4>
+            {{ house.book|house_description_show:"earliestCheckinTime" }}
+        </ul>
+        <ul class="features-name page-2">
+            <h4 style="color: #9faab6">退房时间</h4>
+            {{ house.book|house_description_show:"latestCheckoutTime" }}
+        </ul>
+        <ul class="features-name page-2">
+            <h4 style="color: #9faab6">预订时长</h4>
+            {{ house.book|house_description_show:"curDayBookingTime" }}可预订
+            <br>
+            最少预订{{ house.book|house_description_show:"minBookingDays" }}天，{{ house.book|house_description_show:"maxBookingDays" }}
+        </ul>
+
+        <ul class="features-name page-2">
+            <h4 style="color: #9faab6">退订策略</h4>
+            {{ house.book|house_description_show:"deductType" }}
+        </ul>
+        <ul class="features-name page-2">
+            <h4 style="color: #9faab6">可住人数</h4>
+            可住{{ house.book|house_description_show:"maxCheckinGuests" }}人，{% if house.book|house_description_show:"maxAdditionalGuests" %}可加客{{ house.book|house_description_show:"maxAdditionalGuests" }}人，收取{{ house.p|house_description_show:"additionalChargePerGuest" }}/人{% else %}不可加客{% endif %}
+        </ul>
+        <ul class="features-name page-2">
+            <h4 style="color: #9faab6">房客须知</h4>
+            {% for item in house.limit|limit %}
+                {% if item.metaValue and item.metaValue == '1' %}
+                    {{ item.value }}
+                {% else %}
+                    {% if item.metaId != 53 %}
+                    <s style="color: #9faab6">{{ item.value }}</s>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            {% for item in house.limit|limit %}
+                {% if item.metaId == 53 and item.metaValue  %}
+                    <h5>其他注意事项:</h5>
+                    {{ item.metaValue }}
+                {% endif %}
+            {% endfor %}
+
+        </ul>
+
+	</div>
+
+    	<div class="post-review mrgt7x clearfix animated out" data-delay="0" data-animation="fadeInUp">
+		<div class="property-heading">
+			<h4><span>POST A REVIEW</span></h4>
+		</div>
+		<div class="post-guide mrgt3x col-md-10 no-padding mrgb6x">
+			<p>Fill out all required fields to send a message. You have to login to your wordpress account to post any comment. Please don´t spam, thank you!</p>
+		</div>
+		<div class="post-form">
+			<form id="review-form" method="post" name="postreview">
+				<div class="col-md-4 no-padding">
+					<div class="form-group">
+						<label>NAME</label>
+						<input class="form-control" placeholder="enter a name">
+					</div>
+					<div class="form-group">
+						<label>EMAIL</label>
+						<input class="form-control" placeholder="enter a email">
+					</div>
+					<div class="form-group">
+						<label>SUBJECT</label>
+						<input class="form-control" placeholder="enter a subject">
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="form-group">
+						<label>MESSAGE</label>
+						<textarea class="form-control" placeholder="type in a message" rows="11"></textarea>
+					</div>
+					<div class="send-msg"> <a href="#" class="post-msg">SEND MESSAGE<i class="fa fa-angle-right"></i></a></div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="related-properties mrgt7x clearfix">
+		<div class="property-heading mrgb4x">
+			<h4><span>RELATED PROPERTIES</span></h4>
+		</div>
+		<div class="property-box border-hover col-md-4 animated out" data-delay="0" data-animation="fadeInUp">
+			<div class="appartment-img"><img src="/static/images/propertylist-9.jpg" class="img-responsive" alt="#" />
+				<div class="detail-btn"> <a href="#" class="sale">FOR SALE</a> </div>
+			</div>
+			<div class="property-text">
+				<div class="appartment-name">
+					<h4>Big Appartement</h4>
+					<p>We are one of the few agents in the area that genuinely are specialists in both sales and lettings. </p>
+					<div class="post-meta"> <a href="#"><i class="fa fa-heart"></i>59</a> </div>
+				</div>
+				<div class="property-price">
+					<h1><span><sup>$</sup>450</span></h1>
+				</div>
+				<ul class="appartment-detail">
+					<li>1 Room</li>
+					<li>2 Beds</li>
+					<li>184 SQ FT</li>
+				</ul>
+			</div>
+		</div>
+		<div class="property-box border-hover rent col-md-4 animated out" data-delay="0" data-animation="fadeInUp">
+			<div class="appartment-img"><img src="/static/images/propertylist-10.jpg" class="img-responsive" alt="#" />
+				<div class="detail-btn"> <a href="#" class="rent">FOR RENT</a> </div>
+			</div>
+			<div class="property-text">
+				<div class="appartment-name">
+					<h4>French Hotel Room</h4>
+					<p>We are one of the few agents in the area that genuinely are specialists in both sales and lettings. </p>
+					<div class="post-meta"> <a href="#"><i class="fa fa-heart"></i>60</a> </div>
+				</div>
+				<div class="property-price">
+					<h1><span><sup>$</sup>879</span></h1>
+				</div>
+				<ul class="appartment-detail">
+					<li>1 Room</li>
+					<li>2 Beds</li>
+					<li>184 SQ FT</li>
+				</ul>
+			</div>
+		</div>
+		<div class="property-box border-hover rent col-md-4 animated out" data-delay="0" data-animation="fadeInUp">
+			<div class="appartment-img"><img src="/static/images/propertylist-11.jpg" class="img-responsive" alt="#" />
+				<div class="detail-btn"> <a href="#" class="rent">FOR RENT</a> </div>
+			</div>
+			<div class="property-text">
+				<div class="appartment-name">
+					<h4>Italian Hotel</h4>
+					<p>We are one of the few agents in the area that genuinely are specialists in both sales and lettings. </p>
+					<div class="post-meta"> <a href="#"><i class="fa fa-heart"></i>185</a> </div>
+				</div>
+				<div class="property-price">
+					<h1><span><sup>$</sup>699</span></h1>
+				</div>
+				<ul class="appartment-detail">
+					<li>1 Room</li>
+					<li>2 Beds</li>
+					<li>184 SQ FT</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+    <div class="col-md-2" style="right: 200px;position: fixed;border-color: black;border:solid;border-width: 0.5px;opacity: 100;background-color: white" >
+		<div class="right-side-bar" style="opacity: 100;background-color: white">
+			<div class="search-for animated out" data-delay="0" data-animation="fadeInUp" style="opacity: 100;background-color: white">
+				<div class="rightbar-heading mrgb3x" style="margin-top: 15px">
+					<h4>预订</h4>
+				</div>
+                <form method="post" action="#">
+                        <div  style="padding-left: 5px;padding-right: 5px;margin-bottom: 20px">
+                            入住日期:<input type="text"  style="border: solid;border-color: #9faab6;border-width: 1px;" value="{{ st }}"><br/>
+                            <br/>
+                            退房日期:<input type="text"  style="border: solid;border-color: #9faab6;border-width: 1px" value="{{ et }}">
+                        </div>
+                        入住人数：<input step="1" data-step-max="10" type="number" id="inputLoop" value="1" data-decimals="1" min="1" max="{{ house.book|maxguest }}"/>
+                        <p style="font-size: 10px;color: #9faab6">可住{{ house.book|house_description_show:"maxCheckinGuests" }}人，{% if house.book|house_description_show:"maxAdditionalGuests" %}可加客{{ house.book|house_description_show:"maxAdditionalGuests" }}人{% else %}不可加客{% endif %}</p>
+                        <p>房费：<span style="color: #ffa20b;font-size: 25px">{{ house.price|price }}</span>/晚</p>
+                        <a  class="fullBtnBlue" style="width: 200px"  id="bookNow">立即预订</a>
+                </form>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+<script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key="></script>
+<script>
+{#QVHBZ-YPERK-APVJG-AA3BJ-CUJR6-ZWFIW#}
+ var center = new TMap.LatLng({{ house.location|house_description_show:'latitude' }}, {{ house.location|house_description_show:'longitude' }});//设置中心点坐标
+        //初始化地图
+        var map = new TMap.Map("container", {
+            center: center,
+            mapStyleId: 'style1',
+            zoom : 13,
+        });
+
+        //初始化marker
+        var marker = new TMap.MultiMarker({
+            id: "marker-layer", //图层id
+            map: map,
+            styles: { //点标注的相关样式
+                "marker": new TMap.MarkerStyle({
+                    "width": 25,
+                    "height": 35,
+                    "anchor": { x: 16, y: 32 },
+                    "src": "/static/images/marker.png"
+                })
+            },
+            geometries: [{ //点标注数据数组
+                "id": "demo",
+                "styleId": "marker",
+                "position": new TMap.LatLng({{ house.location|house_description_show:'latitude' }}, {{ house.location|house_description_show:'longitude' }}),
+                "properties": {
+                    "title": "marker"
+                }
+            }]
+        });
+
+</script>
+
+{% endblock %}
+{% block load_js %}
+    <script>
+ $("#bookNow").click(function () {
+        {% if request.user.is_authenticated %}
+             window.location.href="/pay/booking/{{ house.id }}/?st={{ st }}&et={{ et }}";
+        {% else %}
+        alert("请先登录！");
+
+        {% endif %}
+    });
+
+</script>
+{% endblock %}

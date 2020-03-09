@@ -1,0 +1,1192 @@
+
+@media (min-width:1000px) and (max-width:1050px){
+
+.left-bar .social-media li,
+.left-bar,
+.right-bar, 
+.logo {
+    float: none;
+	text-align:center;
+}
+.left-bar ul {
+    border-bottom:1px solid #d5d5d5;
+    display: inline-block;
+}
+.right-bar {
+   margin:20px 0;
+}
+#navbar.pull-right
+ {
+	float:none !important;
+}
+.menu {
+	float:none;
+	margin:0 9%;
+}
+.footer-social-media li a {
+	min-width:31px;
+	padding:6px 9px;
+	margin-right:0;
+}	
+.widget-area.tweet li i {
+	height:66px;
+}
+.widget-area li i {
+	height:22px;
+	float:left;
+}
+.properties-list-2 .filter-list .property-text {
+	padding:20px 4px 30px;
+}
+.sale-2 .detail-btn, .rent-2 .detail-btn {
+	margin-right:0;
+}
+.properties-list-2 .property-box .home2.appartment-detail {
+	padding:20px 2px;
+}
+.right-side-bar .rating i {
+	margin-left:0;
+}
+.properties-list .property-text {
+    padding: 40px 12px 30px;
+}
+.filter-list .post-meta {
+	top:-19%;
+}
+.plan-title h4 {
+	padding: 33px 10px;
+}
+.flat-btn a,
+.arrow-btn a,
+.rounded-btn a,
+.rounded-arrow a {
+	display:inline-block;
+	margin-bottom:20px;
+
+}
+.place-img:hover .place-text h2 {
+    padding-top: 6%;
+}
+.vacation-bg.shortcode .get-start {
+	margin-bottom:24px;
+}
+.nav-tabs {
+	margin-top:-6%;
+}
+.search-btn {
+	margin-left:10px;
+}
+.search-btn a {
+	padding:16px 33px;
+}
+#amount, 
+#amount2
+#amount3 {
+	width:79px;
+}
+.property-box .home2.appartment-detail {
+	padding:30px 50px;
+}
+.search-form .form-section {
+	padding-right:29px
+}
+.property-text {
+	padding:25px 33px 30px;
+}
+.post-meta {
+	top:-16%;
+}
+.property-price h1::before {
+	left:-16%;
+}
+.property-price h1::after {
+	right:-16%;
+}
+.appartment-detail > li {
+	padding:0 25px;
+}
+.testi-carousel .item {
+    padding-top: 15%;
+}
+.section-detail .blog .time {
+	margin-top:0;
+}
+.section-detail .blog-text p {
+	line-height:16px;
+}
+.blog-img {
+	margin-right:6px;
+}
+.partner-carousel .owl-controls .owl-prev {
+	left:-4%;
+}
+.partner-carousel .owl-controls .owl-nex {
+	right:-4%;
+}
+.agent-profile .img-hover {
+	right:0;
+}
+.agent-mail li a {
+	margin-left:0;
+}
+.filter-bar li a {
+	padding:12px 12.7px;
+}
+.filter-list .property-text {
+    padding: 30px 14px;
+}
+.filter-list .appartment-detail > li {
+    padding: 0 33%;
+}
+#payment-form .booking i {
+	margin-left:8px;
+}
+#booking-form .form-group label{
+    margin-bottom: 26px;
+}
+#payment-form .form-group label {
+    margin-bottom: 31px;
+}
+#payment-form .booking {
+	margin-top:38%;
+}
+.filter-btn {
+	display:inline-block;
+	float:right;
+}
+.filter-values .form-section .form-control {
+    width: 65px;
+}
+.client-comment .reply-btn {
+	padding-left:10px;
+}
+}
+@media (min-width:800px) and (max-width:960px){
+
+.left-bar .social-media li,
+.left-bar,
+.right-bar, 
+.logo {
+    float: none;
+	text-align:center;
+}
+.left-bar ul {
+    border-bottom:1px solid #d5d5d5;
+    display: inline-block;
+}
+.right-bar {
+   margin:20px 0;
+}
+.navbar-default {
+    margin-top: 12px;
+}
+.nav.navbar-nav > li {
+    padding: 20px 16px;
+}
+.text-box p {
+    font-size: 15px;
+}
+.nav-tabs {
+    margin-top: -7.9%;
+}
+#slider-range .maxvalue, 
+#slider-range2 .maxvalue, 
+#slider-range3 .maxvalue, 
+#slider-range4 .maxvalue {
+	right:-9%;
+}
+#slider-range .minvalue, 
+#slider-range2 .minvalue, 
+#slider-range3 .minvalue, 
+#slider-range4 .minvalue {
+	left:-8%;
+}
+.appartment-detail > li {
+	padding:0 2%;
+}
+.property-box {
+    margin-bottom: 20px;
+}
+.property-text {
+	  padding: 34px 27px 30px;
+}
+.property-price h1::before {
+	left:-10%;
+}
+.testimonial,
+.about-widget,
+.widget-area {
+    margin-bottom: 30px;
+}
+.partner-carousel .owl-controls .owl-prev {
+	left: -5.6%;
+}
+.partner-carousel .owl-controls .owl-next {
+	right: -5.6%;
+}
+.slider-text {
+	padding: 4px 15px 50px;
+}
+.img-hover {
+	right:0;
+}
+.numbering {
+	clear:both;
+}
+#booking-form .form-group, #payment-form .form-group {
+	margin-bottom:19px;
+}
+.get-start {
+	margin-top:20px;
+}
+.pricing-box {
+	margin-bottom:30px;
+}
+.filter-bar li a {
+	padding:12px 13.5px;
+}
+.filter-form .select-box {
+	margin-bottom:20px;
+}
+.property-filter .post-meta {
+	top:-14%;
+	right:1%;
+}
+.filter-list .property-text {
+	padding:30px 2px;
+}
+.property-filter .property-price h1::before {
+	left:-1%;
+}
+.property-filter .property-price h1::after {
+	right:-1%;
+}
+.properties-list-2 .filter-list .property-text {
+	padding:20px 4px 30px;
+}
+.sale-2 .detail-btn, .rent-2 .detail-btn {
+	margin-right:0;
+}
+.properties-list-2 .property-box .home2.appartment-detail {
+	padding:20px 2px;
+}
+.properties-list .property-price h1::before {
+	left:-1%;
+}
+.properties-list .property-price h1::after {
+	right:-1%;
+}
+.post-meta {
+	right:0;
+}
+.property-info {
+	padding-left:0;
+}
+.property-carousel .owl-controls .owl-prev,
+.property-carousel .owl-controls .owl-next {
+	bottom:-60%;
+}
+.service-image {
+	margin-bottom:20px;
+}
+.clients-testimonial .testimonial-box {
+	margin-bottom:20px;
+	margin-right:0;
+}
+.flat-btn a,
+.arrow-btn a,
+.rounded-btn a,
+.rounded-arrow a {
+	display:inline-block;
+	margin-bottom:20px;
+}
+.panel-heading .panel-title a::after {
+	display:none;
+}
+.vacation-bg.shortcode .get-start,
+.vacation-bg-3.shortcode .get-start {
+    margin-bottom: 11px;
+}
+.property-box .home2.appartment-detail {
+	padding:30px 12px;
+}
+.fullscreen-container-2 .slider-text {
+	padding:4px 15px 30px;
+}
+.fullscreen-container-2 .slider-text p {
+	line-height:0;
+}
+.action-btn a {
+	margin-top:0;
+}
+#booking-form .form-group label {
+	margin-bottom:27px;
+}
+#payment-form .form-group.padding-right {
+	padding-right:0;
+}
+#payment-form .booking {
+	display:inline;
+	float:right;
+}
+.filter-btn {
+	display:inline-block;
+}
+.filter-values .form-section .form-control {
+	margin-bottom:20px;
+}
+.search-btn {
+	margin-top:0;
+}
+.place-img {
+	margin-bottom:20px;
+}
+.place-img:hover .place-text h2 {
+    padding-top: 11%;
+}
+}
+
+@media (min-width:600px) and (max-width:785px){
+
+.left-bar,
+.right-bar,
+.logo {
+    float: none;
+	text-align:center;
+}
+.left-bar ul {
+    border-bottom:1px solid #d5d5d5;
+    display: inline-block;
+}
+.right-bar {
+   margin:20px 0;
+}
+.navbar-default {
+    margin-top: 12px;
+}
+.nav.navbar-nav > li {
+    padding: 20px 16px;
+}
+.text-box p {
+    font-size: 15px;
+	line-height:20px;
+}
+
+.fullscreen-container-2 .tp-leftarrow.default {
+	left:5px !important;
+}
+.fullscreen-container-2 .tp-rightarrow.default {
+	right:5px !important;
+}
+.tp-bullets {
+    bottom: 20% !important;
+}
+.nav-tabs {
+    margin-top: -7.9%;
+}
+#slider-range .maxvalue, 
+#slider-range2 .maxvalue, 
+#slider-range3 .maxvalue, 
+#slider-range4 .maxvalue {
+	right:-9%;
+}
+#slider-range .minvalue, 
+#slider-range2 .minvalue, 
+#slider-range3 .minvalue, 
+#slider-range4 .minvalue {
+	left:-8%;
+}
+.featured-properties h3::before,
+.featured-properties h3::after {
+	display:none;
+}
+.appartment-detail > li {
+	padding-right:7px;
+}
+.property-box {
+    margin-bottom: 20px;
+}
+.property-text {
+	  padding: 34px 29px 30px;
+}
+.testimonial,
+.about-widget, 
+.widget-area {
+    margin-bottom: 30px;
+}
+.partner-carousel .owl-controls .owl-prev {
+	 left: 42%;
+    top: 75%;
+}
+.partner-carousel .owl-controls .owl-next {
+	right: 42%;
+    top: 75%;
+}
+.right-options .search-btn {
+	margin-top:0;
+}
+.place-img {
+    margin-bottom: 20px;
+}
+.place-img:hover .place-text h2 {
+    padding-top: 11%;
+}
+.slider-2 .slider-text {
+    padding: 10px 24px 0px;
+}
+.slider-2 .slider-text h2, p {
+    margin:0;
+}
+.slider2-button .signup-btn {
+	padding-bottom:26px;
+}
+.img-hover {
+	right:0;
+}
+.numbering {
+	clear:both;
+}
+#map-street-2 {
+	height:450px;
+}
+.get-start {
+	margin-top:20px;
+}
+.pricing-box {
+	margin-bottom:30px;
+}
+.filter-bar li a {
+	padding:12px 13.5px;
+}
+.filter-form .select-box {
+	margin-bottom:20px;
+}
+.property-filter .post-meta {
+	top:-15%;
+	right:0;
+}
+.filter-list .property-text {
+	padding:30px 2px;
+}
+.property-filter .property-price h1::after {
+	right:-1%;
+}
+.property-filter .property-price h1::before {
+	left:-1%;
+}
+.properties-list-2 .filter-list .property-text {
+	padding:20px 4px 30px;
+}
+.sale-2 .detail-btn, .rent-2 .detail-btn {
+	margin-right:0;
+}
+.properties-list-2 .property-box .home2.appartment-detail {
+	padding:20px 2px;
+}
+.properties-list .property-price h1::before {
+	left:-1%;
+}
+.properties-list .property-price h1::after {
+	right:-1%;
+}
+.post-meta {
+	right:0;
+}
+.property-info {
+	padding-left:0;
+}
+.clients-testimonial .testimonial-box {
+	margin-bottom:20px;
+	margin-right:0;
+}
+.flat-btn a,
+.arrow-btn a,
+.rounded-btn a,
+.rounded-arrow a {
+	display:inline-block;
+	margin-bottom:20px;
+}
+.vacation-bg.shortcode .get-start,
+.vacation-bg-3.shortcode .get-start {
+    margin-bottom: 21px;
+}
+.property-box .home2.appartment-detail {
+	padding:30px 8px;
+}
+.fullscreen-container .tp-leftarrow,
+.fullscreen-container .tp-rightarrow {
+	display:none;
+}
+.filter-list .appartment-detail > li {
+    padding: 0 4px;
+}
+.service-image {
+    margin-bottom: 20px;
+}
+.booking-section .property-box {
+    margin-bottom: 24px;
+}
+#payment-form .form-group.padding-right {
+	padding-right:0;
+}
+#payment-form .booking {
+	display:inline;
+	float:right;
+}
+.filter-btn {
+	display:inline-block;
+}
+.filter-values .form-section .form-control {
+	margin-bottom:20px;
+}
+}
+@media (min-width:600px) and (max-width:650px){
+.navbar-toggle {
+	background-color:#09b9e5;
+}
+.navbar-header span {
+    background-color: #fff;
+}
+.nvabar-nav {
+	display:block;
+}
+#navbar {
+	width:100%;
+}
+.navbar-header .navbar-toggle {
+  display:inline-block;
+ }
+.navbar-nav > li {
+    display: block;
+	text-align:center;
+	padding:12px 20px;
+ }
+.menu {
+	float:none;
+}
+.nav-tabs {
+    margin-top: -10%;
+}
+.appartment-img img {
+    width: 100%;
+}
+.slider-text {
+	padding:0 36px 44px;
+}
+.property-text {
+	 padding: 34px 38px 30px;
+}
+.property-price h1::before {
+	width:50%;
+	left:-8.2%;
+}
+.property-price h1::after {
+	right:-8.2%;
+}
+.appartment-detail > li {
+    padding:0 6%;
+}
+.place-img:hover .place-text h2 {
+    padding-top: 22%;
+}
+.place-img img {
+    width: 100%;
+}
+.partner-carousel .owl-controls .owl-prev {
+    left: 38%;
+}
+.img-hover {
+    right: 43%;
+}
+.agent-img {
+	margin-left:30%;
+}
+.agent-profile {
+	margin-bottom:50px;
+}
+.border-top {
+	border-top:none;
+}
+.page-title {
+	margin-top:0px;
+}
+.get-start {
+	margin-top:8px;
+}
+.filter-bar li a {
+    padding: 12px 68.6px;
+}
+.filter-bar,
+.filter-form {
+	margin-bottom:20px
+}
+.filter-form,
+.filter-form .select-box {
+	padding:0;
+}
+.property-filter .appartment-detail > li {
+	padding:0 9%;
+}
+.filter-list .property-text {
+	padding:30px 19px;
+}
+.property-filter .property-price h1::before {
+	left:-3.8%;
+}
+.property-filter .property-price h1::after {
+	right:-3.8%;
+}
+.properties-list-2 .property-box .home2.appartment-detail {
+	padding:20px 16%;
+}
+.home2.appartment-detail > li {
+	padding:0 6%;
+}
+.property-info {
+	padding-left:0;
+	margin-top:20px;
+}
+.property-carousel .owl-buttons {
+	display:none;
+}
+.sync2 .owl-wrapper-outer {
+	margin-left:0;
+}
+.tab-section {
+    padding-right: 30%;
+}
+.service-image {
+	margin-bottom:20px;
+}
+.service-info {
+	right:31.3%;
+}
+.alert-boxes .col-md-6 {
+	padding:0;
+}
+.vacation-bg.shortcode .get-start, 
+.vacation-bg-3.shortcode .get-start {
+    margin-bottom: 7px;
+}
+.action-btn a {
+	margin-top:8px;
+}
+.filter-form .select-box::before {
+	right:0;
+}
+.filter-form .form-section {
+	display:inline-block;
+}
+.filter-values .form-section {
+    padding: 0;
+}
+}
+@media (min-width:320px) and (max-width:500px){
+.social-media li {
+    border-bottom: 1px solid #d5d5d5;
+}
+.left-bar {
+	margin-bottom:20px;
+	margin-left:25px;
+}
+.right-bar {
+   float:none;
+   text-align:center;
+   margin-bottom:10px;
+}
+.right-bar ul {
+	display:inline-block;
+	margin-bottom:10px;
+}
+.navbar-toggle {
+	background-color:#09b9e5;
+}
+.navbar-header span {
+    background-color: #fff;
+}
+.nvabar-nav {
+	display:block;
+}
+.navbar-header .navbar-toggle {
+  display:inline-block;
+ }
+.navbar-nav > li {
+    display: block;
+	text-align:center;
+	padding:12px 20px;
+ }
+#navbar {
+	width:100%;
+}
+.menu {
+	float:none;
+}
+.slider-text {
+    padding: 0 40px 31px;
+}
+.slider-button a {
+	padding: 10px 8px;
+}
+.text-box h2 {
+    font-size: 15px;
+	margin-bottom:4px;
+}
+.text-box p {
+    font-size: 8px;
+	line-height:12px;
+}
+.view-btn {
+	float:left;
+}
+.tp-bullets {
+    bottom: 6% !important;
+    left: 38% !important;
+}
+.fullscreen-container .tp-leftarrow,
+.fullscreen-container .tp-rightarrow {
+	display:none;
+}
+.fullscreen-container-2 .tp-leftarrow.default {
+	top:48% !important;
+}
+.fullscreen-container-2 .tp-rightarrow.default {
+	top:48% !important;
+}
+.nav-tabs {
+    margin-top: 3%;
+}
+.top-tabs .tab-content {
+	padding: 34px 8px 0;
+}
+.top-tabs .tab-content { 
+	border:1px solid #d5d5d5; 
+}
+#slider-range .maxvalue, 
+#slider-range2 .maxvalue, 
+#slider-range3 .maxvalue, 
+#slider-range4 .maxvalue {
+	right:-15%;
+}
+#slider-range .minvalue, 
+#slider-range2 .minvalue, 
+#slider-range3 .minvalue, 
+#slider-range4 .minvalue {
+	left:-12%;
+}
+.featured-properties h3 span {
+	font-size:20px;
+}
+.appartment-img img {
+    width: 100%;
+}
+.property-text {
+	padding:34px 19px 30px;
+}
+.property-price h1::after{
+	right:-5%;
+}
+.property-price h1::before{
+	left:-5%;
+}
+.property-box {
+	margin-bottom:20px;
+}
+.appartment-detail > li {
+	padding:0 5%;
+}
+.listing-name li {
+	margin-right:15px;
+}
+.listing-name > li a::before {
+	top:28px;
+}
+.home2.appartment-detail > li {
+	padding:0 18px;
+}
+.testi-carousel .item {
+    padding-top: 26%;
+}
+.testimonial {
+	margin-bottom:30px;
+}
+.blog-img {
+	margin-right:12px;
+}
+.blog-text .time > li {
+	margin-right:0px;
+}
+.about-widget, 
+.widget-area {
+	margin-bottom:30px;
+}
+.slider-2 .text-box {
+	margin-bottom:22px;
+}
+.slider-2 .slider-text {
+    padding:4px 13px;
+}
+.fullscreen-container-2 .tp-leftarrow {
+	background-size:25px 25px;
+	left:5px !important;
+}
+.fullscreen-container-2 .tp-rightarrow {
+	background-size:25px 25px;
+	right:-23px !important;
+}
+.slider-2 .slider-text h2, p {
+    margin:0;
+}
+.slider2-button .signup-btn a {
+	padding:6px 8px;
+}
+.slider2-button .signup-btn {
+	padding-bottom:12px;
+}
+.img-hover {
+	right:31%;
+}
+.agent-img {
+	margin-left:26%;
+}
+.agent-profile {
+	margin-bottom:50px;
+}
+.border-top {
+	border-top:none;
+}
+.page-title {
+	margin-top:0px;
+}
+.about-author .author-detail a {
+	display:block;
+	margin-bottom:10px;
+}
+.client-comment img {
+	margin-right:8px;
+}
+.comment-upper .reply-btn {
+	margin-top:10px
+}
+.contact-info-rightbar {
+	padding-top:20px;
+	clear:both;
+}
+#map-street-2 {
+	height:450px;
+}
+.panel-heading .panel-title a::after {
+	display:none;
+}
+.get-start,
+.action-text h3,
+.action-text p {
+	margin-top:20px;
+	letter-spacing:0;
+}
+.pricing-box {
+	margin-bottom:30px;
+}
+.filter-form,
+.filter-form .col-md-6,
+.filter-values .form-section {
+	padding:0;
+}
+.filter-btn {
+	padding:0;
+	float:left;
+}
+.filter-bar,
+.filter-type .select-box {
+	margin-bottom:20px;
+}
+.filter-bar li a {
+	padding:12px 48.5px;
+}
+.filter-list .property-price h1::before {
+	left:-5.3%;
+}
+.filter-list .property-price h1::after {
+    right:-5.3%;
+}
+.filter-list .appartment-detail > li {
+	padding-right:16%
+}
+.properties-list .property-text {
+	padding: 34px 19px 30px;
+}
+.property-info {
+	padding-left:0;
+	margin-top:20px;
+}
+.property-carousel .owl-buttons {
+	display:none;
+}
+.sync2 .owl-wrapper-outer {
+	margin-left:0;
+}
+.tab-section {
+    padding-right: 20%;
+}
+.service-img img {
+	margin-bottom:20px;
+}
+.service-image {
+	margin-bottom:20px;
+}
+.clients-testimonial .testimonial-box {
+	margin-bottom:20px;
+	margin-right:0;
+}
+.flat-btn a,
+.arrow-btn a,
+.rounded-btn a,
+.rounded-arrow a {
+	display:inline-block;
+	margin-bottom:20px;
+}
+.alert-boxes .col-md-6 {
+	padding:0;
+}
+.vacation-bg.shortcode .get-start, 
+.vacation-bg-3.shortcode .get-start {
+    margin-bottom: 7px;
+}
+.partner-carousel .owl-controls .owl-prev {
+	background-size:30px 30px;
+	left:-3%;
+	top:6%
+}
+.partner-carousel .owl-controls .owl-next {
+	background-size:30px 30px;
+	top:6%;
+}
+.filter-list .property-text {
+    padding: 30px 21px;
+}
+.filter-list .appartment-detail > li {
+    padding: 0 8%;
+}
+.service-image img {
+    width: 100%;
+}
+#payment-form .form-group.padding-right {
+	padding-right:0;
+}
+#payment-form .booking {
+	display:inline;
+	float:right;
+}
+.filter-form li {
+	margin-top:20px
+}
+.filter-form .form-section {
+	display:inline-block;
+	margin-top:20px;
+}
+.filter-form .select-box::before {
+	right:0;
+}
+.filter-values .form-section {
+    margin-bottom: 20px;
+}
+.search-btn {
+	margin-top:0;
+}
+.place-img {
+	margin-bottom:20px;
+}
+.place-img:hover .place-text h2 {
+    padding-top: 17%;
+}
+}
+@media (min-width:320px) and (max-width:360px) {
+.social-media li a {
+    min-width: 35px;
+    padding: 8px 9px;
+}
+.left-bar {
+	margin-left:0;
+}
+.slider-text {
+    padding: 0 17px 24px;
+}
+.nav-tabs a i {
+	margin-right:2px;
+}
+.nav-tabs {
+    margin-left: 4px;
+}
+.nav-tabs > li a { 
+	padding: 14px 1px;
+}
+.nav-tabs > li {
+	margin-right:0;
+}
+#slider-range .maxvalue, 
+#slider-range2 .maxvalue, 
+#slider-range3 .maxvalue, 
+#slider-range4 .maxvalue {
+	right:-22%;
+}
+#slider-range .minvalue, 
+#slider-range2 .minvalue, 
+#slider-range3 .minvalue, 
+#slider-range4 .minvalue {
+	left:-20%;
+}
+.featured-properties h3 span {
+    font-size: 18px;
+}
+.appartment-detail > li {
+	padding:0;
+}
+.home2.appartment-detail > li {
+	padding:0;
+}
+.property-box .home2.appartment-detail {
+	padding:30px 3px;
+}
+.property-text {
+	padding:34px 8px 30px;
+}
+.resort-name h4 { 
+	margin-right:7px;
+}
+.property-box .home2.appartment-detail {
+	padding:30px 10px;
+}
+.post-meta {
+	top:-19%;
+}
+.place-img:hover .place-text h2 {
+    padding-top: 3%;
+}
+.listing-name li {
+    margin-right: 6px;
+}
+.property-price h1::before {
+	left:-4%;
+}
+.property-price h1::after {
+    right: -4%;
+}
+.listing-name > li a::before {
+    top: 30px;
+}
+.partner-carousel img {
+	width:85%;
+}
+.client-img {
+    left: 31%;
+}
+.testi-carousel .item {
+    padding-top: 33%;
+}
+.lower-footer p {
+	padding:25px 5px;
+}
+.img-hover {
+	right:11%;
+}
+.breadcrumb {
+	float:none;
+	display:inline-block;
+	padding:0;
+}
+.tag-bar a {
+	margin-left:14px;
+}
+.get-start,
+.action-text h3,
+.action-text p {
+	margin-top:6px;
+	letter-spacing:0;
+}
+.filter-type,
+.filter-form,
+.filter-form .col-md-4 {
+	padding:0;
+}
+.filter-bar,
+.filter-form .select-box,
+.filter-values .form-section,
+.filter-btn {
+	margin:0 20px 20px;
+}
+.filter-bar li a {
+	padding:12px 20px;
+}
+.filter-list .home2.appartment-detail > li{
+	padding-right:5%;
+}
+.filter-list .appartment-detail > li {
+	padding:0 10px;
+}
+.filter-list .property-price h1::before {
+	left:-7%;
+}
+.filter-list .property-price h1::after {
+	right:-7%;
+}
+.properties-list .property-text {
+	padding: 34px 15px 30px;
+}
+.property-single .rating {
+	display:none;
+}
+.image-detail {
+	padding:0 15px;
+}
+.sync2 .owl-item {
+    margin-right: 10px;
+    width: 140px !important;
+}
+.service-img {
+	float:none;
+	display:block;
+}
+.service-img .tab-name {
+	bottom:12px;
+	right:0;
+}
+.partner-carousel .owl-controls .owl-next {
+	background-size:30px 30px;
+	top:17%;
+	right:-12%;
+}
+.partner-carousel .owl-controls .owl-prev {
+	background-size:30px 30px;
+	top:17%;
+	left:-5%;
+}
+.slider-button .view-btn {
+	float:none;
+}
+.agent-img {
+	margin-left:7%
+}
+.tag-bar {
+	margin:20px 0;
+}
+.tag-bar a {
+	margin-left:0;
+}
+.tag-bar span {
+	border:none;
+}
+.filter-list .property-text {
+    padding: 33px 17px;
+}
+.page-name {
+	float:none;
+}
+.service-icon {
+	height:51px;
+}
+.comment-upper .rating {
+	margin-left:0;
+}
+}
+
+
+

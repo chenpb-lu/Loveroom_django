@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="money">
+        <input type="submit" value="去支付" />
+    </form>
+<script></script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+{% extends 'Uc/uc_base.html' %}
+{% block uc_content %}
+{% load myfilter %}
+  <div class="col-lg-12">
+      <div class="panel">
+          <div class="panel-body">
+              <h4>我的收藏</h4>
+              <hr/>
+                <div class="row">
+				    <ul class="filter-list clearfix" style="width: 100%">
+                    {% if houselist %}
+                        {% for item in houselist %}
+                        <li class="mix rent test col-md-4 col-sm-4 mrgb5x" data-price="5">
+                            <a href="/show/{{ item.0 }}/?st={{ st }}&et={{ et }}">
+                                <div class="property-box rent animated out" data-delay="0" data-animation="fadeInUp">
+							<div class="appartment-img"><img src={{ item.4|get_img_url }} class="img-responsive" alt="#" style="width: 265px;height: 175px" />
+								<div class="detail-btn"> <a href="#" class="rent" style="color:white;font-size: 12px">￥{{ item.5|price }}</a> </div>
+							</div>
+							<div class="property-text" style="height: 100px">
+								<div class="appartment-name" >
+                                    <a href="/show/{{ item.0 }}/?st={{ st }}&et={{ et }}"><h5 style="margin-bottom: 0px !important;font-size: 16px">{{ item.6|limit_title }}</h5></a>
+                                    <a href="/show/{{ item.0 }}/?st={{ st }}&et={{ et }}"><p style="margin-bottom: 0px !important;height: 24px"><strong>{{ item.6|limit_title }}</strong></p></a>
+                                    <p style="color: #9faab6;height: 15px"><span style="font-size: 5px">{{ item|housetype_sql }}  |</span><span style="font-size: 5px">可住{{ item.2|jsonvalue:"maxGuestNumber" }}人   |</span><span style="font-size: 5px">{{ item.3|jsonvalue:"districtName" }}</span><p>
+									<div class="post-meta">
+
+                                        <a style="color: #cf251f;" id="house_collect-{{ item.0 }}" class="like" ><i class="fa fa-heart"></i></a>
+
+
+
+                                     </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    {% else %}
+                        <h4>未收藏任何房源</h4>
+                    {% endif %}
+
+				</ul>
+                <div class="numbering">
+                        <ul class="pagination" id="pagination_cpb">
+
+                            {% if houselist.has_previous %}
+                            <li><a href="?page={{ houselist.previous_page_number }}">上一页</a></li>
+                            {% endif %}
+                            {% if page|contrast:'6'  %}
+                                {% for i in fivenum %}
+                                <li {% ifequal page i %}class="active"{% endifequal %}><a href="?page={{ i }}">{{ forloop.counter }}</a></li>
+                                {% endfor %}
+                                {% if pagenum|contrast:'6' %}
+                                {% else %}
+                                    <li ><a >···</a></li>
+                                    <li ><a href="?page={{ pagenum}}">{{ pagenum }}</a></li>
+                                {% endif %}
+                            {% else %}
+                                <li ><a href="?page=1">1</a></li>
+                                <li ><a >···</a></li>
+
+                                {% if page|add:'2' < pagenum %}
+                                    <li ><a href="?page={{ page|add:'-2' }}">{{ page|add:'-2' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-1' }}">{{ page|add:'-1' }}</a></li>
+                                    <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                                    <li ><a href="?page={{ page|add:'1' }}">{{ page|add:'1' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'2' }}">{{ page|add:'2' }}</a></li>
+                                    <li><a>···</a></li>
+                                    <li ><a href="?page={{ pagenum}}">{{ pagenum }}</a></li>
+                                {% endif %}
+
+                                {% ifequal page|add:'2'  pagenum  %}
+                                    <li ><a href="?page={{ page|add:'-2' }}">{{ page|add:'-2' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-1' }}">{{ page|add:'-1' }}</a></li>
+                                    <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                                    <li ><a href="?page={{ page|add:'1' }}">{{ page|add:'1' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'2' }}">{{ page|add:'2' }}</a></li>
+                                {% endifequal %}
+                                {% ifequal page|add:'1'  pagenum  %}
+                                    <li ><a href="?page={{ page|add:'-3' }}">{{ page|add:'-3' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-2' }}">{{ page|add:'-2' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-1' }}">{{ page|add:'-1' }}</a></li>
+                                    <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                                    <li ><a href="?page={{ page|add:'1' }}">{{ page|add:'1' }}</a></li>
+                                {% endifequal %}
+                                {% ifequal page|add:'0'  pagenum  %}
+                                    <li ><a href="?page={{ page|add:'-4' }}">{{ page|add:'-4' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-3' }}">{{ page|add:'-3' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-2' }}">{{ page|add:'-2' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-1' }}">{{ page|add:'-1' }}</a></li>
+                                    <li class="active"><a href="?page={{ page }}">{{ page }}</a></li>
+                                {% endifequal %}
+
+                            {% endif %}
+
+
+                            {% if houselist.has_next %}
+                            <li><a href="?page={{ houselist.next_page_number }}">下一页</a></li>
+                            {% endif %}
+
+
+					    </ul>
+				    </div>
+                </div>
+
+          </div>
+      </div>
+  </div>
+
+
+
+{% endblock %}

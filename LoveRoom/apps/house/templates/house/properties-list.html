@@ -1,0 +1,281 @@
+{% extends "base.html" %}
+{% block content %}
+{% load myfilter %}
+<section class="border-top">
+</section>
+<section>
+	<div class="container">
+		<div class="property-filter clearfix">
+			<div class="filter-type mrgb6x clearfix">
+                {% include "show/submit.html" %}
+
+			</div>
+			<div class="row">
+				<ul class="filter-list clearfix">
+                    {% if houselist %}
+                        {% for item in houselist %}
+                        <li class="mix rent test col-md-3 col-sm-4 mrgb5x" data-price="5">
+                            <a href="/show/{{ item.id }}/?st={{ st }}&et={{ et }}">
+                                <div class="property-box rent animated out" data-delay="0" data-animation="fadeInUp">
+							<div class="appartment-img"><img src={{ item.photo|get_img_url }} class="img-responsive" alt="#" style="width: 265px;height: 175px" />
+								<div class="detail-btn"> <a href="#" class="rent" style="color:white;font-size: 12px">￥{{ item.price|price }}</a> </div>
+							</div>
+							<div class="property-text" style="height: 100px">
+								<div class="appartment-name" >
+                                    <a href="/show/{{ item.id }}/?st={{ st }}&et={{ et }}"><h5 style="margin-bottom: 0px !important;font-size: 16px">{{ item.title|limit_title }}</h5></a>
+                                    <a href="/show/{{ item.id }}/?st={{ st }}&et={{ et }}"><p style="margin-bottom: 0px !important;height: 24px"><strong>{{ item.title|limit_title }}</strong></p></a>
+                                    <p style="color: #9faab6;height: 15px"><span style="font-size: 5px">{{ item|housetype }}  |</span><span style="font-size: 5px">可住{{ item.info|jsonvalue:"maxGuestNumber" }}人   |</span><span style="font-size: 5px">{{ item.location|jsonvalue:"districtName" }}</span><p>
+									<div class="post-meta">
+                                    {% if request.user.is_authenticated %}
+                                        <a style="color: #cfcece;" id="house_collect-{{ item.id }}" class="like" ><i class="fa fa-heart"></i></a>
+                                    {% else %}
+                                        <a style="color: #cfcece;" id="house_collect-{{ item.id }}" class="like" ><i class="fa fa-heart"></i></a>
+                                    {% endif %}
+
+                                     </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    {% else %}
+                        <h4>未搜索到合适房源</h4>
+                    +{% endif %}
+
+				</ul>
+                    <div class="numbering">
+                        <ul class="pagination" id="pagination_cpb">
+
+                            {% if houselist.has_previous %}
+                            <li><a href="?page={{ houselist.previous_page_number }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">上一页</a></li>
+                            {% endif %}
+                            {% if page|contrast:'6'  %}
+                                {% for i in fivenum %}
+                                <li {% ifequal page i %}class="active"{% endifequal %}><a href="?page={{ i }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ forloop.counter }}</a></li>
+                                {% endfor %}
+                                {% if pagenum|contrast:'6' %}
+                                {% else %}
+                                    <li ><a >···</a></li>
+                                    <li ><a href="?page={{ pagenum}}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ pagenum }}</a></li>
+                                {% endif %}
+                            {% else %}
+                                <li ><a href="?page=1&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">1</a></li>
+                                <li ><a >···</a></li>
+
+                                {% if page|add:'2' < pagenum %}
+                                    <li ><a href="?page={{ page|add:'-2' }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page|add:'-2' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-1' }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page|add:'-1' }}</a></li>
+                                    <li class="active"><a href="?page={{ page }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page }}</a></li>
+                                    <li ><a href="?page={{ page|add:'1' }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page|add:'1' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'2' }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page|add:'2' }}</a></li>
+                                    <li><a>···</a></li>
+                                    <li ><a href="?page={{ pagenum}}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ pagenum }}</a></li>
+                                {% endif %}
+
+                                {% ifequal page|add:'2'  pagenum  %}
+                                    <li ><a href="?page={{ page|add:'-2' }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page|add:'-2' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-1' }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page|add:'-1' }}</a></li>
+                                    <li class="active"><a href="?page={{ page }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page }}</a></li>
+                                    <li ><a href="?page={{ page|add:'1' }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page|add:'1' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'2' }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page|add:'2' }}</a></li>
+                                {% endifequal %}
+                                {% ifequal page|add:'1'  pagenum  %}
+                                    <li ><a href="?page={{ page|add:'-3' }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page|add:'-3' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-2' }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page|add:'-2' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-1' }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page|add:'-1' }}</a></li>
+                                    <li class="active"><a href="?page={{ page }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page }}</a></li>
+                                    <li ><a href="?page={{ page|add:'1' }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page|add:'1' }}</a></li>
+                                {% endifequal %}
+                                {% ifequal page|add:'0'  pagenum  %}
+                                    <li ><a href="?page={{ page|add:'-4' }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page|add:'-4' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-3' }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page|add:'-3' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-2' }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page|add:'-2' }}</a></li>
+                                    <li ><a href="?page={{ page|add:'-1' }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page|add:'-1' }}</a></li>
+                                    <li class="active"><a href="?page={{ page }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ page }}</a></li>
+                                {% endifequal %}
+
+                            {% endif %}
+
+
+                            {% if houselist.has_next %}
+                            <li><a href="?page={{ houselist.next_page_number }}&city={{ city }}&st={{ st }}&et={{ et }}{% if district %}&district={{ district }}{% endif %}{% if type %}&type={{ type }}{% endif %}{% if minprice  %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">下一页</a></li>
+                            {% endif %}
+
+
+					    </ul>
+				    </div>
+
+
+
+
+                    </span>
+                </div>
+			</div>
+		</div>
+	</div>
+
+</section>
+{% endblock %}
+
+{% block load_js %}
+    <script type="text/javascript" src="/static/js/City_data.js"></script>
+    <script type="text/javascript" src="/static/js/areadata2.js"></script>
+    <script type="text/javascript" src="/static/js/auto_area.js"></script>
+    <script src="/static/js/moment.js"></script>
+    <script src="/static/js/daterangepicker.js"></script>
+    <script type="text/javascript">
+   var t = new Date();
+   var year = t.getFullYear();
+   var mon = t.getMonth()+1;
+   var day = t.getDate();
+   function AddDate(count) {
+       var dd = new Date();
+       dd.setDate(dd.getDate() + count);
+       var year = dd.getFullYear();
+       var mon = dd.getMonth()+1;
+       var day = dd.getDate();
+       return mon+'/'+day+'/'+year;
+   }
+   $('#demo').daterangepicker({
+    "locale": {
+        "direction": "ltr",
+        "format": "MM/DD/YYYY",
+        "separator": " - ",
+        "applyLabel": "确定",
+        "cancelLabel": "取消",
+        "fromLabel": "From",
+        "toLabel": "To",
+        "customRangeLabel": "Custom",
+        "daysOfWeek": [
+            "日",
+            "一",
+            "二",
+            "三",
+            "四",
+            "五",
+            "六"
+        ],
+        "monthNames": [
+            "一月",
+            "二月",
+            "三月",
+            "四月",
+            "五月",
+            "六月",
+            "七月",
+            "八月",
+            "九月",
+            "十月",
+            "十一月",
+            "十二月"
+        ],
+        "firstDay": 1
+    },
+    "startDate": mon+'/'+day+'/'+year,
+    "endDate": AddDate(1),
+    "minDate": mon+'/'+day+'/'+year,
+    "maxDate": AddDate(180),
+}, function(start, end, label) {
+
+});
+
+   $('.applyBtn').click(function () {
+
+       var url = '//127.0.0.1:8000/show/?city={{ city }}';
+       if( "{{ district }}" != "None") {
+           url = url+'&district={{ district }}'
+       }
+       if("{{ type }}" != "None"){
+           url = url + "&type={{ type }}"
+        }
+        if("{{ minprice }}" != "None"){
+           url = url + "&minprice={{ minprice }}"
+        }
+        if("{{ maxprice }}" != "None"){
+            url = url + "&maxprice={{ maxprice }}"
+        }
+       url = url + '&st='+$("[name = 'daterangepicker_start']").val() + '&et=' + $("[name = 'daterangepicker_end']").val();
+       $(window).attr('location',url);
+
+
+   });
+
+    $('#push_price').click(function () {
+        var url = '//127.0.0.1:8000/show/?city={{ city }}';
+        if( "{{ district }}" != "None") {
+           url = url+'&district={{ district }}'
+       }
+       if("{{ et }}"!="None" && "{{ st }}" != "None"){
+            url = url + '&st={{ st }}&et={{ et }}';
+        }
+        if("{{ type }}" != "None"){
+           url = url + "&type={{ type }}"
+        }
+        if($('#min_price').val() && $('#max_price').val()){
+             if(parseInt($('#min_price').val()) < parseInt($('#max_price').val())){
+                url = url + '&minprice='+$('#min_price').val() + "&maxprice=" + $('#max_price').val();
+            }
+        }else{
+            if($('#min_price').val()){
+                url = url + '&minprice='+$('#min_price').val()
+            }
+            if($('#mx_price').val()){
+                url = url + "&maxprice=" + $('#max_price').val()
+            }
+        }
+
+       $(window).attr('location',url);
+    });
+
+    $('#noprice').click(function () {
+        var url = '//127.0.0.1:8000/show/?city={{ city }}';
+        if( "{{ district }}" != "None") {
+           url = url+'&district={{ district }}'
+       }
+       if("{{ et }}"!="None" && "{{ st }}" != "None"){
+            url = url + '&st={{ st }}&et={{ et }}';
+        }
+        if("{{ type }}" != "None"){
+           url = url + "&type={{ type }}"
+        }
+
+       $(window).attr('location',url);
+    });
+    
+    
+    $(".like").click(function () {
+        {% if request.user.is_authenticated %}
+            var a = this.id;
+            var id = a.split('-')[1];
+             $.ajax({
+                url: '/apis/collection/'+ id +'/',
+                type: 'GET',
+                // dataType: 'json',
+                success: function (data) {
+                    if(data.code == 200){
+                        obj_a = $("#house_collect-"+id);
+                        // 根据状态显示爱心
+                        if(data.msg.status){
+                            obj_a.attr("style", "color:red; ")
+                        }else{
+                            obj_a.attr("style", "color:#cfcece; ")
+                        }
+                    }
+                }
+            });
+        {% else %}
+            alert("请先登录！");
+        {% endif %}
+
+    });
+
+   {% for i in collection %}
+        $("#house_collect-"+'{{ i.house_id }}').attr("style", "color:red; ");
+   {% endfor %}
+
+
+
+</script>
+
+{% endblock %}
