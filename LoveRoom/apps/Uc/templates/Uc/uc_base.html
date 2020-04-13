@@ -6,17 +6,17 @@
       <aside class="profile-info col-lg-3">
         <div class="panel" style="border-right: 1px solid #cccccc; height: 400px;margin: 20px">
           <div class="panel-body">
-            <ul class="nav nav-pills nav-stacked" style="font-size: 18px">
+            <ul class="nav nav-pills nav-stacked" style="font-size: 18px;color: black">
             {% url 'uc:profile' as uc_profile %}
             {% url 'uc:change_passwd' as uc_change_passwd %}
             {% url 'uc:answer' as uc_answer %}
             {% url 'uc:collect' as uc_collect %}
-            {% url 'uc:contribut' as uc_contribut %}
-            <li role="presentation" class="{% if current_url == uc_profile %}active{% endif %}"><a href="{{ uc_profile }}" style="color: #0a274e"><b>个人资料</b></a></li>
-            <li role="presentation" class="{% if current_url == uc_change_passwd %}active{% endif %}"><a href="{{ uc_change_passwd }}" style="color: #0a274e"><b>修改密码</b></a></li>
+            {% url 'uc:order' as uc_order %}
+            <li role="presentation" ><a href="{{ uc_profile }}" {% if request.path == '/uc/profile/' %}style="color: #0070ff"{% else %}style="color: #0a274e"{% endif %}><b>个人资料</b></a></li>
+            <li role="presentation" ><a href="{{ uc_change_passwd }}" {% if request.path == '/uc/change_passwd/' %}style="color: #0070ff"{% else %}style="color: #0a274e"{% endif %}><b>修改密码</b></a></li>
     {#        <li role="presentation" class="{% if current_url == uc_answer %}active{% endif %}"><a href="{{ uc_answer }}">我的回答</a></li>#}
-            <li role="presentation" class="{% if current_url == uc_collect %}active{% endif %}"><a href="{{ uc_collect }}" style="color: #0a274e"><b>我的收藏</b></a></li>
-            <li role="presentation" class="{% if current_url == uc_contribut %}active{% endif %}"><a href="{{ uc_contribut }}" style="color: #0a274e"><b>我的订单</b></a></li>
+            <li role="presentation" ><a href="{{ uc_collect }}" {% if request.path == '/uc/collect/' %}style="color: #0070ff"{% else %}style="color: #0a274e"{% endif %}><b>我的收藏</b></a></li>
+            <li role="presentation" ><a href="{{ uc_order }}" {% if request.path == '/uc/order/' %}style="color: #0070ff"{% else %}style="color: #0a274e"{% endif %}><b>我的订单</b></a></li>
             </ul>
           </div>
         </div>

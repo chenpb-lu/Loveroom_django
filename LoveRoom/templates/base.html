@@ -226,7 +226,7 @@
             <ul class="login">
 				<li><i class="icon-login"></i></li>
                 {% if request.user.is_authenticated %}
-                <li><a id="usercenter" href="{% url "uc:profile" %}"><span>个人中心{{ request.user }}</span></a></li>
+                <li><a id="usercenter" href="{% url "uc:profile" %}"><span>个人中心</span></a></li>
                 {% else %}
                 <li><a data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" class="register" id="register_modeal_btn"><span>注册</span></a></li>
                 {% endif %}
@@ -254,13 +254,13 @@
 				<nav class="navbar navbar-default">
 					<div id="navbar" class="navbar-collapse collapse pull-right">
 						<ul class="nav navbar-nav">
-							<li class="active"><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">首页</a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="index.html">首页一</a></li>
-									<li><a href="home-2.html">首页二</a></li>
-								</ul>
+							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href='{% url "house:index" %}'>首页</a>
+{#								<ul class="dropdown-menu" role="menu">#}
+{#									<li><a href="index.html">首页一</a></li>#}
+{#									<li><a href="home-2.html">首页二</a></li>#}
+{#								</ul>#}
 							</li>
-							<li><a href="http://127.0.0.1:8000/uc/logout/">发布房源</a></li>
+							<li><a href='{% url "owner:create" %}'>发布房源</a></li>
 {#							<li><a aria-expanded="true" role="button" data-toggle="dropdown" class="dropdown-toggle" href="#">PROPERTIES</a>#}
 {#								<ul class="dropdown-menu" role="menu">#}
 {#									<li><a href="properties-list.html">PROPERTIES LIST</a></li>#}

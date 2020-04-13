@@ -22,5 +22,7 @@ urlpatterns = [
     url(r"^search/$",views.search,name='search'),
     url(r'^collection/(?P<id>\d+)/$',views.HouseCollections.as_view(),name='house_collection'),
     url(r'^change_avator/$', views.ChangeAvator.as_view(), name='change_avator'),
+    url(r'^districtlist/$', views.Districtlist.as_view()),
+    url(r'^arealist/$', views.Arealist.as_view()),
 
 ]

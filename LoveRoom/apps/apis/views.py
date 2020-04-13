@@ -16,9 +16,9 @@ from django.contrib.auth.decorators import login_required
 from apps.house.models import SiteInfo,HouseInfo
 from apps.show.models import HouseCollection
 from django.forms.models import model_to_dict
-
 logger = logging.getLogger('apis')
 import random
+from django.core import serializers
 
 def get_mobile_captcha(request):
     ret = {"code": 200, "msg": "验证码发送成功！"}
@@ -64,15 +64,15 @@ class LoginRequiredMixin(object):
         return login_required(view, login_url='/')
 
 class HouseCollections(LoginRequiredMixin,View):
-    def get(self,request,id):
+    def get(self, request, id):
         house = HouseInfo.objects.get(id=id)
-        result = HouseCollection.objects.get_or_create(user=request.user,house=house)
+        result = HouseCollection.objects.get_or_create(user=request.user, house=house)
         house_collection = result[0]
         if not result[1]:
-            if house_collection.status :
+            if house_collection.status:
                 house_collection.status = False
             else:
-                house_collection = True
+                house_collection.status = True
         house_collection.save()
         msg = model_to_dict(house_collection)
         ret_info = {"code": 200, "msg": msg}
@@ -115,3 +115,20 @@ class ChangeAvator(LoginRequiredMixin, View):
         request.user.avator_sor = os.path.join(avator_path,filename)
         request.user.save()
         return JsonResponse(ret)
+
+
+class Districtlist(LoginRequiredMixin, View):
+    def get(self, request):
+        cityname = request.GET.get('cityname')
+        districtlist = SiteInfo.objects.filter(cityname=cityname, type=0)
+        districtlist = serializers.serialize("json", districtlist)
+        return HttpResponse(districtlist)
+
+
+class Arealist(LoginRequiredMixin, View):
+    def get(self, request):
+        cityname = request.GET.get('cityname')
+        print(cityname)
+        arealist = SiteInfo.objects.filter(cityname=cityname, type=7)
+        arealist = serializers.serialize("json", arealist)
+        return HttpResponse(arealist)

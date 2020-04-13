@@ -5,6 +5,7 @@ from django.http import JsonResponse
 from django.contrib import auth
 from django.contrib.auth.hashers import make_password
 from .models import User
+from apps.house.models import Order
 from .forms import RegisterForm,PhoneLoginForm,PwLoginForm
 from django.core.paginator import Paginator,EmptyPage, PageNotAnInteger
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -208,7 +209,10 @@ class Collect(LoginRequiredMixin,View):
     def get(self,request):
         from django.db import connection
         cursor = connection.cursor()
-        cursor.execute("SELECT house_houseinfo.id,house_houseinfo.type,house_houseinfo.info,house_houseinfo.location,house_houseinfo.photo,house_houseinfo.price,house_houseinfo.title  FROM show_housecollection,Uc_user,house_houseinfo WHERE Uc_user.id=8 and show_housecollection.status=1 and house_houseinfo.id=show_housecollection.house_id")
+        sql = "SELECT house_houseinfo.id,house_houseinfo.type,house_houseinfo.info,house_houseinfo." \
+              "location,house_houseinfo.photo,house_houseinfo.price,house_houseinfo.title FROM show_housecollection,Uc_user,house_houseinfo WHERE show_housecollection.user_id= %d and show_housecollection.status=1 and house_houseinfo.id=show_housecollection.house_id GROUP BY house_houseinfo.id" % request.user.id
+
+        cursor.execute(sql)
         rows = cursor.fetchall()
         paginator = Paginator(rows, 12)
         page = request.GET.get('page')
@@ -238,3 +242,40 @@ class Collect(LoginRequiredMixin,View):
         }
 
         return render(request,"uc/uc_collection.html",kwag)
+
+
+class Order(LoginRequiredMixin,View):
+    def get(self,request):
+        from django.db import connection
+        cursor = connection.cursor()
+        sql = "SELECT house_houseinfo.id,house_houseinfo.type,house_houseinfo.info,house_houseinfo.location," \
+              "house_houseinfo.photo,house_order.price,house_houseinfo.title,house_order.id,house_order.start_date,house_order.end_date FROM house_order,Uc_user,house_houseinfo WHERE house_order.customer_id= %d and house_houseinfo.id=house_order.house_id GROUP BY house_order.id" % request.user.id
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+        paginator = Paginator(rows, 12)
+        page = request.GET.get('page')
+        numlist = []
+        if paginator.num_pages > 5:
+            numlist = ['1', '2', '3', '4', '5']
+        else:
+            for i in range(1, paginator.num_pages + 1):
+                numlist.append(str(i))
+        try:
+            contacts = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            contacts = paginator.page(1)
+            page = 1
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            contacts = paginator.page(paginator.num_pages)
+            page = paginator.num_pages
+
+        # rows = cursor.fetchmany(2)  返回2条数据(3,4,5,6,7,...)
+        kwag = {
+            "orderlist": contacts,
+            "page" : page,
+            'fivenum': numlist,
+            'pagenum': paginator.num_pages,
+        }
+        return render(request,"uc/uc_order.html",kwag)

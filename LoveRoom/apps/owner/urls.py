@@ -17,13 +17,6 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^register/$',views.Register.as_view(), name='register'),
-    url(r'^phonelogin/$',views.PhoneLogin.as_view(),name='phonelogin'),
-    url(r'^pwlogin/$',views.PwLogin.as_view(),name='pwlogin'),
-    url(r'^logout/$',views.logout,name='logout'),
-    url(r'^change_passwd/$',views.ChangePasswd.as_view(),name="change_passwd"),
-    url(r'^profile/$',views.ProfileView.as_view(),name="profile"),
-    url(r'^collect/$',views.Collect.as_view(),name="collect"),
-    url(r'^order/$',views.Order.as_view(),name="order"),
+    url(r'^create/$',views.Create.as_view(),name='create'),
 
 ]

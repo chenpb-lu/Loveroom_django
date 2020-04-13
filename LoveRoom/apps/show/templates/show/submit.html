@@ -60,8 +60,8 @@
             <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" style="color: #9faab6">
 {#                <li class="divider"></li>#}
                 <li class="dropdown-submenu">
-                    <a tabindex="-1" href="javascript:;">行政区</a>
-                    <ul class="dropdown-menu">
+                    <a tabindex="-1" href="javascript:;" >行政区</a>
+                    <ul class="dropdown-menu" style="overflow: scroll;height: 500px">
                         {% for item in districtlist %}
                             <li><a tabindex="-1" href="?city={{ city }}&district={{ item.name}}&st={{ st }}&et={{ et }}{% if type %}&type={{ type }}{% endif %}{% if minprice %}&minprice={{ minprice }}{% endif %}{% if maxprice %}&maxprice={{ maxprice }}{% endif %}">{{ item.name }}</a></li>
                         {% endfor %}

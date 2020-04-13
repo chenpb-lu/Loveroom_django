@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.generic import View
-from apps.house.models import HouseInfo,SiteInfo,City
+from apps.house.models import HouseInfo,SiteInfo,City,Order_date
 from apps.show.models import HouseCollection
 from django.core.paginator import Paginator,EmptyPage, PageNotAnInteger
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -33,7 +33,7 @@ class showDetail(View):
         collection = []
         if request.user.id:
             user_id = request.user.id
-            collection = HouseCollection.objects.filter(user_id=user_id,status=True).values('house_id')
+            collection = HouseCollection.objects.filter(user=user_id,status=True).values('house')
 
         if not city:
             city = "长沙"
@@ -42,7 +42,7 @@ class showDetail(View):
             city_id = City.objects.filter(name=(city + "市"))
 
         city_id = city_id[0].id
-        houselist = HouseInfo.objects.filter(city_id=city_id).values('id', 'title', 'photo', 'price', 'info',
+        houselist = HouseInfo.objects.filter(city_id=city_id, flag=True).values('id', 'title', 'photo', 'price', 'info',
                                                                      'type', 'location', 'district_id','area')
 
         if type:
@@ -147,6 +147,13 @@ def test(request):
 
 def house_detail(request,id):
     house = HouseInfo.objects.filter(id=id)[0]
+    st = datetime.datetime.strptime(request.GET.get('st'), '%m/%d/%Y')
+    et = datetime.datetime.strptime(request.GET.get('et'), '%m/%d/%Y')
+    print(id)
+    order_list = Order_date.objects.filter(date__range=(st, et),house=id,house__flag=True)
+    print(order_list)
+    if order_list:
+        return render(request, 'show/404.html', status=404)
     st = request.GET.get('st')
     et = request.GET.get('et')
     kwag = {

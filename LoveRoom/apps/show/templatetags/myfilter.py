@@ -8,6 +8,7 @@ from django.conf import settings
 from django import template
 from apps.show.models import MetaInconfont
 import json
+import datetime
 
 register = template.Library()
 
@@ -164,3 +165,25 @@ def maxguest(value):
         return a+b
     except:
         return value
+
+@register.filter
+def price_sum(value, arg):
+    st = datetime.datetime.strptime(value[1], '%m/%d/%Y')
+    et = datetime.datetime.strptime(arg, '%m/%d/%Y')
+    return (value[0]/100) * (et - st).days
+
+@register.filter
+def book_date(value, arg):
+    return (value,arg)
+
+@register.filter
+def format_date(value):
+    return str(value)
+
+@register.filter
+def finish_flag(value):
+    now = datetime.datetime.now().date()
+    if now > value:
+        return '已完成'
+    else:
+        return '未完成'

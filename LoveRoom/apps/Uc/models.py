@@ -1,5 +1,4 @@
 from django.db import models
-
 # Create your models here.
 from django.contrib.auth.models import AbstractUser
 
@@ -23,7 +22,7 @@ class User(AbstractUser):
     is_owner = models.BooleanField(verbose_name="是否是房东",default=False)
 
     def __str__(self):
-        return self.nickname
+        return self.username
 
 
 class Owner(models.Model):

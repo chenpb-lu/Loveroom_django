@@ -41,7 +41,7 @@
                         {% endfor %}
                     {% else %}
                         <h4>未搜索到合适房源</h4>
-                    +{% endif %}
+                    {% endif %}
 
 				</ul>
                     <div class="numbering">
@@ -271,7 +271,7 @@
     });
 
    {% for i in collection %}
-        $("#house_collect-"+'{{ i.house_id }}').attr("style", "color:red; ");
+        $("#house_collect-"+'{{ i.house }}').attr("style", "color:red; ");
    {% endfor %}
 
 
