@@ -17,14 +17,6 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-    url(r'^get_mobile_captcha/$', views.get_mobile_captcha, name='get_mobile_captcha'),
-    url(r'^cpb/$', views.cpb, name='cpb'),
-    url(r"^search/$",views.search,name='search'),
-    url(r'^collection/(?P<id>\d+)/$',views.HouseCollections.as_view(),name='house_collection'),
-    url(r'^change_avator/$', views.ChangeAvator.as_view(), name='change_avator'),
-    url(r'^districtlist/$', views.Districtlist.as_view()),
-    url(r'^arealist/$', views.Arealist.as_view()),
-    url(r'^upload_photo/$',views.UploadPhoto.as_view(), name='upload_photo'),
-    url(r'^image_save/$',views.ImageSave.as_view(), name='Imagesave'),
+    url(r'^list/$',views.BlogList.as_view(),name='list'),
 
 ]

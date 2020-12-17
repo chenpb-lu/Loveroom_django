@@ -18,5 +18,7 @@ from . import views
 
 urlpatterns = [
     url(r'^create/$',views.Create.as_view(),name='create'),
+    url(r'^uploadphoto/(?P<id>\d+)/$',views.UploadPhoto.as_view(),name='upload'),
+    url(r'^update/(?P<id>\d+)/$',views.Update.as_view(),name='update'),
 
 ]

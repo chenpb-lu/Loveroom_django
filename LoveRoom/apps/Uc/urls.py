@@ -25,5 +25,6 @@ urlpatterns = [
     url(r'^profile/$',views.ProfileView.as_view(),name="profile"),
     url(r'^collect/$',views.Collect.as_view(),name="collect"),
     url(r'^order/$',views.Order.as_view(),name="order"),
+    url(r'^myhouse/$',views.Myhouse.as_view(),name="myhouse"),
 
 ]

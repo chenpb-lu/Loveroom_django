@@ -1,0 +1,403 @@
+{% extends "base.html" %}
+{% block content %}
+{% load myfilter %}
+<section class="border-top">
+	<div class="container">
+		<div class="page-title mrgb4x mrgt6x clearfix">
+			<h4 class="page-name">修改房源</h4>
+		</div>
+	</div>
+</section>
+<section>
+<div class="container">
+<div class="booking-section mrgb7x">
+    <form id="house_create" method="POST" name="house_create" onsubmit="return false">
+        {% csrf_token %}
+        <div class="row">
+        <div class="col-md-4 col-sm-6 animated out" data-delay="0" data-animation="fadeInUp">
+            <div class="booking-title"> <span>1</span>
+                <h4>位置信息</h4>
+            </div>
+            <div class="booking-form mrgt6x">
+                    <div class="form-group">
+                        <label>城市</label>
+                        <input type="text" class="area-danxuan form-control" placeholder="选择城市" style="width: 100px;" name="city_name"  data-value="" id="city_choose"   >
+                    </div>
+                    <div class="form-group">
+                        <label>行政区</label>
+                        <div class="dropdown">
+                            <input id="district" name="district"  data-toggle="dropdown" type="text" class="form-control" placeholder="选择行政区"  style="width: 100px;" onclick="districtlistData()">
+                            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" id="districtlist_menu" style="overflow: scroll;height: 300px">
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>商圈/景点</label>
+                        <div class="dropdown">
+                            <input class="form-control" id="area" placeholder="选择商圈" data-toggle="dropdown" style="width: 200px;" name="area_name" onclick="arealistData()">
+                            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu" id="arealist_menu" style="overflow: scroll;height: 300px">
+
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>房源类型</label>
+                        <div class="dropdown">
+                            <input id="house_type" name="house_type"  data-toggle="dropdown" type="text" class="form-control" placeholder="选择房源类型"  style="width: 150px;" value="{{ house.type|house_detail_show:'type' }}">
+
+                            </input>
+                            <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu"  style="overflow: scroll;height: 150px">
+                                <li onclick="setHouseType(this)">整套房源</li>
+                                <li onclick="setHouseType(this)">独立房间</li>
+                                <li onclick="setHouseType(this)">合住房间</li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>详细地址</label>
+                        <input class="form-control" placeholder="请填写房源详细地址" name="address" value="{{ house.location|house_detail_show:"fullAddress" }}">
+                    </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 animated out" data-delay="0" data-animation="fadeInUp">
+            <div class="booking-title"> <span>2</span>
+                <h4 style="color: #3f89ec;">房源介绍</h4>
+            </div>
+            <div class="booking-form mrgt6x">
+                    <div class="form-group">
+                        <label style="color: #3f89ec;">标题</label>
+                        <input type="text" class="form-control" placeholder="请填写房源标题" style="width: 300px;" name="house_title"  >
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #3f89ec;">房源亮点</label>
+                        <textarea  name="description"  type="text" class="form-control" placeholder="请填写房源亮点"  style="width: 300px; height: 55px;">
+                            {% for i in house.introduce|house_description_show:"description"  %}
+                                {{ i }}
+                            {% endfor %}
+                        </textarea>
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #3f89ec;">房源介绍</label>
+                        <textarea class="form-control" name="detailIntroduction" placeholder="请填写房源介绍"  style="width: 300px;height: 60px;">{{ house.introduce|house_detail_show:"detailIntroduction" }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #3f89ec;">周边介绍</label>
+                        <textarea id="aroundInfo" name="aroundInfo"  type="text" class="form-control" placeholder="选择房源类型"  style="width: 300px;height: 60px" >{{ house.introduce|house_detail_show:"aroundInfo" }}</textarea>
+                    </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 animated out" data-delay="0" data-animation="fadeInUp">
+            <div class="booking-title"> <span>3</span>
+                <h4>房源详情</h4>
+            </div>
+            <div class="payment-method mrgt6x">
+                    <div class="form-group" >
+                         <div class="col-md-6" style="padding-left: 0px !important;">
+                            <label>价格</label>
+                            <input type="number" class="form-control" placeholder="请填写价格" style="width: auto;" name="price" value="{{ house.price|price }}"/>
+                         </div>
+                         <div class="col-md-6">
+                            <label>节假日价格</label>
+                            <input type="number" class="form-control" placeholder="请填写节假日价格" style="width: auto;" name="h_price" value="{{ house.h_price|price }}">
+                         </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="margin-top: 15px">房源面积</label>
+                        <input  name="usableArea"  type="number" class="form-control" placeholder="请填写房源面积"  style="width: 200px" value="{{ house.info|house_detail_show:'usableArea' }}">
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4" style="padding-left: 0px !important;">
+                            <label>厨房数量</label>
+                            <input class="form-control" type="number" name="layoutKitchen" placeholder="" style="width: 80px" value="{{ house.info|house_detail_show:'layoutKitchen' }}">
+                        </div>
+                        <div class="col-md-4" >
+                            <label>客厅数量</label>
+                            <input class="form-control" type="number" name="layoutHall"  placeholder="" style="width: 80px;" value="{{ house.info|house_detail_show:'layoutHall' }}">
+                        </div>
+                        <div class="col-md-4" >
+                            <label>厕所数量</label>
+                            <input class="form-control" type="number" name="layoutWc"  placeholder="" style="width: 80px;" value="{{ house.info|house_detail_show:'layoutWc' }}" >
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6" style="padding-left: 0px !important;">
+                            <label style="margin-top: 15px">房间数量</label>
+                            <input class="form-control" type="number" name="layoutRoom"  placeholder="" style="width: 100px;" value="{{ house.info|house_detail_show:'layoutRoom' }}">
+                         </div>
+                        <div class="col-md-6">
+                            <label style="margin-top: 15px">床数</label>
+                            <input class="form-control" type="number" name="bedCount"  placeholder="" style="width: 100px;" value="{{ house.info|house_detail_show:'bedCount' }}">
+                         </div>
+
+                    </div>
+            </div>
+        </div>
+        </div>
+        <br>
+        <div class="row">
+        <div class="col-md-4 col-sm-6 animated out" data-delay="0" data-animation="fadeInUp">
+            <div class="booking-title"> <span>4</span>
+                <h4 style="color: #3f89ec;">设施配置</h4>
+            </div>
+            <div class="booking-form mrgt6x">
+                    <div class="form-group">
+                        <label style="color: #3f89ec;">床铺类型与数量</label>
+                        <div>
+                            <div class="col-md-3" style="padding-left: 0px !important;">
+                                <label style="font-size: 10px">榻榻米</label>
+                                <input class="form-control" type="number" name="tatami" placeholder="" style="width: 50px;">
+                            </div>
+                            <div class="col-md-3" >
+                                <label style="font-size: 10px">上下铺</label>
+                                <input class="form-control" type="number" name="sxp"  placeholder="" style="width: 50px;">
+                            </div>
+                            <div class="col-md-3" >
+                                <label style="font-size: 10px">双人床</label>
+                                <input class="form-control" type="number" name="twobed"  placeholder="" style="width: 50px;">
+                            </div>
+                            <div class="col-md-3" >
+                                <label style="font-size: 10px">双人大床</label>
+                                <input class="form-control" type="number" name="bigtwobed"  placeholder="" style="width: 50px;">
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+
+                        <label style="margin-top: 15px;color: #3f89ec">设施</label>
+                        <div>
+{#                            <label><input name="Fruit" type="checkbox" value="" /></label>#}
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid62" type="checkbox" value="1-62-麻将" />麻将</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid61" type="checkbox" value="1-61-狼人杀" />狼人杀</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid60" type="checkbox" value="1-60-扑克牌" />扑克牌</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid59" type="checkbox" value="1-59-游戏机" />游戏机</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid58" type="checkbox" value="1-58-菜市场" />菜市场</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid57" type="checkbox" value="1-57-公园" />公园</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid56" type="checkbox" value="1-56-跑步机" />跑步机</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid55" type="checkbox" value="1-55-阳台/露台" />阳台/露台</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid7" type="checkbox" value="1-7-停车位" />停车位</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid6" type="checkbox" value="1-6-书桌/工作区" />书桌/工作区</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid5" type="checkbox" value="1-5-门禁系统" />门禁系统</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid4" type="checkbox" value="1-4-电梯" />电梯</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid3" type="checkbox" value="1-3-暖气" />暖气</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid2" type="checkbox" value="1-2-有线网络" />有线网络</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid1" type="checkbox" value="1-1-WiFi" />Wi-Fi</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #3f89ec;">电器</label>
+                        <div>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid63" type="checkbox" value="1-63-冰箱" />冰箱</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid15" type="checkbox" value="1-15-烘干机" />烘干机</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid14" type="checkbox" value="1-14-洗衣机" />洗衣机</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid13" type="checkbox" value="1-13-饮水机" />饮水机</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid12" type="checkbox" value="1-12-电脑" />电脑</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid10" type="checkbox" value="1-10-空调" />空调</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid9" type="checkbox" value="1-9-投影" />投影</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid8" type="checkbox" value="1-8-电视" />电视</label>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #3f89ec;">卫浴</label>
+                        <div>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid25" type="checkbox" value="2-25-沐浴露/洗发水" />沐浴露/洗发水</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid24" type="checkbox" value="2-24-浴巾" />浴巾</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid23" type="checkbox" value="2-23-毛巾" />毛巾</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid22" type="checkbox" value="2-22-手纸" />手纸</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid21" type="checkbox" value="2-21-拖鞋" />拖鞋</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid20" type="checkbox" value="2-20-香皂" />香皂</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid18" type="checkbox" value="2-18-浴缸" />浴缸</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid17" type="checkbox" value="2-17-热水淋浴" />热水淋浴</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid16" type="checkbox" value="2-16-电吹风" />电吹风</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #3f89ec;">厨房</label>
+                        <div>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid66" type="checkbox" value="3-66-啤酒" />啤酒</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid65" type="checkbox" value="3-65-红酒" />红酒</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid64" type="checkbox" value="3-64-热水壶" />热水壶</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid31" type="checkbox" value="3-31-调料" />调料</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid30" type="checkbox" value="3-30-电磁炉" />电磁炉</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid28" type="checkbox" value="3-28-微波炉" />微波炉</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid27" type="checkbox" value="3-27-厨具" />厨具</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid26" type="checkbox" value="3-26-餐具" />餐具</label>
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #3f89ec;">客房服务</label>
+                        <div>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid37" type="checkbox" value="4-37-接送机" />接送机</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid36" type="checkbox" value="4-36-床品每客更换" />床品每客更换</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid35" type="checkbox" value="4-35-免费停车" />免费停车</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid34" type="checkbox" value="4-34-早餐" />早餐</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid33" type="checkbox" value="4-33-自助入住" />自助入住</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="metaid32" type="checkbox" value="4-32-24小时入住" />24小时入住</label>
+
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6 animated out" data-delay="0" data-animation="fadeInUp">
+            <div class="booking-title"> <span>5</span>
+                <h4>预订须知</h4>
+            </div>
+            <div class="booking-form mrgt6x">
+                    </div>
+                    <div class="form-group">
+
+                        <label>住客须知</label>
+                        <div>
+{#                            <label><input name="Fruit" type="checkbox" value="" /></label>#}
+                            <label style="margin-right: 4px;font-size: 13px"><input name="xuzhi52" type="checkbox" value="1-6" checked="true"/>适合老人（60岁以上）</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="xuzhi49" type="checkbox" value="1-7" />允许携带宠物</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="xuzhi47" type="checkbox" value="1-2" />允许聚会</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="xuzhi51" type="checkbox" value="1-1" />适合婴幼儿（2岁以下）</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="xuzhi46" type="checkbox" value="1-0" />允许抽烟</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="xuzhi48" type="checkbox" value="1-4" />允许做饭</label>
+                            <label style="margin-right: 4px;font-size: 13px"><input name="xuzhi50" type="checkbox" value="1-3" />适合儿童（2-12岁）</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>其他住客须知</label>
+                        <textarea  name="other_note"  type="text" class="form-control" placeholder="请填写其他住客须知"  style="width: 300px; height: 100px;"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>入住时间</label>
+                        <input  name="in_time"  type="time" class="form-control" placeholder="入住时间" value="{{ house.book|house_description_show:"earliestCheckinTime" }}" style="width: 150px; height: 20px;">
+                    </div>
+                    <div class="form-group">
+                        <label>退房时间</label>
+                        <input  class="form-control" name="out_time" placeholder="退房时间" type="time" value="{{ house.book|house_description_show:"latestCheckoutTime" }}" style="width: 150px;height: 20px;">
+                    </div>
+                    <div class="form-group">
+                        <label>可住人数</label>
+                        <input  name="guest_num"  type="number" class="form-control"  style="width: 150px;height: 20px"  value="{{ house.book|house_description_show:"maxCheckinGuests" }}">
+                    </div>
+{#            其他优惠政策什么的就不加了#}
+            </div>
+        </div>
+
+        <div style="float: right">
+            <button type="button" class="btn btn-primary" onclick="createHouse()" style="width: 80px;height: 40px;font-size: 15px">提交</button>
+            <button type="reset" class="btn btn-default" style="width: 80px;height: 40px;font-size: 15px">重置</button>
+        </div>
+{#        <input type="button" value="登录" onclick="login()">&nbsp;<input type="reset" value="重置">#}
+    </form>
+</div>
+</div>
+</section>
+
+{% endblock %}
+{% block load_js %}
+    <script type="text/javascript" src="/static/js/City_data.js"></script>
+    <script type="text/javascript" src="/static/js/areadata2.js"></script>
+    <script type="text/javascript" src="/static/js/auto_area.js"></script>
+    <script src="/static/js/moment.js"></script>
+    <script src="/static/js/daterangepicker.js"></script>
+    <script type="text/javascript">
+function svae_City() {
+    var val = '';
+    var Cityname = '';
+    if ($('.svae_box').length > 0) {
+        $('.svae_box').each(function () {
+            val += $(this).data("code") + '-';
+            Cityname += $(this).data("name") + '-';
+        });
+    }
+    if (val != '') {
+        val = val.substring(0, val.lastIndexOf('-'));
+    }
+    if (Cityname != '') {
+        Cityname = Cityname.substring(0, Cityname.lastIndexOf('-'));
+    }
+
+    $(dataCityinput).data("value", val);
+    $(dataCityinput).val(Cityname);
+    var time = $("#demo").val();
+    Close();
+
+
+}
+clickCount =0;
+         //使数据源列表只被点击加载一次
+function districtlistData() {
+    if(clickCount <1){
+        clickCount++;
+        $.ajax({
+        method:"get",
+        url:"http://127.0.0.1:8000/apis/districtlist/?cityname=" + $("#city_choose").val(),
+        dataType : "json",
+        success:function(list){
+            for(var i=0;i < list.length;i++){
+                $("#districtlist_menu").append("<li onclick=\"setDistrictlist(this)\" value=" + list[i].fields.name + ">" + list[i].fields.name + "</li>");//动态加载下拉节点
+            }
+        }
+    });
+    }
+};
+area_clickCount =0;
+         //使数据源列表只被点击加载一次
+function arealistData() {
+    if(area_clickCount <1){
+        area_clickCount++;
+{#        console.log($("#city_choose").val())#}
+        $.ajax({
+        method:"get",
+        url:"http://127.0.0.1:8000/apis/arealist/?cityname=" + $("#city_choose").val(),
+        dataType : "json",
+        success:function(list){
+{#            console.log(list)#}
+{#            console.log(list.length)#}
+            for(var i=0;i < list.length;i++){
+                $("#arealist_menu").append("<li onclick=\"setArealist(this)\" value=" + list[i].fields.name + ">" + list[i].fields.name + "</li>");//动态加载下拉节点
+            }
+        }
+    });
+    }
+};
+function setDistrictlist(a) {
+    document.getElementById("district").value=a.innerHTML
+    console.log(a.innerHTML)
+}
+function setArealist(a) {
+    document.getElementById("area").value=a.innerHTML
+    console.log(a.innerHTML)
+}
+function setHouseType(a) {
+    document.getElementById("house_type").value=a.innerHTML
+    console.log(a.innerHTML)
+}
+function createHouse() {
+    $.ajax({
+            //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "{% url 'owner:create' %}" ,//url
+                data: $('#house_create').serialize(),
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    if (result.code === 200) {
+                        alert("房源成功创建！");
+                        window.location.href='http://127.0.0.1:8000/uc/profile'
+                    }else{
+                        alert(result.msg)
+                    }
+                },
+                error : function() {
+                    alert("异常！");
+                }
+            });
+
+}
+
+</script>
+
+{% endblock %}

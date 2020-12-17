@@ -4,26 +4,24 @@
   <div class="col-lg-12">
       <div class="panel">
           <div class="panel-body">
-              <b style="font-size: 15px">我的订单</b>
+              <b style="font-size: 15px">我的房源</b>
               <hr/>
                 <div class="row">
 				    <ul class="filter-list clearfix" style="width: 100%">
-                    {% if orderlist %}
-                        {% for item in orderlist %}
+                    {% if myhouselist %}
+                        {% for item in myhouselist %}
                         <li class="mix rent test col-md-4 col-sm-4 mrgb5x" data-price="5">
                             <a href="#">
                                 <div class="property-box rent animated out" data-delay="0" data-animation="fadeInUp">
 							<div class="appartment-img"><img src={{ item.4|get_img_url }} class="img-responsive" alt="#" style="width: 265px;height: 175px" />
-								<div class="detail-btn"> <a href="#" class="rent" style="color:white;font-size: 12px">￥{{ item.5 }}</a> </div>
+								<div class="detail-btn"> <a href="#" class="rent" style="color:white;font-size: 12px">￥{{ item.5 |price}}</a> </div>
 							</div>
 							<div class="property-text" style="height: 100px">
 								<div class="appartment-name" >
                                     <a href="#"><h5 style="margin-bottom: 0px !important;font-size: 16px">{{ item.6|limit_title }}</h5></a>
                                     <a href="#"><p style="margin-bottom: 0px !important;height: 24px"><strong>{{ item.6|limit_title }}</strong></p></a>
-                                    <p style="color: #9faab6;height: 15px"><span style="font-size: 5px">{{ item|housetype_sql }}  |</span><span style="font-size: 5px">可住{{ item.2|jsonvalue:"maxGuestNumber" }}人   |</span><span style="font-size: 5px">{{ item.3|jsonvalue:"districtName" }} |</span><span style="font-size: 5px">{{ item.8|format_date }}*{{ item.9|format_date }}</span><p>
+                                    <p style="color: #9faab6;height: 15px"><span style="font-size: 5px">{{ item|housetype_sql }}  |</span><span style="font-size: 5px">可住{{ item.2|jsonvalue:"maxGuestNumber" }}人   |</span><span style="font-size: 5px">{{ item.3|jsonvalue:"districtName" }} |</span><a href="/owner/uploadphoto/{{ item.0 }}/" style="color: #cf251f;margin-right: 15px;"><strong>上传图片</strong></a><a href="/owner/update/{{ item.0 }}/" style="color: #cf251f;"><strong>编辑</strong></a><p>
 									<div class="post-meta">
-
-                                       <span style="font-size: 15px;color: #e9a217;">{{ item.9|finish_flag }}</span>
 
                                      </div>
                                     </div>
@@ -33,15 +31,15 @@
                         </li>
                         {% endfor %}
                     {% else %}
-                        <h4>暂无订单</h4>
+                        <h4>暂未创建任何房源</h4>
                     {% endif %}
 
 				</ul>
                 <div class="numbering">
                         <ul class="pagination" id="pagination_cpb">
 
-                            {% if orderlist.has_previous %}
-                            <li><a href="?page={{ orderlist.previous_page_number }}">上一页</a></li>
+                            {% if myhouselist.has_previous %}
+                            <li><a href="?page={{ myhouselist.previous_page_number }}">上一页</a></li>
                             {% endif %}
                             {% if page|contrast:'6'  %}
                                 {% for i in fivenum %}
@@ -91,8 +89,8 @@
                             {% endif %}
 
 
-                            {% if orderlist.has_next %}
-                            <li><a href="?page={{ oderlist.next_page_number }}">下一页</a></li>
+                            {% if myhouselist.has_next %}
+                            <li><a href="?page={{ myhouselist.next_page_number }}">下一页</a></li>
                             {% endif %}
 
 
@@ -105,32 +103,5 @@
   </div>
 
 
-
-{% endblock %}
-{% block load_js %}
-<script type="text/javascript">
-    $(".like").click(function () {
-        var a = this.id;
-        var id = a.split('-')[1];
-        console.log(id)
-        $.ajax({
-            url: '/apis/collection/' + id + '/',
-            type: 'GET',
-            // dataType: 'json',
-            success: function (data) {
-                if (data.code == 200) {
-{#                    obj_a = $("#house_collect-" + id);#}
-{#                    // 根据状态显示爱心#}
-{#                    if (data.msg.status) {#}
-{#                        obj_a.attr("style", "color:red; ")#}
-{#                    } else {#}
-{#                        obj_a.attr("style", "color:#cfcece; ")#}
-{#                    }#}
-                    location.reload()
-                }
-            }
-        });
-    });
-</script>
 
 {% endblock %}

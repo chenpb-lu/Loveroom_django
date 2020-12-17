@@ -12,11 +12,13 @@
             {% url 'uc:answer' as uc_answer %}
             {% url 'uc:collect' as uc_collect %}
             {% url 'uc:order' as uc_order %}
+            {% url 'uc:myhouse' as uc_myhouse %}
             <li role="presentation" ><a href="{{ uc_profile }}" {% if request.path == '/uc/profile/' %}style="color: #0070ff"{% else %}style="color: #0a274e"{% endif %}><b>个人资料</b></a></li>
             <li role="presentation" ><a href="{{ uc_change_passwd }}" {% if request.path == '/uc/change_passwd/' %}style="color: #0070ff"{% else %}style="color: #0a274e"{% endif %}><b>修改密码</b></a></li>
     {#        <li role="presentation" class="{% if current_url == uc_answer %}active{% endif %}"><a href="{{ uc_answer }}">我的回答</a></li>#}
             <li role="presentation" ><a href="{{ uc_collect }}" {% if request.path == '/uc/collect/' %}style="color: #0070ff"{% else %}style="color: #0a274e"{% endif %}><b>我的收藏</b></a></li>
             <li role="presentation" ><a href="{{ uc_order }}" {% if request.path == '/uc/order/' %}style="color: #0070ff"{% else %}style="color: #0a274e"{% endif %}><b>我的订单</b></a></li>
+            <li role="presentation" ><a href="{{ uc_myhouse }}" {% if request.path == '/uc/myhouse/' %}style="color: #0070ff"{% else %}style="color: #0a274e"{% endif %}><b>我的房源</b></a></li>
             </ul>
           </div>
         </div>

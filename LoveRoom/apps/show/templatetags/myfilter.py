@@ -187,3 +187,11 @@ def finish_flag(value):
         return '已完成'
     else:
         return '未完成'
+
+@register.filter
+def upload_img_url(value):
+    try:
+        a = value['photo_url']
+        return settings.MEDIA_URL+a
+    except:
+        return value

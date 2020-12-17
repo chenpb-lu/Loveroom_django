@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.contrib import auth
 from django.contrib.auth.hashers import make_password
 from .models import User
-from apps.house.models import Order
+from apps.house.models import HouseInfo
 from .forms import RegisterForm,PhoneLoginForm,PwLoginForm
 from django.core.paginator import Paginator,EmptyPage, PageNotAnInteger
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -279,3 +279,39 @@ class Order(LoginRequiredMixin,View):
             'pagenum': paginator.num_pages,
         }
         return render(request,"uc/uc_order.html",kwag)
+
+class Myhouse(LoginRequiredMixin,View):
+    def get(self,request):
+        from django.db import connection
+        cursor = connection.cursor()
+        sql = "SELECT house_houseinfo.id,house_houseinfo.type,house_houseinfo.info,house_houseinfo.location," \
+              "house_houseinfo.photo,house_houseinfo.price,house_houseinfo.title FROM house_houseinfo WHERE house_houseinfo.owner_id=%d" % request.user.id
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+        paginator = Paginator(rows, 12)
+        page = request.GET.get('page')
+        numlist = []
+        if paginator.num_pages > 5:
+            numlist = ['1', '2', '3', '4', '5']
+        else:
+            for i in range(1, paginator.num_pages + 1):
+                numlist.append(str(i))
+        try:
+            contacts = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            contacts = paginator.page(1)
+            page = 1
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            contacts = paginator.page(paginator.num_pages)
+            page = paginator.num_pages
+
+        # rows = cursor.fetchmany(2)  返回2条数据(3,4,5,6,7,...)
+        kwag = {
+            "myhouselist": contacts,
+            "page" : page,
+            'fivenum': numlist,
+            'pagenum': paginator.num_pages,
+        }
+        return render(request,"uc/uc_myhouse.html",kwag)

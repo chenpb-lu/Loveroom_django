@@ -1,0 +1,250 @@
+{% extends "base.html" %}
+{% block content %}
+{% load myfilter %}
+<div class="container" style="margin-top: 20px;margin-bottom: 50px">
+    <style>
+			.fa-times {
+				font-size: 15px;
+			}
+			.panel {
+				height: 285px;
+				margin-bottom: 0;
+				margin-top: 10px;
+			}
+			.panel-heading {
+				text-align: right;
+			}
+			/*加号*/
+			.icon-add-50 {
+				position: relative;
+				box-sizing: border-box;
+				width: 50px;
+				height: 50px;
+				border: 2px dashed #9a9ba3;
+				border-radius: 50%;
+			}
+			.icon-add-50:before {
+				content: '';
+				position: absolute;
+				width: 30px;
+				height: 2px;
+				left: 50%;
+				top: 50%;
+				margin-left: -15px;
+				margin-top: -1px;
+				background-color: #aaabb2;
+			}
+			.icon-add-50:after {
+				content: '';
+				position: absolute;
+				width: 2px;
+				height: 30px;
+				left: 50%;
+				top: 50%;
+				margin-left: -1px;
+				margin-top: -15px;
+				background-color: #aaabb2;
+			}
+
+			.updatepanel {
+				border: 1px solid #ccc;
+				text-align: center;
+			}
+			.updatepanel .addbox {
+				vertical-align: middle;
+				height: 285px;
+				line-height: 285px;
+			}
+
+			#image {
+				overflow: hidden;
+			}
+			.panel-body {
+				/*padding-top: 0px;
+				padding-bottom: 0px;*/
+			}
+			label {
+				width: 100%;
+			}
+		</style>
+        <form>
+            {% csrf_token %}
+            <div class="wrapper wrapper-content animated fadeIn">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="ibox">
+						<div class="ibox-title">
+							<h3>上传房源图片</h3>
+						</div>
+						<div class="ibox-content">
+							<div class="row">
+                                {% for item in photolist %}
+                                    <div class="col-sm-4">
+									<div class="panel panel-info">
+										<div class="panel-heading">
+											<i class="fa fa-times" onclick="remove_ing(this)" id="{{ forloop.counter0 }}"></i>
+										</div>
+										<div class="panel-body" style="text-align: center;">
+											<div class="row">
+												<div class="col-sm-12 col-md-12" id="image">
+													<img class="updateimg img-responsive" src="{{ item|upload_img_url }}" style="width: inherit;height: 210px;"/>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+                                {% endfor %}
+								<div class="col-sm-4" id="updatebox">
+									<label for="file">
+										<div class="panel updatepanel">
+											<div class="addbox"><span class="icon-add-50"></span></div>
+											<input type="file" id="file" style="display: none" />
+										</div>
+									</label>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        </form>
+
+        <div style="float: right;margin-top: 20px">
+            <button type="button" class="btn btn-primary" onclick="image_save()" style="width: 80px;height: 40px;font-size: 15px">提交</button>
+        </div>
+
+
+
+</div>
+
+{% endblock %}
+{% block load_js %}
+    <script>
+     $("#bookNow").click(function () {
+            {% if request.user.is_authenticated %}
+                 window.location.href="/pay/booking/{{ house.id }}/?st={{ st }}&et={{ et }}";
+            {% else %}
+            alert("请先登录！");
+
+            {% endif %}
+        });
+
+    </script>
+    <script>
+            var photo_dict = new Array();
+            var cont = 0
+            for(var i=0;i<{{ photolist|length }};i++){
+                photo_dict[i] = i
+                cont = i
+            }
+            function getCookie(name) {
+                var prefix = name + "="
+                var start = document.cookie.indexOf(prefix)
+
+                if (start == -1) {
+                    return null;
+                }
+
+                var end = document.cookie.indexOf(";", start + prefix.length)
+                if (end == -1) {
+                    end = document.cookie.length;
+                }
+
+                var value = document.cookie.substring(start + prefix.length, end)
+                return unescape(value);
+            }
+
+			$(".updatepanel").height($(".panel-info").height());
+			document.getElementById('file').onchange = function() {
+				add();
+				var imgFile = this.files[0];
+				var fr = new FileReader();
+				fr.onload = function() {
+					var imgs = document.getElementsByClassName('updateimg');
+					imgs[imgs.length-1].src = fr.result;
+					/*document.getElementById('image').getElementsByTagName('img')[0].src = fr.result;*/
+				};
+				fr.readAsDataURL(imgFile);
+                var formData = new FormData();
+                var url = window.location.href;
+                console.log(url)
+                var house_id = url.split('/').slice(-2)[0]
+                console.log(house_id)
+				var imgs = document.getElementsByClassName('updateimg');
+				console.log($("#file")[0].files[0])
+				formData.append('image', $("#file")[0].files[0])
+                formData.append("csrfmiddlewaretoken",$("[name='csrfmiddlewaretoken']").val())
+                formData.append('id',house_id)
+                var csrftoken = getCookie('csrftoken');
+				$.ajax({
+            //几个参数需要注意一下
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "{% url 'apis:upload_photo' %}" ,//url
+                async: false,
+                processData : false,
+                // 告诉jQuery不要去设置Content-Type请求头
+                contentType : false,
+                data: formData,
+                success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    if (result.code === 200) {
+                        alert("房源成功创建！");
+                    }else{
+                        alert(result.msg)
+                    }
+                },
+                error : function() {
+                    alert("异常！");
+                },
+                beforeSend: function(xhr, settings) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            });
+
+			};
+			function add(){
+				var html = "<div class='col-sm-4'><div class='panel panel-info'><div class='panel-heading'><i class='fa fa-times' id = "+ cont +"></i></div><div class='panel-body' style='text-align: center;'><div class='row'><div class='col-sm-12 col-md-12'><img class='updateimg img-responsive' src='img/p_big3.jpg' style='width: inherit;height: 210px;'/></div></div></div></div></div>";
+				$("#updatebox").before(html);
+				console.log(photo_dict)
+                photo_dict[photo_dict.length] = photo_dict.length
+                console.log(photo_dict)
+			}
+			function remove_ing(a){
+				/*alert($(this).parent().parent().parent().html());*/
+				$(a).parent().parent().parent().remove();
+				console.log(a.id)
+                delete photo_dict[a.id]
+                console.log(photo_dict)
+			};
+			function image_save() {
+			    var url = window.location.href;
+			    var house_id = url.split('/').slice(-2)[0]
+                $.ajax({
+                    method:"post",
+                    url:"http://127.0.0.1:8000/apis/image_save/",
+                    dataType : "json",
+                    data:{"csrfmiddlewaretoken":$("[name='csrfmiddlewaretoken']").val(),"photo_list":photo_dict,"id":house_id},
+                    success: function (result) {
+                    console.log(result);//打印服务端返回的数据(调试用)
+                    if (result.code === 200) {
+                        alert("房源图片保存创建！");
+                        window.location.href='http://127.0.0.1:8000/uc/myhouse'
+                    }else{
+                        alert(result.msg)
+                    }
+                },
+                });
+            }
+			/*$(".panel").on("click","i",function(){
+				alert("111");
+				alert($(this).parent().parent().parent().html());
+				$(this).parent().parent().parent().remove();
+			});*/
+			/*function delete(){
+
+			}*/
+		</script>
+{% endblock %}

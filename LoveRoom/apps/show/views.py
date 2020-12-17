@@ -149,9 +149,7 @@ def house_detail(request,id):
     house = HouseInfo.objects.filter(id=id)[0]
     st = datetime.datetime.strptime(request.GET.get('st'), '%m/%d/%Y')
     et = datetime.datetime.strptime(request.GET.get('et'), '%m/%d/%Y')
-    print(id)
     order_list = Order_date.objects.filter(date__range=(st, et),house=id,house__flag=True)
-    print(order_list)
     if order_list:
         return render(request, 'show/404.html', status=404)
     st = request.GET.get('st')

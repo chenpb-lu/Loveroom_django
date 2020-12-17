@@ -211,7 +211,19 @@ class Create(LoginRequiredMixin,View):
             HouseInfo.objects.update_or_create(**data)
 
 
-            return JsonResponse({"code": 200, "msg": "123"})
+            return JsonResponse({"code": 200, "msg": "ok"})
         except Exception as e:
             print(str(e))
             return JsonResponse({"code": 500, "msg": str(e)})
+
+class UploadPhoto(LoginRequiredMixin,View):
+    def get(self,request,id):
+        photo_list = HouseInfo.objects.get(id=id).photo
+        kwag = {'photolist':json.loads(photo_list)}
+        return render(request,'owner/uploadphoto.html',kwag)
+
+class Update(LoginRequiredMixin,View):
+    def get(self,request,id):
+        house = HouseInfo.objects.filter(id=id)[0]
+        kwag = {'house':house}
+        return render(request,'owner/update.html',kwag)

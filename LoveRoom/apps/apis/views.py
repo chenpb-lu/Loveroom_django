@@ -16,8 +16,10 @@ from django.contrib.auth.decorators import login_required
 from apps.house.models import SiteInfo,HouseInfo
 from apps.show.models import HouseCollection
 from django.forms.models import model_to_dict
+from django.views.decorators.csrf import csrf_exempt
 logger = logging.getLogger('apis')
 import random
+import json
 from django.core import serializers
 
 def get_mobile_captcha(request):
@@ -62,6 +64,7 @@ class LoginRequiredMixin(object):
     def as_view(cls, **initkwargs):
         view = super(LoginRequiredMixin, cls).as_view(**initkwargs)
         return login_required(view, login_url='/')
+
 
 class HouseCollections(LoginRequiredMixin,View):
     def get(self, request, id):
@@ -132,3 +135,41 @@ class Arealist(LoginRequiredMixin, View):
         arealist = SiteInfo.objects.filter(cityname=cityname, type=7)
         arealist = serializers.serialize("json", arealist)
         return HttpResponse(arealist)
+
+
+class UploadPhoto(LoginRequiredMixin, View):
+    def post(self,request):
+        img = request.FILES.get('image')
+        img_path_full = os.path.join(MEDIA_ROOT, 'house')
+        imgname = str(time.time()) + img.name
+        imgname_full = os.path.join(img_path_full, imgname)
+        try:
+            with open(imgname_full, 'wb') as f:
+                for line in img:
+                    f.write(line)
+                house = HouseInfo.objects.get(id=int(request.POST.get('id')))
+                photo = json.loads(house.photo)
+                photo.append({"photoCategory": 1, "photo_url": 'house/' + imgname, "isCover": 0, "categoryName": "\u5176\u4ed6"})
+                house.photo = json.dumps(photo)
+                house.save()
+        except Exception as e:
+
+         return JsonResponse({"code": 200, "msg": "OK"})
+
+
+class ImageSave(LoginRequiredMixin, View):
+    def post(self,request):
+        try:
+            photo_list = request.POST.getlist('photo_list[]')
+            id = request.POST.get('id')
+            house = HouseInfo.objects.get(id=int(id))
+            photo = json.loads(house.photo)
+            new_photo = []
+            for i in photo_list:
+                if i:
+                    new_photo.append(photo[int(i)])
+            house.photo = json.dumps(new_photo)
+            house.save()
+        except Exception as e:
+            print(str(e))
+        return JsonResponse({"code": 200, "msg": "OK"})
