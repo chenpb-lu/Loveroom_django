@@ -11,7 +11,6 @@
 ### 网站主页面
 
 ![登录](https://github.com/chenpb-lu/Loveroom_django/blob/master/img/%E4%B8%BB%E9%A1%B5.png)
-![登录](.\img\登录-1567066790088.png)
 
 
 
@@ -24,7 +23,6 @@
 
 ![登录](https://github.com/chenpb-lu/Loveroom_django/blob/master/img/%E7%99%BB%E5%BD%95.png)
 
-![注册](.\img\注册.png)
 
 
 
